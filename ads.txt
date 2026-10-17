@@ -1,0 +1,3 @@
+# ads.txt 範本 — 取得 AdSense 核准後：把下一行的 pub-XXXXXXXXXXXXXXXX 換成您的發布商 ID，並刪除行首的「# 」。
+# （或執行 ./deploy.sh <網域> <聯絡信箱> pub-<16位數字>，會自動產生）
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
