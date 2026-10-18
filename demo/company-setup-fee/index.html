@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CalcTW demo | id=company-setup-fee | created=2026-10-18 | takedown_due=2026-11-17 -->
+<meta name="calctw-demo-created" content="2026-10-18">
+<meta name="calctw-demo-takedown" content="2026-11-17">
+<meta name="robots" content="noindex,nofollow">
+<title>公司設立與登記服務費試算｜示範樣品</title>
+<style>:root{--b:#0f766e}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:#f7f7f8;color:#1f2933;line-height:1.7}
+header{background:var(--b);color:#fff;padding:14px 18px}header .t{font-weight:800;font-size:1.1rem}header .s{opacity:.9;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:14px}.card{background:#fff;border:1px solid #e3e6ea;border-radius:12px;padding:16px;margin:12px 0}
+h1{font-size:1.45rem;margin:.4em 0}h2{font-size:1.1rem;margin:0 0 .5em;color:var(--b)}label{display:block;font-weight:600;font-size:.92rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:9px;border:1px solid #c5ccd3;border-radius:8px;background:#fff}.grid{display:grid;gap:12px;grid-template-columns:1fr}
+.kpis{display:grid;gap:10px;grid-template-columns:1fr 1fr}.kpi{background:#f3f4f6;border-left:4px solid var(--b);border-radius:8px;padding:10px}.kpi .v{font-size:1.3rem;font-weight:800}.kpi .l{font-size:.82rem;color:#5f6b76}
+table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1px solid #e3e6ea;padding:7px 6px;text-align:right}td:first-child,th:first-child{text-align:left}
+.ref{color:#9a3412;font-weight:700;font-size:.9rem}.hint{font-size:.85rem;color:#5f6b76}footer{text-align:center;font-size:.85rem;color:#5f6b76;padding:20px 12px 30px}
+.badge{display:inline-block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:999px;padding:2px 10px;font-size:.8rem}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="t">為會計記帳事務所設計</div><div class="s">工商登記與記帳服務組合試算</div></header>
+<main>
+<p><span class="badge">示範樣品</span></p>
+<h1>公司設立與登記服務費試算</h1>
+<p>勾選需要的登記與記帳服務，即時加總服務費、政府規費與第一年記帳費用，不必再對照多張價目表自行計算。</p>
+<section class="card" aria-labelledby="inT"><h2 id="inT">選擇服務項目</h2><div class="grid">
+<div><label for="ent">組織型態</label><select id="ent"><option value="biz">行號</option><option value="ltd" selected>有限公司</option><option value="inc">股份有限公司</option></select></div>
+<div><label for="svSetup">設立登記（含名稱預查、公司／營業登記）</label><select id="svSetup"><option value="1" selected>需要</option><option value="0">不需要</option></select></div>
+<div><label for="lic">特許行業項目數</label><input id="lic" type="number" min="0" step="1" value="0"><div class="hint">每項加收 6,000 元起</div></div>
+<div><label for="svChange">一般變更登記</label><select id="svChange"><option value="1">需要</option><option value="0" selected>不需要</option></select></div>
+<div><label for="svCap">增資或減資登記</label><select id="svCap"><option value="1">需要</option><option value="0" selected>不需要</option></select><div class="hint" id="capHint"></div></div>
+<div><label for="svDiss">解散登記（非經法院）</label><select id="svDiss"><option value="1">需要</option><option value="0" selected>不需要</option></select></div>
+<div><label for="ind">記帳服務業別</label><select id="ind"><option value="0" selected>買賣業（每月 2,000 元）</option><option value="1">製造業（每月 2,000 元）</option><option value="2">其他業（每月 2,500 元）</option><option value="-1">不需要記帳服務</option></select></div>
+<div><label for="months">每年收費月數</label><input id="months" type="number" min="12" max="14" step="1" value="14"><div class="hint">按月記帳＋結算申報與帳冊報表，常見為一年 14 個月</div></div>
+<div><label for="svIns">勞健保投保單位成立（2,000 元）</label><select id="svIns"><option value="1">需要</option><option value="0" selected>不需要</option></select></div>
+<div><label for="svNhi">二代健保計算及申報（每月 1,000 元）</label><select id="svNhi"><option value="1">需要</option><option value="0" selected>不需要</option></select><div class="hint">按 12 個月估算</div></div>
+<div><label for="svImp">出進口廠商登記（1,000 元）</label><select id="svImp"><option value="1">需要</option><option value="0" selected>不需要</option></select></div>
+</div></section>
+<section class="card" aria-labelledby="outT" aria-live="polite"><h2 id="outT">試算結果</h2><p class="ref">僅供參考，實際以業者報價為準</p>
+<div class="kpis"><div class="kpi"><div class="l">第一年合計</div><div class="v" id="kTotal">-</div></div><div class="kpi"><div class="l">登記服務費＋規費</div><div class="v" id="kOnce">-</div></div><div class="kpi"><div class="l">年度記帳相關</div><div class="v" id="kYear">-</div></div><div class="kpi"><div class="l">第一年平均每月</div><div class="v" id="kAvg">-</div></div></div>
+<table id="tbl"><tbody></tbody></table></section><section class="card"><h2>計費說明</h2><ul class="hint"><li>設立費用適用資本額 400 萬元以內、非特許行業；每項特許行業另加收服務費。</li><li>刻印、變更登記之政府規費依實際支出計算，未列入本試算；資本查核簽證費另計。</li><li>記帳費為基本報價，實際依行業、營業額、憑證數量與申報方式調整。</li><li>二代健保申報服務以 5 人次以下為準。</li></ul></section>
+<section class="card"><h2>想要一個屬於您的版本？</h2><p>品牌色、欄位、計費規則與文字都可以客製，並可嵌入您的官網。<a href="mailto:kevinlee19852001@gmail.com?subject=CalcTW%20%E5%AE%A2%E8%A3%BD%E5%A7%94%E8%A8%97">歡迎來信委託客製</a></p></section>
+</main>
+<footer>此為 CalcTW 製作之示範樣品，非任何公司官方工具｜製作：<a href="https://calctw.com/" target="_blank" rel="noopener">CalcTW.com</a></footer>
+<script>(function(){var C={"entities": {"biz": {"label": "行號", "setup": 6000, "gov": 1300, "change": 4500, "capital": null, "dissolve": 8000}, "ltd": {"label": "有限公司", "setup": 11000, "gov": 1150, "change": 8000, "capital": 12000, "dissolve": 12000}, "inc": {"label": "股份有限公司", "setup": 12000, "gov": 1150, "change": 8000, "capital": 12000, "dissolve": 12000}}, "license_fee": 6000, "industries": [{"label": "買賣業", "fee": 2000}, {"label": "製造業", "fee": 2000}, {"label": "其他業", "fee": 2500}], "months": 14, "ins_setup": 2000, "nhi_month": 1000, "import_reg": 1000, "notes": ["設立費用適用資本額 400 萬元以內、非特許行業；每項特許行業另加收服務費。", "刻印、變更登記之政府規費依實際支出計算，未列入本試算；資本查核簽證費另計。", "記帳費為基本報價，實際依行業、營業額、憑證數量與申報方式調整。", "二代健保申報服務以 5 人次以下為準。"]};function $(i){return document.getElementById(i)}function f(n){return Math.round(n).toLocaleString("zh-TW")+" 元"}
+function calc(){var e=C.entities[$("ent").value],rows=[],once=0,year=0,mo=+$("months").value||0;function add(l,v,y){rows.push([l,v]);if(y)year+=v;else once+=v}
+var capOk=e.capital!==null;$("svCap").disabled=!capOk;$("capHint").textContent=capOk?"每次 "+e.capital.toLocaleString("zh-TW")+" 元":"此組織型態不適用";
+if($("svSetup").value==="1"){add("設立登記服務費",e.setup);add("設立登記政府規費",e.gov);var n=Math.max(0,Math.floor(+$("lic").value||0));if(n)add("特許行業加收（"+n+" 項）",n*C.license_fee)}
+if($("svChange").value==="1")add("一般變更登記",e.change);if(capOk&&$("svCap").value==="1")add("增資／減資登記",e.capital);if($("svDiss").value==="1")add("解散登記",e.dissolve);
+if($("svIns").value==="1")add("勞健保投保單位成立",C.ins_setup);if($("svImp").value==="1")add("出進口廠商登記",C.import_reg);
+var ii=+$("ind").value;if(ii>=0){var it=C.industries[ii];add("記帳費（"+it.label+" "+it.fee.toLocaleString("zh-TW")+" × "+mo+" 個月）",it.fee*mo,1)}
+if($("svNhi").value==="1")add("二代健保計算及申報（"+C.nhi_month.toLocaleString("zh-TW")+" × 12 個月）",C.nhi_month*12,1);
+$("kTotal").textContent=f(once+year);$("kOnce").textContent=f(once);$("kYear").textContent=f(year);$("kAvg").textContent=f((once+year)/12);
+$("tbl").tBodies[0].innerHTML=rows.map(function(r){return"<tr><td>"+r[0]+"</td><td>"+f(r[1])+"</td></tr>"}).join("")+"<tr><td><strong>第一年合計</strong></td><td><strong>"+f(once+year)+"</strong></td></tr>"}
+document.addEventListener("input",calc);document.addEventListener("change",calc);calc();})();</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
+</body>
+</html>
