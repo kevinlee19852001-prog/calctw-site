@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新青安房貸月付金試算器（含寬限期比較）｜嵌入版｜CalcTW.com</title>
+<meta name="robots" content="noindex,follow">
+<base target="_self">
+<style>
+:root{--c:#1d4ed8;--c2:#1e3a8a;--bg:#f5f7fb;--card:#fff;--tx:#1f2933;--mu:#5f6b76;--bd:#dde3ec;--hl:#eff6ff;--warn:#fff7ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header.site{background:var(--c);color:#fff;padding:10px 16px;font-weight:700}
+main{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:1.5rem;line-height:1.35;margin:.6em 0 .3em}
+h2{font-size:1.2rem;margin:1.4em 0 .5em;border-left:4px solid var(--c);padding-left:8px}
+h3{font-size:1.05rem;margin:1em 0 .3em}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:10px;border:1px solid #b6c2d1;border-radius:8px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--c);border-color:var(--c)}
+.hint{font-size:.85rem;color:var(--mu)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button{font-size:.95rem;padding:9px 14px;border-radius:8px;border:1px solid var(--c);background:#fff;color:var(--c);cursor:pointer}
+button.primary{background:var(--c);color:#fff}
+button.sm{padding:6px 10px;font-size:.85rem}
+.seg{display:flex;border:1px solid var(--c);border-radius:8px;overflow:hidden}
+.seg label{flex:1;margin:0;text-align:center;padding:10px 6px;cursor:pointer;font-weight:600;color:var(--c)}
+.seg input{display:none}
+.seg input:checked+span{color:#fff}
+.seg label:has(input:checked){background:var(--c);color:#fff}
+.tier{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}
+.cmp{display:grid;grid-template-columns:1fr;gap:12px}
+.box{border:1px solid var(--bd);border-radius:10px;padding:12px;background:var(--hl)}
+.box h3{margin:0 0 6px}
+.box dl{display:grid;grid-template-columns:auto auto;gap:4px 10px;margin:0}
+.box dt{color:var(--mu);font-size:.9rem}
+.box dd{margin:0;text-align:right;font-weight:800;color:var(--c2)}
+.diff{margin-top:10px;padding:10px 12px;background:#fef9c3;border-radius:8px;font-weight:600}
+.tbl{width:100%;overflow:auto;max-height:520px;border:1px solid var(--bd);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:600px}
+th,td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:right;white-space:nowrap}
+thead th{background:#eef2f8;position:sticky;top:0}
+tr.g td{background:#f8fafc;color:#475569}
+tr.y td{border-bottom:2px solid #c7d2fe}
+.aff{border:1px solid #fde68a;background:#fffbeb;border-radius:10px;padding:12px;margin:12px 0}
+.aff a{color:#92400e;font-weight:700}
+.note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
+.err{color:#b91c1c;font-weight:600}
+details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:700;padding:12px 0}
+footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
+.src li{word-break:break-all}
+@media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}.cmp{grid-template-columns:1fr 1fr}h1{font-size:1.85rem}main{padding:16px 20px}}
+
+/* shared site nav (site-build) */
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+
+/* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
+body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.credit{text-align:center;font-size:.9rem;padding:10px 0 14px;border-top:1px solid var(--bd);margin-top:8px}.credit a{font-weight:700}</style>
+</head>
+<body>
+<main>
+<h1 class="eh">新青安房貸月付金試算器（含寬限期比較）</h1>
+<p class="hint">預設值為示範：貸款 1,000 萬元、40 年、寬限期 5 年，並套用青安3.0 一段式機動利率的補貼遞減階梯（1.775% → 1.9% → 2.025% → 2.15% → 2.275%，以 2026-10 查得之基準利率計算）。</p>
+
+<section class="card" aria-labelledby="inTitle">
+<h2 id="inTitle" style="margin-top:0">貸款條件</h2>
+<div class="grid">
+  <div><label for="amt">貸款金額（元）</label><input id="amt" type="number" inputmode="numeric" min="10000" step="10000" value="10000000"><div class="hint" id="amtW"></div></div>
+  <div><label for="yrs">貸款年限（年）</label><input id="yrs" type="number" inputmode="numeric" min="1" max="40" step="1" value="40"><div class="hint">1～40 年</div></div>
+  <div><label for="grace">寬限期（年）</label><select id="grace"><option value="0">0 年</option><option value="1">1 年</option><option value="2">2 年</option><option value="3">3 年</option><option value="4">4 年</option><option value="5" selected>5 年</option></select><div class="hint">寬限期內只繳利息</div></div>
+  <div><label>攤還方式</label>
+    <div class="seg" role="radiogroup" aria-label="攤還方式">
+      <label><input type="radio" name="method" value="annuity" checked><span>本息平均</span></label>
+      <label><input type="radio" name="method" value="principal"><span>本金平均</span></label>
+    </div></div>
+  <div class="full">
+    <label>分段利率（年利率 %）</label>
+    <div id="tiers"></div>
+    <div class="btns">
+      <button type="button" class="sm" id="addTier">＋ 新增利率段</button>
+      <button type="button" class="sm" id="presetYouth">套用青安3.0 利率階梯</button>
+      <button type="button" class="sm" id="presetFlat">單一利率 2.6%（一般房貸示範）</button>
+    </div>
+    <div class="hint">「起始期數」指從第幾個月開始適用該利率（第 1 年 = 第 1～12 期）。利率變動時，銀行通常依剩餘本金與剩餘期數重新計算月付金，本工具亦同。</div>
+  </div>
+</div>
+<div class="btns"><button class="primary" id="calcBtn" type="button">開始試算</button></div>
+<p id="err" class="err" role="alert"></p>
+</section>
+
+<section class="card" aria-labelledby="outTitle" aria-live="polite">
+<h2 id="outTitle" style="margin-top:0">有寬限期 vs 無寬限期 比較</h2>
+<div class="cmp">
+  <div class="box"><h3 id="hG">有寬限期</h3><dl>
+    <dt>寬限期內月付（第1期）</dt><dd id="gFirst">-</dd>
+    <dt>寬限期後首期月付</dt><dd id="gAfter">-</dd>
+    <dt>期間最高月付</dt><dd id="gMax">-</dd>
+    <dt>總利息</dt><dd id="gInt">-</dd>
+    <dt>本息總繳金額</dt><dd id="gTot">-</dd></dl></div>
+  <div class="box"><h3>無寬限期</h3><dl>
+    <dt>首期月付</dt><dd id="nFirst">-</dd>
+    <dt>第 2 年後月付（參考）</dt><dd id="nLater">-</dd>
+    <dt>期間最高月付</dt><dd id="nMax">-</dd>
+    <dt>總利息</dt><dd id="nInt">-</dd>
+    <dt>本息總繳金額</dt><dd id="nTot">-</dd></dl></div>
+</div>
+<div class="diff" id="diffText">-</div>
+</section>
+
+
+<!-- 聯盟推廣連結位置（替換 href 與文案；需標示廣告/合作） -->
+
+<div hidden><section class="card" aria-labelledby="tblTitle">
+<h2 id="tblTitle" style="margin-top:0">每期攤還明細表</h2>
+<div class="grid">
+  <div><label for="view">顯示方案</label><select id="view"><option value="g">有寬限期</option><option value="n">無寬限期</option></select></div>
+  <div><label for="gran">顯示方式</label><select id="gran"><option value="m">每月明細</option><option value="y">每年彙總</option></select></div>
+  <div class="full"><div class="btns"><button type="button" id="csvBtn" class="primary">匯出 CSV（Excel 可開）</button></div></div>
+</div>
+<div class="tbl" style="margin-top:10px"><table id="sch"><thead></thead><tbody></tbody></table></div>
+<p class="hint">※ 每期金額以元為單位四捨五入顯示，最後一期依剩餘本金結清；實際金額以銀行撥貸後的繳款通知為準。</p>
+</section>
+
+</div>
+</main>
+<footer class="credit"><a href="https://calctw.com/youth-mortgage/" target="_blank" rel="noopener">由 CalcTW.com 提供</a>｜完整說明與常見問題請見原頁面</footer>
+<script>
+/* ===== 青安3.0 一段式機動利率階梯（資料查核：2026-10-18；基準利率 1.72% + 0.555% = 2.275%） ===== */
+var YOUTH_TIERS = [{from:1,rate:1.775},{from:37,rate:1.9},{from:49,rate:2.025},{from:61,rate:2.15},{from:73,rate:2.275}];
+
+/* ===== 純計算函式 ===== */
+function normTiers(tiers){
+  var t = (tiers||[]).filter(function(x){ return isFinite(x.from) && isFinite(x.rate) && x.from>=1; })
+    .map(function(x){ return {from:Math.floor(x.from), rate:Number(x.rate)}; })
+    .sort(function(a,b){ return a.from-b.from; });
+  if (!t.length) t = [{from:1, rate:0}];
+  if (t[0].from !== 1) t.unshift({from:1, rate:t[0].rate});
+  return t;
+}
+function rateAt(tiers, k){ var r = tiers[0].rate; for (var i=0;i<tiers.length;i++){ if (tiers[i].from<=k) r = tiers[i].rate; } return r; }
+/* opt: {principal, months, graceMonths, tiers:[{from,rate}], method:'annuity'|'principal'} */
+function buildSchedule(opt){
+  var P = Number(opt.principal), N = Math.round(opt.months), G = Math.max(0, Math.round(opt.graceMonths||0));
+  if (G >= N) G = N-1;
+  var tiers = normTiers(opt.tiers), method = opt.method === "principal" ? "principal" : "annuity";
+  var bal = P, rows = [], totInt = 0, totPay = 0;
+  for (var k=1;k<=N;k++){
+    var annual = rateAt(tiers,k), i = annual/100/12;
+    var interest = bal*i, prin, pay;
+    if (k <= G){ prin = 0; }
+    else {
+      var rem = N-k+1;
+      if (k === N) prin = bal;
+      else if (method === "annuity"){
+        var pmt = i === 0 ? bal/rem : bal*i/(1-Math.pow(1+i,-rem));
+        prin = pmt - interest;
+      } else prin = bal/rem;
+    }
+    pay = prin + interest; bal = bal - prin; if (Math.abs(bal) < 1e-6) bal = 0;
+    totInt += interest; totPay += pay;
+    rows.push({k:k, rate:annual, pay:pay, prin:prin, interest:interest, bal:bal, grace:k<=G});
+  }
+  var maxPay = rows.reduce(function(m,r){ return Math.max(m,r.pay); },0);
+  return {rows:rows, totalInterest:totInt, totalPaid:totPay, firstPay:rows[0].pay,
+    firstAfterGrace:rows[Math.min(G,N-1)].pay, maxPay:maxPay, graceMonths:G, method:method};
+}
+function yearly(rows){
+  var out = [];
+  rows.forEach(function(r){ var y = Math.ceil(r.k/12), o = out[y-1];
+    if (!o){ o = out[y-1] = {y:y, pay:0, prin:0, interest:0, bal:0, rates:{}}; }
+    o.pay += r.pay; o.prin += r.prin; o.interest += r.interest; o.bal = r.bal; o.rates[r.rate] = 1; });
+  return out;
+}
+function toCSV(sched, meta){
+  var lines = [["期數","年利率(%)","當期應繳(元)","償還本金(元)","利息(元)","剩餘本金(元)","備註"].join(",")];
+  sched.rows.forEach(function(r){
+    lines.push([r.k, r.rate, Math.round(r.pay), Math.round(r.prin), Math.round(r.interest), Math.round(r.bal), r.grace?"寬限期":""].join(","));
+  });
+  lines.push(["合計","",Math.round(sched.totalPaid),"",Math.round(sched.totalInterest),"",'"'+(meta||"").replace(/"/g,'""')+'"'].join(","));
+  return "\uFEFF" + lines.join("\r\n");
+}
+
+/* ===== 介面 ===== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
+var last = null;
+function tierRow(from, rate){
+  var d = document.createElement("div"); d.className = "tier";
+  d.innerHTML = '<div><label>起始期數</label><input type="number" class="tf" min="1" step="1" inputmode="numeric" value="'+from+'"></div>'+
+    '<div><label>年利率（%）</label><input type="number" class="tr" min="0" max="20" step="0.001" inputmode="decimal" value="'+rate+'"></div>'+
+    '<button type="button" class="sm del" aria-label="刪除此利率段">刪除</button>';
+  d.querySelector(".del").addEventListener("click", function(){ if ($("tiers").children.length>1){ d.remove(); render(); } });
+  Array.prototype.forEach.call(d.querySelectorAll("input"), function(x){ x.addEventListener("input", render); });
+  return d;
+}
+function setTiers(list){ var c = $("tiers"); c.innerHTML = ""; list.forEach(function(t){ c.appendChild(tierRow(t.from,t.rate)); }); }
+function readTiers(){ return Array.prototype.map.call($("tiers").children, function(d){ return {from:Number(d.querySelector(".tf").value), rate:Number(d.querySelector(".tr").value)}; }); }
+function method(){ var m = document.querySelector('input[name="method"]:checked'); return m ? m.value : "annuity"; }
+function render(){
+  var amt = Number($("amt").value), yrs = Math.round(Number($("yrs").value)), gy = Number($("grace").value), tiers = readTiers();
+  $("amtW").textContent = amt>0 ? "約 "+(amt/10000).toLocaleString("zh-TW",{maximumFractionDigits:1})+" 萬元" : "";
+  var e = "";
+  if (!(amt>0)) e = "請輸入大於 0 的貸款金額。";
+  else if (!(yrs>=1 && yrs<=40)) e = "貸款年限請輸入 1～40 年。";
+  else if (gy >= yrs) e = "寬限期必須短於貸款年限。";
+  else if (tiers.some(function(t){ return !(t.from>=1) || !(t.rate>=0 && t.rate<=20); })) e = "利率段的起始期數需 ≥ 1，年利率需介於 0～20%。";
+  $("err").textContent = e; if (e) return;
+  var base = {principal:amt, months:yrs*12, tiers:tiers, method:method()};
+  var g = buildSchedule(Object.assign({}, base, {graceMonths:gy*12}));
+  var n = buildSchedule(Object.assign({}, base, {graceMonths:0}));
+  last = {g:g, n:n, amt:amt, yrs:yrs, gy:gy, method:base.method};
+  $("hG").textContent = "有寬限期（"+gy+" 年）";
+  $("gFirst").textContent = fmt(g.firstPay)+" 元";
+  $("gAfter").textContent = gy>0 ? fmt(g.firstAfterGrace)+" 元" : "（未設寬限期）";
+  $("gMax").textContent = fmt(g.maxPay)+" 元";
+  $("gInt").textContent = fmt(g.totalInterest)+" 元";
+  $("gTot").textContent = fmt(g.totalPaid)+" 元";
+  $("nFirst").textContent = fmt(n.firstPay)+" 元";
+  $("nLater").textContent = n.rows.length>12 ? fmt(n.rows[12].pay)+" 元" : "-";
+  $("nMax").textContent = fmt(n.maxPay)+" 元";
+  $("nInt").textContent = fmt(n.totalInterest)+" 元";
+  $("nTot").textContent = fmt(n.totalPaid)+" 元";
+  $("diffText").textContent = gy>0
+    ? "使用 "+gy+" 年寬限期：前 "+(gy*12)+" 期每月少繳約 "+fmt(n.firstPay-g.firstPay)+" 元，但寬限期後月付跳升到約 "+fmt(g.firstAfterGrace)+" 元（比無寬限期多 "+fmt(g.firstAfterGrace-n.rows[gy*12].pay)+" 元），總利息多付約 "+fmt(g.totalInterest-n.totalInterest)+" 元。"
+    : "未設定寬限期，兩方案相同。可在上方選擇 1～5 年寬限期進行比較。";
+  renderTable();
+}
+function renderTable(){
+  if (!last) return;
+  var s = $("view").value === "n" ? last.n : last.g, th, tb = "";
+  if ($("gran").value === "y"){
+    th = "<tr><th>年度</th><th>適用年利率(%)</th><th>全年繳款</th><th>全年還本</th><th>全年利息</th><th>年底剩餘本金</th></tr>";
+    yearly(s.rows).forEach(function(o){ tb += "<tr><td>第 "+o.y+" 年</td><td>"+Object.keys(o.rates).join(" / ")+"</td><td>"+fmt(o.pay)+"</td><td>"+fmt(o.prin)+"</td><td>"+fmt(o.interest)+"</td><td>"+fmt(o.bal)+"</td></tr>"; });
+  } else {
+    th = "<tr><th>期數</th><th>年利率(%)</th><th>當期應繳</th><th>償還本金</th><th>利息</th><th>剩餘本金</th></tr>";
+    s.rows.forEach(function(r){ tb += '<tr class="'+(r.grace?"g ":"")+(r.k%12===0?"y":"")+'"><td>'+r.k+(r.grace?"（寬限）":"")+"</td><td>"+r.rate+"</td><td>"+fmt(r.pay)+"</td><td>"+fmt(r.prin)+"</td><td>"+fmt(r.interest)+"</td><td>"+fmt(r.bal)+"</td></tr>"; });
+  }
+  $("sch").tHead.innerHTML = th; $("sch").tBodies[0].innerHTML = tb;
+}
+function exportCSV(){
+  if (!last) return;
+  var isN = $("view").value === "n", s = isN ? last.n : last.g;
+  var meta = "貸款"+last.amt+"元/"+last.yrs+"年/"+(isN?"無寬限期":"寬限期"+last.gy+"年")+"/"+(last.method==="annuity"?"本息平均攤還":"本金平均攤還");
+  var csv = toCSV(s, meta);
+  var blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  if (!window.URL || !URL.createObjectURL) return;
+  var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = "房貸攤還表_"+(isN?"無寬限期":"寬限期"+last.gy+"年")+".csv";
+  document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function init(){
+  setTiers(YOUTH_TIERS);
+  ["amt","yrs","grace"].forEach(function(id){ $(id).addEventListener("input", render); $(id).addEventListener("change", render); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name="method"]'), function(x){ x.addEventListener("change", render); });
+  $("view").addEventListener("change", renderTable); $("gran").addEventListener("change", renderTable);
+  $("addTier").addEventListener("click", function(){ var t = readTiers(), lastT = t[t.length-1] || {from:1,rate:2}; $("tiers").appendChild(tierRow(lastT.from+12, lastT.rate)); render(); });
+  $("presetYouth").addEventListener("click", function(){ setTiers(YOUTH_TIERS); render(); });
+  $("presetFlat").addEventListener("click", function(){ setTiers([{from:1,rate:2.6}]); render(); });
+  $("calcBtn").addEventListener("click", render);
+  $("csvBtn").addEventListener("click", exportCSV);
+  render();
+}
+if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+</script>
+<script src="/assets/calctw.js" defer></script>
+</body>
+</html>

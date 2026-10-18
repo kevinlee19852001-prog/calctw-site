@@ -14,6 +14,13 @@
 <meta property="og:url" content="https://calctw.com/land-value-tax/">
 <meta property="og:image" content="https://calctw.com/og/land-value-tax.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="理財小工具">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="115年地價稅試算器｜累進稅率＋自用住宅2‰">
+<meta name="twitter:title" content="115年地價稅試算器｜累進稅率＋自用住宅2‰">
+<meta name="twitter:description" content="多筆土地合併累進計算，附各縣市115年累進起點地價與分級明細。">
+<meta name="twitter:image" content="https://calctw.com/og/land-value-tax.png">
 <meta name="theme-color" content="#0f766e">
 <!-- Google AdSense：取得核准後取消註解並替換發布商 ID
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376962477938948" crossorigin="anonymous"></script>
@@ -74,6 +81,8 @@ footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
 
 /* shared site nav (site-build) */
 header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+
+/* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -125,6 +134,8 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <p class="hint" id="quickText"></p>
 <p class="hint">※ 稅額以元為單位四捨五入；一般用地稅額依各筆地價占地價總額比例分攤累進差額。</p>
 </section>
+<section aria-labelledby="relTitle"><h2 id="relTitle">相關計算機推薦</h2><ul class="rel"><li><a href="/youth-mortgage/"><strong>新青安房貸月付金試算器</strong><span>房貸月付與總利息</span></a></li><li><a href="/youth-mortgage/loan-1000wan/"><strong>新青安貸 1,000 萬月付金</strong><span>常見貸款金額的試算結果</span></a></li></ul></section>
+<section class="card embedbox" aria-labelledby="embTitle"><h2 id="embTitle" style="margin-top:0">把這個計算機放到你的網站</h2><p class="hint">部落格、論壇或公司內網都可以免費嵌入，只要貼上下面這段代碼。嵌入版只有計算機本身，不含廣告。</p><textarea id="embedCode" readonly aria-label="嵌入代碼">&lt;iframe src=&quot;https://calctw.com/embed/land-value-tax/&quot; title=&quot;115年地價稅試算器（CalcTW.com）&quot; width=&quot;100%&quot; height=&quot;1400&quot; style=&quot;border:0;max-width:760px&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</textarea><div class="btns"><button type="button" class="primary" id="embedCopy" data-target="embedCode">複製嵌入代碼</button> <span id="embedMsg" class="hint" aria-live="polite"></span></div></section>
 <!-- AdSense 結果下方廣告位 -->
 <div class="ad-slot" aria-label="廣告">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="7000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -410,6 +421,7 @@ function init(){
 if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
 
 </script>
+<script src="/assets/calctw.js" defer></script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
 </body>
 </html>

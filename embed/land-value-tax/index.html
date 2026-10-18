@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>115年地價稅試算器｜嵌入版｜CalcTW.com</title>
+<meta name="robots" content="noindex,follow">
+<base target="_self">
+<style>
+:root{--c:#0f766e;--c2:#115e59;--bg:#f6f8f8;--card:#fff;--tx:#1f2933;--mu:#5f6b76;--bd:#dfe5e8;--hl:#ecfdf5;--warn:#fff7ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header.site{background:var(--c);color:#fff;padding:10px 16px;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:12px}
+h1{font-size:1.5rem;line-height:1.35;margin:.6em 0 .3em}
+h2{font-size:1.2rem;margin:1.4em 0 .5em;border-left:4px solid var(--c);padding-left:8px}
+h3{font-size:1.05rem;margin:1em 0 .3em}
+p{margin:.4em 0 .8em}
+a{color:var(--c2)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:1fr}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:10px;border:1px solid #b8c3c9;border-radius:8px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--c);border-color:var(--c)}
+.hint{font-size:.85rem;color:var(--mu)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button{font-size:.95rem;padding:9px 14px;border-radius:8px;border:1px solid var(--c);background:#fff;color:var(--c);cursor:pointer}
+button.primary{background:var(--c);color:#fff}
+button.del{border-color:#b91c1c;color:#b91c1c;padding:6px 10px;font-size:.85rem}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--hl);border-radius:10px;padding:12px}
+.kpi .v{font-size:1.35rem;font-weight:800;color:var(--c2)}
+.kpi .l{font-size:.85rem;color:var(--mu)}
+.tbl{width:100%;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{border-bottom:1px solid var(--bd);padding:8px 6px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td.l,th.l{text-align:left;white-space:normal}
+thead th{background:#f0f4f5}
+tfoot td{font-weight:800;background:#f0f4f5}
+tr.on td{background:#fef9c3;font-weight:700}
+.row{border:1px solid var(--bd);border-radius:10px;padding:12px;margin:10px 0;background:#fbfcfc}
+.row .rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:700}
+.rg{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.warnl{color:#b45309;font-size:.85rem;margin:.3em 0 0}
+.ok{color:#047857;font-weight:700}.ng{color:#b91c1c;font-weight:700}
+.tabs{display:flex;gap:6px;margin:8px 0 0}
+.tabs button[aria-selected="true"]{background:var(--c);color:#fff}
+.note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
+details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:700;padding:12px 0}
+footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
+.src li{word-break:break-all}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.rg{grid-template-columns:repeat(6,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
+
+/* shared site nav (site-build) */
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+
+/* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
+body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.credit{text-align:center;font-size:.9rem;padding:10px 0 14px;border-top:1px solid var(--bd);margin-top:8px}.credit a{font-weight:700}</style>
+</head>
+<body>
+<main>
+<h1 class="eh">115年地價稅試算器</h1>
+<p class="hint" id="dataStamp"></p>
+<section class="card" aria-labelledby="inTitle">
+<h2 id="inTitle" style="margin-top:0">輸入土地資料（同一縣市）</h2>
+<div class="grid">
+  <div><label for="county">縣市（帶入 115～116 年累進起點地價參考值）</label>
+    <select id="county"></select>
+    <div class="hint" id="countyHint">地價稅按縣市歸戶，不同縣市的土地請分開試算</div></div>
+  <div><label for="startV">累進起點地價（元）</label>
+    <input id="startV" type="number" inputmode="numeric" min="1" step="1000" value="1700000">
+    <div class="hint">請以稅單或縣市稅捐機關公告為準；預設 170 萬元為財政部例題假設值</div></div>
+  <div><label>快速範例</label>
+    <div class="btns" style="margin-top:0"><button type="button" id="ex1">財政部例一</button><button type="button" id="ex2">財政部例二</button></div>
+    <div class="hint">兩題皆假設累進起點地價 170 萬元</div></div>
+</div>
+<div id="rows"></div>
+<div class="btns">
+  <button type="button" id="addRow">＋ 新增一筆土地</button>
+  <button class="primary" id="calcBtn" type="button">開始試算</button>
+</div>
+<p class="hint">※「公告地價」為選填：填寫後會檢查申報地價是否落在公告地價 80%～120%，超出範圍會依規定改以 80% 或 120% 計算。</p>
+</section>
+
+<section class="card" aria-labelledby="outTitle" aria-live="polite">
+<h2 id="outTitle" style="margin-top:0">試算結果</h2>
+<div class="kpis">
+  <div class="kpi"><div class="l">全年應納地價稅（估）</div><div class="v" id="kTax">-</div></div>
+  <div class="kpi"><div class="l">一般用地地價總額（累進）</div><div class="v" id="kGen">-</div></div>
+  <div class="kpi"><div class="l">一般用地適用級距</div><div class="v" id="kGrade">-</div></div>
+  <div class="kpi"><div class="l">特別稅率稅額小計</div><div class="v" id="kSpec">-</div></div>
+</div>
+<div id="warns"></div>
+<h3>各筆土地明細</h3>
+<div class="tbl"><table id="rowTbl"><thead><tr><th>土地</th><th>稅地種類</th><th>採用申報地價</th><th>課稅面積㎡</th><th>課稅地價</th><th>稅率</th><th>稅額（分攤）</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+<h3>一般用地累進級距計算明細</h3>
+<div class="tbl"><table id="brTbl"><thead><tr><th>級距</th><th>地價區間（元）</th><th>本級課稅地價</th><th>稅率</th><th>本級稅額</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+<p class="hint" id="quickText"></p>
+<p class="hint">※ 稅額以元為單位四捨五入；一般用地稅額依各筆地價占地價總額比例分攤累進差額。</p>
+</section>
+
+<div hidden><section class="card" aria-labelledby="ckTitle">
+<h2 id="ckTitle" style="margin-top:0">自我驗算：財政部稅務入口網例題</h2>
+<p class="hint">頁面載入時自動用本工具的計算核心重算官方例題，確認公式正確。</p>
+<div class="tbl"><table id="ckTbl"><thead><tr><th class="l">驗算項目</th><th>官方答案</th><th>本工具結果</th><th>結果</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+</div><div hidden><section aria-labelledby="refTitle">
+<h2 id="refTitle">115～116 年各縣市累進起點地價參考表</h2>
+<p>115 年為重新規定地價年度，下表為各縣市稅捐機關公告的 115 年至 116 年累進起點地價。<strong>每一筆都附來源</strong>；查不到地方稅捐機關正式公告的縣市先留空，請以稅單或該縣市稅捐機關公告為準。</p>
+<div class="tbl"><table id="refTbl"><thead><tr><th>縣市</th><th>累進起點地價（元）</th><th>第 2 級上限（6 倍）</th><th class="l">來源（發布單位／日期）</th></tr></thead><tbody></tbody></table></div>
+<p class="hint" id="refChecked"></p>
+</section>
+
+</div><div hidden><section aria-labelledby="srcTitle">
+<h2 id="srcTitle">資料來源與查核日期</h2>
+<ul class="src" id="srcList"></ul>
+</section>
+</div>
+</main>
+<footer class="credit"><a href="https://calctw.com/land-value-tax/" target="_blank" rel="noopener">由 CalcTW.com 提供</a>｜完整說明與常見問題請見原頁面</footer>
+<script>
+
+/* ===== 官方規定與參考值（查核日期：2026-10-18） ===== */
+var CHECKED = "2026-10-18";
+/* 一般用地累進級距：門檻為累進起點地價 X 的倍數（超過部分 5/10/15/20 倍 → 地價總額 6X/11X/16X/21X） */
+var BRACKETS = [
+  {g:1, lo:0,  hi:1,  rate:0.010, d:0},
+  {g:2, lo:1,  hi:6,  rate:0.015, d:0.005},
+  {g:3, lo:6,  hi:11, rate:0.025, d:0.065},
+  {g:4, lo:11, hi:16, rate:0.035, d:0.175},
+  {g:5, lo:16, hi:21, rate:0.045, d:0.335},
+  {g:6, lo:21, hi:Infinity, rate:0.055, d:0.545}
+];
+var TYPES = {
+  general:   {name:"一般用地", rate:null},
+  self:      {name:"自用住宅用地 2‰", rate:0.002},
+  reserve:   {name:"公共設施保留地 6‰", rate:0.006},
+  industrial:{name:"工業用地等 10‰", rate:0.010}
+};
+var SELF_LIMIT = {urban:300, rural:700}; // 土地稅法第17條：都市3公畝、非都市7公畝
+/* 115～116 年累進起點地價：[縣市, 金額(元) 或 null, 發布單位, 日期, 網址]；null＝查無地方稅捐機關正式公告，留空 */
+var REF = [
+  ["臺北市", 43957000, "臺北市稅捐稽徵處（地價稅稅額試算：115年至116年計算公式）", "查核 2026-10-18", "https://services.arpa.tpctax.dof.gov.taipei/ilCal/"],
+  ["新北市", 7878000, "新北市政府稅捐稽徵處（財政部稅務入口網公告）", "115-03-19", "https://www.etax.nat.gov.tw/etwmain/announcement/news/7nYaev7"],
+  ["桃園市", 3439000, "桃園市政府地方稅務局（地價稅稅額計算級距表 115～116年度）", "查核 2026-10-18", "https://tytax.tycg.gov.tw/cp.aspx?n=4482"],
+  ["臺中市", 1741000, "臺中市政府地方稅務局", "2026-03-06", "https://www.tax.taichung.gov.tw/4499/5084/5176/54199/normalPost"],
+  ["臺南市", 2195000, "臺南市政府財政稅務局（財政部稅務入口網公告）", "115-03-16", "https://www.etax.nat.gov.tw/etwmain/announcement/news/NzlVKBV"],
+  ["高雄市", 4032000, "高雄市稅捐稽徵處（該處官方部落格新聞稿）", "2026-03-13", "https://khtb.pixnet.net/blog/posts/873042431520410412"],
+  ["基隆市", null, "", "", ""],
+  ["新竹市", 5808000, "新竹市稅務局（財政部稅務入口網公告）", "115-04-07", "https://www.etax.nat.gov.tw/etwmain/announcement/news/56E3o0J"],
+  ["新竹縣", 1765000, "新竹縣政府稅務局", "115-02-13", "https://www.chutax.gov.tw/News_Content.aspx?n=27&s=900453&sms=9048"],
+  ["苗栗縣", 1181000, "苗栗縣政府（稅務局新聞稿）", "115-02-06", "https://www.miaoli.gov.tw/News_Content2.aspx?n=285&s=933099"],
+  ["彰化縣", 965000, "彰化縣地方稅務局（財政部稅務入口網公告）", "115-04-01", "https://www.etax.nat.gov.tw/etwmain/announcement/news/LWNM2mP"],
+  ["南投縣", null, "", "", ""],
+  ["雲林縣", 988000, "雲林縣稅務局（財政部稅務入口網公告）", "115-09-03", "https://www.etax.nat.gov.tw/etwmain/announcement/news/m27Eb1A"],
+  ["嘉義市", 4027000, "嘉義市政府財政稅務局（財政部稅務入口網公告）", "115-04-09", "https://www.etax.nat.gov.tw/etwmain/announcement/news/ZbogDx"],
+  ["嘉義縣", 701000, "嘉義縣財政稅務局（財政部稅務入口網公告）", "115-02-02", "https://www.etax.nat.gov.tw/etwmain/announcement/news/DO7n57G"],
+  ["屏東縣", 775000, "屏東縣政府財稅局（財政部稅務入口網公告）", "115-02-25", "https://www.etax.nat.gov.tw/etwmain/announcement/news/VjxpWPa"],
+  ["宜蘭縣", 1311000, "宜蘭縣政府財政稅務局（財政部稅務入口網公告）", "115-09-03", "https://www.etax.nat.gov.tw/etwmain/announcement/news/m7ZW1PP"],
+  ["花蓮縣", null, "", "", ""],
+  ["臺東縣", 441000, "臺東縣稅務局（地價稅稅額試算：115年至116年計算公式）", "查核 2026-10-18", "https://ihouv.tttb.gov.tw/ilCalV/"],
+  ["澎湖縣", null, "", "", ""],
+  ["金門縣", null, "", "", ""],
+  ["連江縣", null, "", "", ""]
+];
+var SOURCES = [
+  ["財政部稅務入口網：地價稅的課徵（稅率、計算公式、例題、8/31 基準日、超商 3 萬元）", "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/land-value-tax/bD9Bk19"],
+  ["財政部稅務入口網：地價稅問答實例（自用住宅要件、滯納金）", "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/land-value-tax/ozqr68"],
+  ["土地稅法（全國法規資料庫）", "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340051"],
+  ["各縣市累進起點地價：見上方參考表每列來源", "#refTitle"]
+];
+var EXAMPLES = {
+  ex1: {X:1700000, rows:[{p:10000,a:70,s:"1",t:"general",u:"urban",n:"甲地"},{p:8800,a:60,s:"1",t:"self",u:"urban",n:"乙地"}], answer:8056},
+  ex2: {X:1700000, rows:[{p:18000,a:88,s:"1",t:"general",u:"urban",n:"甲地"},{p:22000,a:80,s:"1",t:"general",u:"urban",n:"乙地"},{p:8800,a:888,s:"1",t:"general",u:"urban",n:"丙地"}], answer:168460}
+};
+
+/* ===== 計算核心（純函式，可單獨驗算） ===== */
+function parseShare(s){
+  s = String(s == null ? "" : s).trim().replace(/／/g,"/");
+  if (s === "") return 1;
+  if (s.indexOf("/") >= 0){ var p = s.split("/"); var a = parseFloat(p[0]), b = parseFloat(p[1]); return (a > 0 && b > 0) ? a / b : NaN; }
+  var v = parseFloat(s); return v > 0 ? v : NaN;
+}
+function gradeOf(V, X){ for (var i = 0; i < BRACKETS.length; i++){ if (V <= BRACKETS[i].hi * X) return BRACKETS[i]; } return BRACKETS[5]; }
+function progressive(V, X){
+  var res = {V:V, X:X, quick:0, grade:null, parts:[]};
+  if (!(V > 0) || !(X > 0)) { res.grade = BRACKETS[0]; return res; }
+  var b = gradeOf(V, X); res.grade = b;
+  res.quick = V * b.rate - X * b.d;
+  BRACKETS.forEach(function(k){
+    var lo = k.lo * X, hi = k.hi * X;
+    if (V > lo){ var base = Math.min(V, hi) - lo; res.parts.push({g:k.g, lo:lo, hi:hi, base:base, rate:k.rate, tax:base * k.rate}); }
+  });
+  return res;
+}
+function calcLand(rows, X){
+  var out = {rows:[], warns:[], genTotal:0, specTax:0, prog:null, total:0};
+  var used = {urban:0, rural:0};
+  rows.forEach(function(r, i){
+    var name = r.n || ("第 " + (i+1) + " 筆");
+    var share = parseShare(r.s), p = +r.p, area = +r.a, ann = r.ann === "" || r.ann == null ? 0 : +r.ann;
+    if (!(p > 0) || !(area > 0) || !(share > 0) || share > 1){ out.warns.push(name + "：申報地價、面積需大於 0，持分需介於 0～1，已略過。"); return; }
+    var price = p;
+    if (ann > 0){
+      if (p > ann * 1.2){ price = ann * 1.2; out.warns.push(name + "：申報地價超過公告地價 120%，超過部分不計，改以 " + fmt(price) + " 元／㎡ 計算。"); }
+      else if (p < ann * 0.8){ price = ann * 0.8; out.warns.push(name + "：申報地價低於公告地價 80%，依規定以公告地價 80%（" + fmt(price) + " 元／㎡）計算。"); }
+    }
+    var taxArea = area * share;
+    var seg = [{t:r.t, area:taxArea}];
+    if (r.t === "self"){
+      var lim = SELF_LIMIT[r.u === "rural" ? "rural" : "urban"], key = r.u === "rural" ? "rural" : "urban";
+      var room = Math.max(0, lim - used[key]), ok = Math.min(taxArea, room);
+      used[key] += ok;
+      if (ok < taxArea){
+        seg = [{t:"self", area:ok}, {t:"general", area:taxArea - ok}];
+        out.warns.push(name + "：自用住宅用地" + (key === "urban" ? "都市土地上限 300㎡" : "非都市土地上限 700㎡") + "，超過的 " + round2(taxArea - ok) + "㎡ 改按一般用地併入累進計算。");
+      }
+    }
+    seg.forEach(function(sg){
+      if (sg.area <= 0) return;
+      var val = price * sg.area;
+      var o = {name:name + (seg.length > 1 ? (sg.t === "self" ? "（上限內）" : "（超過上限）") : ""), t:sg.t, price:price, area:sg.area, value:val, rate:TYPES[sg.t].rate, tax:0};
+      if (sg.t === "general") out.genTotal += val; else { o.tax = val * o.rate; out.specTax += o.tax; }
+      out.rows.push(o);
+    });
+  });
+  out.prog = progressive(out.genTotal, X);
+  out.rows.forEach(function(o){ if (o.t === "general") { o.tax = out.genTotal > 0 ? out.prog.quick * o.value / out.genTotal : 0; o.rateText = (out.prog.grade.rate * 1000) + "‰（累進）"; } else o.rateText = (o.rate * 1000) + "‰"; });
+  out.genTax = out.prog.quick;
+  out.total = Math.round(out.genTax + out.specTax);
+  return out;
+}
+function selfTests(){
+  var t = [];
+  ["ex1","ex2"].forEach(function(k){
+    var e = EXAMPLES[k], r = calcLand(e.rows, e.X);
+    t.push({name:"財政部" + (k === "ex1" ? "例一（甲地一般 70㎡×1萬＋乙地自用住宅 60㎡×8,800）" : "例二（三筆一般用地合計 1,115萬8,400 元）"), expected:e.answer, got:r.total});
+  });
+  var r2 = calcLand(EXAMPLES.ex2.rows, 1700000), basic = Math.round(r2.prog.parts.reduce(function(s,p){ return s + p.tax; }, 0));
+  t.push({name:"例二 基本算法（分級加總 1萬7,000＋12萬7,500＋2萬3,960）", expected:168460, got:basic});
+  t.push({name:"例二 第 3 級第 3 段課稅地價（95萬8,400 元）", expected:958400, got:Math.round(r2.prog.parts[2].base)});
+  /* 桃園市 115～116 年級距表：累進差額與級距上限 */
+  var X = 3439000, d = BRACKETS.slice(1).map(function(b){ return Math.round(X * b.d); }).join(","), h = BRACKETS.slice(0,5).map(function(b){ return b.hi * X; }).join(",");
+  t.push({name:"桃園市級距表累進差額（17,195／223,535／601,825／1,152,065／1,874,255）", expected:"17195,223535,601825,1152065,1874255", got:d});
+  t.push({name:"桃園市級距表各級上限（3,439,000／20,634,000／37,829,000／55,024,000／72,219,000）", expected:"3439000,20634000,37829000,55024000,72219000", got:h});
+  t.forEach(function(x){ x.pass = String(x.expected) === String(x.got); });
+  return t;
+}
+
+/* ===== 介面 ===== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
+function round2(n){ return Math.round(n * 100) / 100; }
+function fmt2(n){ return (Math.round(n * 100) / 100).toLocaleString("zh-TW", {maximumFractionDigits:2}); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+var rowSeq = 0;
+function addRow(d){
+  d = d || {p:"", a:"", s:"1", t:"general", u:"urban", ann:""};
+  var id = ++rowSeq, div = document.createElement("div");
+  div.className = "row"; div.setAttribute("data-row", id);
+  var opt = Object.keys(TYPES).map(function(k){ return '<option value="'+k+'"'+(d.t===k?" selected":"")+">"+TYPES[k].name+"</option>"; }).join("");
+  div.innerHTML = '<div class="rh"><span class="rn"></span><button type="button" class="del">刪除</button></div><div class="rg">'+
+    '<div><label for="p'+id+'">申報地價（元／㎡）</label><input id="p'+id+'" data-k="p" type="number" inputmode="decimal" min="0" step="any" value="'+esc(d.p)+'"></div>'+
+    '<div><label for="a'+id+'">面積（㎡）</label><input id="a'+id+'" data-k="a" type="number" inputmode="decimal" min="0" step="any" value="'+esc(d.a)+'"></div>'+
+    '<div><label for="s'+id+'">持分</label><input id="s'+id+'" data-k="s" type="text" inputmode="decimal" value="'+esc(d.s)+'" placeholder="1 或 1/2"></div>'+
+    '<div><label for="t'+id+'">稅地種類</label><select id="t'+id+'" data-k="t">'+opt+'</select></div>'+
+    '<div><label for="u'+id+'">土地位置</label><select id="u'+id+'" data-k="u"><option value="urban"'+(d.u!=="rural"?" selected":"")+'>都市土地</option><option value="rural"'+(d.u==="rural"?" selected":"")+'>非都市土地</option></select></div>'+
+    '<div><label for="g'+id+'">公告地價（選填）</label><input id="g'+id+'" data-k="ann" type="number" inputmode="decimal" min="0" step="any" value="'+esc(d.ann||"")+'"></div></div>';
+  div.querySelector(".del").addEventListener("click", function(){ div.parentNode.removeChild(div); renum(); render(); });
+  Array.prototype.forEach.call(div.querySelectorAll("input,select"), function(el){ el.addEventListener("input", render); el.addEventListener("change", render); });
+  $("rows").appendChild(div); renum();
+}
+function renum(){ Array.prototype.forEach.call(document.querySelectorAll("#rows .row"), function(r, i){ r.querySelector(".rn").textContent = "土地 " + (i+1); }); }
+function readRows(){
+  return Array.prototype.map.call(document.querySelectorAll("#rows .row"), function(r, i){
+    var o = {n:"土地 " + (i+1)};
+    Array.prototype.forEach.call(r.querySelectorAll("[data-k]"), function(el){ o[el.getAttribute("data-k")] = el.value; });
+    return o;
+  });
+}
+function loadExample(k){
+  var e = EXAMPLES[k]; $("rows").innerHTML = ""; e.rows.forEach(function(r){ addRow(r); });
+  $("county").value = ""; $("startV").value = e.X; render();
+}
+function render(){
+  var X = +$("startV").value, rows = readRows(), r = calcLand(rows, X);
+  $("kTax").textContent = fmt(r.total) + " 元";
+  $("kGen").textContent = fmt(r.genTotal) + " 元";
+  $("kGrade").textContent = r.genTotal > 0 ? "第 " + r.prog.grade.g + " 級 " + (r.prog.grade.rate * 1000) + "‰" : "無一般用地";
+  $("kSpec").textContent = fmt(r.specTax) + " 元";
+  var w = r.warns.slice();
+  if (!(X > 0)) w.push("請輸入累進起點地價。");
+  $("warns").innerHTML = w.map(function(x){ return '<p class="warnl">⚠ ' + esc(x) + "</p>"; }).join("");
+  $("rowTbl").tBodies[0].innerHTML = r.rows.map(function(o){
+    return "<tr><td>"+esc(o.name)+"</td><td>"+TYPES[o.t].name.replace(/ .*/,"")+"</td><td>"+fmt2(o.price)+"</td><td>"+fmt2(o.area)+"</td><td>"+fmt(o.value)+"</td><td>"+o.rateText+"</td><td>"+fmt2(o.tax)+"</td></tr>";
+  }).join("");
+  $("rowTbl").tFoot.innerHTML = "<tr><td>合計</td><td></td><td></td><td></td><td>"+fmt(r.genTotal + r.rows.filter(function(o){return o.t!=="general";}).reduce(function(s,o){return s+o.value;},0))+"</td><td></td><td>"+fmt(r.total)+"</td></tr>";
+  var p = r.prog;
+  $("brTbl").tBodies[0].innerHTML = BRACKETS.map(function(b){
+    var part = p.parts.filter(function(x){ return x.g === b.g; })[0];
+    var range = b.hi === Infinity ? fmt(b.lo * X) + " 以上" : fmt(b.lo * X) + "～" + fmt(b.hi * X);
+    return "<tr"+(p.grade && p.grade.g === b.g && r.genTotal > 0 ? ' class="on"' : "")+"><td>第 "+b.g+" 級</td><td>"+range+"</td><td>"+(part ? fmt(part.base) : "0")+"</td><td>"+(b.rate*1000)+"‰</td><td>"+(part ? fmt2(part.tax) : "0")+"</td></tr>";
+  }).join("");
+  $("brTbl").tFoot.innerHTML = "<tr><td>一般用地合計</td><td></td><td>"+fmt(r.genTotal)+"</td><td></td><td>"+fmt2(p.parts.reduce(function(s,x){return s+x.tax;},0))+"</td></tr>";
+  $("quickText").textContent = r.genTotal > 0 ? "速算法：" + fmt(r.genTotal) + " × " + (p.grade.rate*1000) + "‰ － " + fmt(X) + " × " + p.grade.d + " ＝ " + fmt2(p.quick) + " 元（與分級加總結果相同）" : "";
+}
+function renderChecks(){
+  var t = selfTests(); window.CALC_SELFTEST_RESULTS = t;
+  $("ckTbl").tBodies[0].innerHTML = t.map(function(x){
+    var e = typeof x.expected === "number" ? fmt(x.expected) : x.expected.replace(/,/g, "／"), g = typeof x.got === "number" ? fmt(x.got) : String(x.got).replace(/,/g, "／");
+    return '<tr><td class="l">'+esc(x.name)+"</td><td>"+e+"</td><td>"+g+"</td><td class=\""+(x.pass?"ok":"ng")+"\">"+(x.pass?"✔ 相符":"✘ 不符")+"</td></tr>";
+  }).join("");
+}
+function init(){
+  var sel = $("county");
+  sel.innerHTML = '<option value="">自訂（手動輸入）</option>' + REF.map(function(r, i){ return '<option value="'+i+'">'+r[0]+(r[1] ? "（" + fmt(r[1]) + " 元）" : "（未查得官方公告，請手動輸入）")+"</option>"; }).join("");
+  sel.addEventListener("change", function(){
+    var r = REF[sel.value];
+    if (!r) { $("countyHint").textContent = "地價稅按縣市歸戶，不同縣市的土地請分開試算"; return; }
+    if (r[1]) { $("startV").value = r[1]; $("countyHint").textContent = "來源：" + r[2] + "（" + r[3] + "）"; }
+    else $("countyHint").textContent = r[0] + "：本站尚未查得地方稅捐機關正式公告，請依稅單或洽該縣市稅捐機關後手動輸入。";
+    render();
+  });
+  $("refTbl").tBodies[0].innerHTML = REF.map(function(r){
+    return "<tr><td>"+r[0]+"</td><td>"+(r[1] ? fmt(r[1]) : "（留空）")+"</td><td>"+(r[1] ? fmt(r[1]*6) : "－")+'</td><td class="l">'+(r[1] ? '<a href="'+r[4]+'" rel="noopener" target="_blank">'+esc(r[2])+"</a>｜"+r[3] : "截至查核日未查得該縣市稅捐機關正式公告，請洽該縣市稅捐機關")+"</td></tr>";
+  }).join("");
+  $("refChecked").textContent = "參考表查核日期：" + CHECKED + "（台北時間）。數字以各縣市稅捐機關公告為準；如有更正，請以稅單為準。";
+  $("dataStamp").textContent = "適用：115 年（2026）地價稅｜稅率依土地稅法第 16～19 條｜各縣市累進起點地價查核日期：" + CHECKED;
+  $("srcList").innerHTML = SOURCES.map(function(s){ return '<li>'+s[0]+'：<a href="'+s[1]+'"'+(s[1].charAt(0) === "#" ? "" : ' rel="noopener" target="_blank"')+'>'+s[1]+'</a></li>'; }).join("") + "<li>查核日期："+CHECKED+"</li>";
+  $("addRow").addEventListener("click", function(){ addRow(); render(); });
+  $("ex1").addEventListener("click", function(){ loadExample("ex1"); });
+  $("ex2").addEventListener("click", function(){ loadExample("ex2"); });
+  $("startV").addEventListener("input", render);
+  $("calcBtn").addEventListener("click", render);
+  renderChecks();
+  loadExample("ex2");
+}
+if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+
+</script>
+<script src="/assets/calctw.js" defer></script>
+</body>
+</html>

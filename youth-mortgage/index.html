@@ -14,6 +14,13 @@
 <meta property="og:url" content="https://calctw.com/youth-mortgage/">
 <meta property="og:image" content="https://calctw.com/og/youth-mortgage.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="理財小工具">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="新青安房貸試算｜寬限期月付金比較＋攤還表">
+<meta name="twitter:title" content="新青安房貸試算｜寬限期月付金比較＋攤還表">
+<meta name="twitter:description" content="分段利率、寬限期、本息/本金平均攤還一次比較，攤還表可匯出 CSV。">
+<meta name="twitter:image" content="https://calctw.com/og/youth-mortgage.png">
 <meta name="theme-color" content="#1d4ed8">
 <!-- Google AdSense：取得核准後取消註解並替換發布商 ID
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376962477938948" crossorigin="anonymous"></script>
@@ -76,6 +83,8 @@ footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
 
 /* shared site nav (site-build) */
 header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+
+/* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -136,6 +145,8 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <div class="diff" id="diffText">-</div>
 </section>
 
+<section aria-labelledby="relTitle"><h2 id="relTitle">相關計算機推薦</h2><ul class="rel"><li><a href="/youth-mortgage/loan-1000wan/"><strong>新青安貸 1,000 萬月付金</strong><span>40 年／30 年、寬限期一次比較</span></a></li><li><a href="/land-value-tax/"><strong>115年地價稅試算器</strong><span>買房後每年 11 月要繳的地價稅</span></a></li><li><a href="/labor-health-insurance/"><strong>勞健保自付額試算器</strong><span>算出扣完勞健保的實領，評估月付能力</span></a></li></ul></section>
+<section class="card embedbox" aria-labelledby="embTitle"><h2 id="embTitle" style="margin-top:0">把這個計算機放到你的網站</h2><p class="hint">部落格、論壇或公司內網都可以免費嵌入，只要貼上下面這段代碼。嵌入版只有計算機本身，不含廣告。</p><textarea id="embedCode" readonly aria-label="嵌入代碼">&lt;iframe src=&quot;https://calctw.com/embed/youth-mortgage/&quot; title=&quot;新青安房貸月付金試算器（含寬限期比較）（CalcTW.com）&quot; width=&quot;100%&quot; height=&quot;1300&quot; style=&quot;border:0;max-width:760px&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</textarea><div class="btns"><button type="button" class="primary" id="embedCopy" data-target="embedCode">複製嵌入代碼</button> <span id="embedMsg" class="hint" aria-live="polite"></span></div></section>
 <!-- AdSense 結果下方廣告位 -->
 <div class="ad-slot" aria-label="廣告">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -170,6 +181,8 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </section>
 
 <div class="note"><strong>免責聲明：</strong>本工具僅供試算參考，不構成貸款或投資建議。新青安（青年安心成家購屋優惠貸款）利率會隨中華郵政 2 年期定期儲金機動利率調整，貸款資格、額度、房屋總價上限與利息補貼以財政部、承辦公股銀行最新公告與核貸結果為準。</div>
+
+<section aria-labelledby="ltTitle"><h2 id="ltTitle">常見金額試算結果</h2><p>直接看常見金額的完整計算明細與比較表：</p><ul class="lt"><li><a href="/youth-mortgage/loan-1000wan/">1,000 萬</a></li><li><a href="/youth-mortgage/loan-1200wan/">1,200 萬</a></li><li><a href="/youth-mortgage/loan-1500wan/">1,500 萬</a></li></ul></section>
 
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
@@ -347,6 +360,7 @@ function init(){
 }
 if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
 </script>
+<script src="/assets/calctw.js" defer></script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
 </body>
 </html>

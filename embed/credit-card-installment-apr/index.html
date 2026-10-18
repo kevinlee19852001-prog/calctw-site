@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>信用卡分期實際年利率換算器｜嵌入版｜CalcTW.com</title>
+<meta name="robots" content="noindex,follow">
+<base target="_self">
+<style>
+:root{--c:#be123c;--c2:#881337;--bg:#faf6f7;--card:#fff;--tx:#1f2933;--mu:#5f6b76;--bd:#eadde1;--hl:#fff1f2;--warn:#fff7ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header.site{background:var(--c);color:#fff;padding:10px 16px;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:12px}
+h1{font-size:1.5rem;line-height:1.35;margin:.6em 0 .3em}
+h2{font-size:1.2rem;margin:1.4em 0 .5em;border-left:4px solid var(--c);padding-left:8px}
+h3{font-size:1.05rem;margin:1em 0 .3em}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:10px;border:1px solid #cdb9bf;border-radius:8px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--c);border-color:var(--c)}
+.hint{font-size:.85rem;color:var(--mu)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button{font-size:.92rem;padding:8px 12px;border-radius:8px;border:1px solid var(--c);background:#fff;color:var(--c);cursor:pointer}
+button.primary{background:var(--c);color:#fff}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--hl);border-radius:10px;padding:12px}
+.kpi .v{font-size:1.35rem;font-weight:800;color:var(--c2)}
+.kpi .l{font-size:.85rem;color:var(--mu)}
+.verdict{margin-top:12px;padding:12px;border-radius:10px;font-weight:700}
+.verdict.good{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.verdict.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.verdict.even{background:#f1f5f9;color:#334155;border:1px solid #cbd5e1}
+.tbl{width:100%;overflow:auto;max-height:420px;border:1px solid var(--bd);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:420px}
+th,td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:right;white-space:nowrap}
+thead th{background:#f7eef0;position:sticky;top:0}
+tfoot td{font-weight:800;background:#f7eef0}
+.cmp{width:100%;min-width:0}
+.cmp td:first-child,.cmp th:first-child{text-align:left;white-space:normal}
+.aff{border:1px solid #fde68a;background:#fffbeb;border-radius:10px;padding:12px;margin:12px 0}
+.aff a{color:#92400e;font-weight:700}
+.note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
+.err{color:#b91c1c;font-weight:600}
+details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:700;padding:12px 0}
+footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
+
+/* shared site nav (site-build) */
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+
+/* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
+body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.credit{text-align:center;font-size:.9rem;padding:10px 0 14px;border-top:1px solid var(--bd);margin-top:8px}.credit a{font-weight:700}</style>
+</head>
+<body>
+<main>
+<h1 class="eh">信用卡分期實際年利率換算器</h1>
+
+<section class="card" aria-labelledby="inTitle">
+<h2 id="inTitle" style="margin-top:0">輸入分期條件</h2>
+<div class="grid">
+  <div><label for="price">商品金額（元）</label><input id="price" type="number" inputmode="numeric" min="1" step="1" value="30000"></div>
+  <div><label for="n">分期期數</label><input id="n" type="number" inputmode="numeric" min="2" max="72" step="1" value="12"><div class="hint">2～72 期（每期 1 個月）</div></div>
+  <div><label for="feeMode">手續費輸入方式</label>
+    <select id="feeMode"><option value="perRate">每期手續費率（%）</option><option value="totalRate" selected>總手續費率（%）</option><option value="totalAmt">總手續費金額（元）</option></select></div>
+  <div><label for="fee" id="feeLbl">總手續費率（%）</label><input id="fee" type="number" inputmode="decimal" min="0" step="0.01" value="3.5"><div class="hint" id="feeHint"></div></div>
+  <div><label for="timing">手續費收取方式</label>
+    <select id="timing"><option value="spread" selected>平均分攤於每期</option><option value="upfront">首期一次收取</option></select></div>
+  <div><label for="basis">計算基準</label>
+    <select id="basis"><option value="bill" selected>以首期帳單為基準（建議）</option><option value="purchase">以刷卡日為基準（第1期於1個月後）</option></select>
+    <div class="hint">一次付清也是在首期帳單繳款，選「首期帳單」比較公平</div></div>
+  <div><label for="cb">一次付清回饋（%）</label><input id="cb" type="number" inputmode="decimal" min="0" max="20" step="0.1" value="1"><div class="hint">刷卡現金回饋或點數折現</div></div>
+  <div><label for="cbi">分期仍有回饋（%）</label><input id="cbi" type="number" inputmode="decimal" min="0" max="20" step="0.1" value="0"><div class="hint">多數卡分期交易不給回饋，預設 0</div></div>
+  <div><label for="sav">存款／投資年報酬率（%）</label><input id="sav" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="1.5"><div class="hint">機會成本：錢先不付可賺的報酬</div></div>
+</div>
+<h3>常見情境快速帶入 <span class="hint">（示範數值，非特定銀行條件）</span></h3>
+<div class="btns" id="scen">
+  <button type="button" data-n="3" data-m="totalRate" data-f="0" data-t="spread">3期 0利率免手續費</button>
+  <button type="button" data-n="6" data-m="totalRate" data-f="2" data-t="spread">6期 總手續費 2%</button>
+  <button type="button" data-n="12" data-m="totalRate" data-f="3.5" data-t="spread">12期 0利率＋手續費 3.5%</button>
+  <button type="button" data-n="12" data-m="totalRate" data-f="3.5" data-t="upfront">12期 手續費 3.5% 首期收</button>
+  <button type="button" data-n="12" data-m="perRate" data-f="0.3" data-t="spread">12期 每期 0.3%</button>
+  <button type="button" data-n="24" data-m="perRate" data-f="0.25" data-t="spread">24期 每期 0.25%</button>
+  <button type="button" data-n="30" data-m="totalRate" data-f="6" data-t="spread">30期 總手續費 6%</button>
+</div>
+<div class="btns"><button class="primary" id="calcBtn" type="button">開始換算</button></div>
+<p id="err" class="err" role="alert"></p>
+</section>
+
+<section class="card" aria-labelledby="outTitle" aria-live="polite">
+<h2 id="outTitle" style="margin-top:0">換算結果</h2>
+<div class="kpis">
+  <div class="kpi"><div class="l">實際年利率（APR，名目）</div><div class="v" id="kApr">-</div></div>
+  <div class="kpi"><div class="l">有效年利率（含複利 EAR）</div><div class="v" id="kEar">-</div></div>
+  <div class="kpi"><div class="l">總手續費</div><div class="v" id="kFee">-</div></div>
+  <div class="kpi"><div class="l">首期／之後每期繳款</div><div class="v" id="kPay">-</div></div>
+</div>
+<div class="tbl" style="margin-top:12px;max-height:none"><table class="cmp">
+<thead><tr><th>比較項目</th><th>分期付款</th><th>一次付清</th></tr></thead>
+<tbody id="cmpBody"></tbody></table></div>
+<div id="verdict" class="verdict even">-</div>
+<p class="hint" id="approx"></p>
+</section>
+
+
+<!-- 聯盟推廣連結位置（替換 href 與文案；需標示廣告/合作） -->
+
+<div hidden><section class="card" aria-labelledby="tblTitle">
+<h2 id="tblTitle" style="margin-top:0">每期繳款明細</h2>
+<div class="tbl"><table id="sch"><thead><tr><th>期數</th><th>本金</th><th>手續費</th><th>當期應繳</th><th>剩餘未繳本金</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+<p class="hint">※ 本金與手續費以元為單位，除不盡的尾數併入第 1 期（多數銀行作法）。</p>
+</section>
+
+</div>
+</main>
+<footer class="credit"><a href="https://calctw.com/credit-card-installment-apr/" target="_blank" rel="noopener">由 CalcTW.com 提供</a>｜完整說明與常見問題請見原頁面</footer>
+<script>
+/* ===== 純計算函式 ===== */
+function splitEven(total, n){ // 整數元平均分配，尾數併入第1期
+  var base = Math.floor(total/n), arr = [];
+  for (var i=0;i<n;i++) arr.push(base);
+  arr[0] += total - base*n; return arr;
+}
+function totalFeeOf(price, n, mode, v){
+  v = Number(v)||0;
+  if (mode === "perRate") return Math.round(price*v/100*n);
+  if (mode === "totalRate") return Math.round(price*v/100);
+  return Math.round(v);
+}
+function npv(r, cfs){ var s=0; for (var t=0;t<cfs.length;t++) s += cfs[t]/Math.pow(1+r,t); return s; }
+function dnpv(r, cfs){ var s=0; for (var t=1;t<cfs.length;t++) s += -t*cfs[t]/Math.pow(1+r,t+1); return s; }
+/* 求每期 IRR：牛頓法，失敗則二分法。cfs[0] 為期初（借入為正）。 */
+function irr(cfs){
+  var sum = cfs.reduce(function(a,b){return a+b;},0);
+  if (Math.abs(sum) < 1e-9) return 0;
+  var r = 0.01;
+  for (var it=0; it<50; it++){
+    var f = npv(r,cfs), d = dnpv(r,cfs);
+    if (!isFinite(f) || !isFinite(d) || d === 0) break;
+    var nr = r - f/d;
+    if (nr <= -0.99) break;
+    if (Math.abs(nr-r) < 1e-12){ r = nr; return r; }
+    r = nr;
+  }
+  var lo = -0.99, hi = 10, flo = npv(lo,cfs), fhi = npv(hi,cfs);
+  if (flo*fhi > 0) return NaN;
+  for (var j=0;j<300;j++){
+    var mid = (lo+hi)/2, fm = npv(mid,cfs);
+    if (Math.abs(fm) < 1e-10 || (hi-lo) < 1e-14) return mid;
+    if (fm*flo < 0){ hi = mid; } else { lo = mid; flo = fm; }
+  }
+  return (lo+hi)/2;
+}
+/* 把每期付款轉成現金流：basis = 'bill'（第1期與一次付清同時）或 'purchase'（第1期在1個月後） */
+function cashflows(start, pays, basis, extraFirst){
+  var cfs;
+  if (basis === "bill"){ cfs = [start - pays[0] + (extraFirst||0)]; for (var k=1;k<pays.length;k++) cfs.push(-pays[k]); }
+  else { cfs = [start]; for (var k2=0;k2<pays.length;k2++) cfs.push(-pays[k2] + (k2===0 ? (extraFirst||0) : 0)); }
+  return cfs;
+}
+function calcInstallment(o){
+  var P = Math.round(Number(o.price)), n = Math.round(Number(o.n));
+  var F = totalFeeOf(P, n, o.feeMode, o.fee);
+  var prin = splitEven(P, n);
+  var fees = o.timing === "upfront" ? [F].concat(new Array(n-1).fill(0)) : splitEven(F, n);
+  var pays = prin.map(function(p,i){ return p + fees[i]; });
+  var basis = o.basis === "purchase" ? "purchase" : "bill";
+  var rm = irr(cashflows(P, pays, basis, 0));
+  var cb = (Number(o.cashbackFull)||0)/100, cbi = (Number(o.cashbackInst)||0)/100;
+  // 相對「一次付清（扣回饋）」的實質年利率：期初可動用金額 = P×(1−回饋)，分期第1期取得分期回饋
+  var rmNet = irr(cashflows(P*(1-cb), pays, basis, P*cbi));
+  // 機會成本：分期付款以存款報酬率折現
+  var ms = (Number(o.savings)||0)/100/12, pv = 0;
+  for (var k=0;k<n;k++){ var t = basis === "bill" ? k : k+1; pv += pays[k]/Math.pow(1+ms,t); }
+  var t1 = basis === "bill" ? 0 : 1;
+  pv -= P*cbi/Math.pow(1+ms,t1);
+  var fullCost = P*(1-cb);
+  var rows = [], left = P;
+  for (var i=0;i<n;i++){ left -= prin[i]; rows.push({k:i+1, prin:prin[i], fee:fees[i], pay:pays[i], left:left}); }
+  return {price:P, n:n, totalFee:F, pays:pays, rows:rows, basis:basis,
+    monthlyRate:rm, apr:rm*12, ear:Math.pow(1+rm,12)-1,
+    aprNet:rmNet*12, earNet:Math.pow(1+rmNet,12)-1,
+    approxApr: P>0 ? (F/P)*24/(n+1) : 0,
+    instTotal:pays.reduce(function(a,b){return a+b;},0), instCashback:P*cbi,
+    pvInst:pv, fullCost:fullCost, fullCashback:P*cb, saving:fullCost - pv};
+}
+
+/* ===== 介面 ===== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
+function pct(x){ return isFinite(x) ? (x*100).toFixed(2)+"%" : "無法計算"; }
+var FEE_LABEL = {perRate:["每期手續費率（%）","每期收取商品金額的固定百分比"], totalRate:["總手續費率（%）","整筆分期的手續費占商品金額比例"], totalAmt:["總手續費金額（元）","銀行告知的手續費總額"]};
+function syncFeeLabel(){ var m = $("feeMode").value; $("feeLbl").textContent = FEE_LABEL[m][0]; $("feeHint").textContent = FEE_LABEL[m][1]; }
+function render(){
+  syncFeeLabel();
+  var o = {price:$("price").value, n:$("n").value, feeMode:$("feeMode").value, fee:$("fee").value, timing:$("timing").value,
+    basis:$("basis").value, cashbackFull:$("cb").value, cashbackInst:$("cbi").value, savings:$("sav").value};
+  var e = "", P = Number(o.price), n = Number(o.n), f = Number(o.fee);
+  if (!(P>=1)) e = "請輸入商品金額。";
+  else if (!(n>=2 && n<=72 && Math.round(n)===n)) e = "分期期數請輸入 2～72 的整數。";
+  else if (!(f>=0)) e = "手續費不可為負數。";
+  else if (totalFeeOf(Math.round(P), n, o.feeMode, f) > P*3) e = "手續費過高，請確認輸入。";
+  $("err").textContent = e; if (e) return;
+  var r = calcInstallment(o);
+  $("kApr").textContent = pct(r.apr);
+  $("kEar").textContent = pct(r.ear);
+  $("kFee").textContent = fmt(r.totalFee)+" 元";
+  $("kPay").textContent = fmt(r.pays[0])+"／"+fmt(r.pays[1])+" 元";
+  $("cmpBody").innerHTML =
+    "<tr><td>帳面總支出</td><td>"+fmt(r.instTotal)+" 元</td><td>"+fmt(r.price)+" 元</td></tr>"+
+    "<tr><td>刷卡回饋</td><td>"+fmt(r.instCashback)+" 元</td><td>"+fmt(r.fullCashback)+" 元</td></tr>"+
+    "<tr><td>扣回饋後實付</td><td>"+fmt(r.instTotal-r.instCashback)+" 元</td><td>"+fmt(r.fullCost)+" 元</td></tr>"+
+    "<tr><td>考慮存款報酬 "+Number(o.savings)+"% 後的現值成本</td><td>"+fmt(r.pvInst)+" 元</td><td>"+fmt(r.fullCost)+" 元</td></tr>"+
+    "<tr><td>相對一次付清（含回饋差）的實質年利率</td><td>"+pct(r.aprNet)+"</td><td>—</td></tr>";
+  var v = $("verdict"), s = r.saving;
+  if (Math.abs(s) < 1){ v.className = "verdict even"; v.textContent = "兩種付款方式成本幾乎相同。"; }
+  else if (s > 0){ v.className = "verdict good"; v.textContent = "分期較划算：考慮回饋與存款報酬後，分期的現值成本約少 "+fmt(s)+" 元（實質年利率 "+pct(r.aprNet)+" 低於您的存款報酬率 "+Number(o.savings)+"%）。"; }
+  else { v.className = "verdict bad"; v.textContent = "一次付清較划算：分期的現值成本約多 "+fmt(-s)+" 元。分期實際年利率 "+pct(r.apr)+"，若再加上少拿的回饋，實質年利率約 "+pct(r.aprNet)+"，高於存款報酬率 "+Number(o.savings)+"%。"; }
+  $("approx").textContent = "簡易估算（總手續費率 × 24 ÷（期數＋1））："+pct(r.approxApr)+"；IRR 精算值為 "+pct(r.apr)+"（"+(r.basis==="bill"?"以首期帳單為基準":"以刷卡日為基準")+"、"+($("timing").value==="upfront"?"手續費首期收取":"手續費平均分攤")+"）。";
+  var tb = "";
+  r.rows.forEach(function(x){ tb += "<tr><td>"+x.k+"</td><td>"+fmt(x.prin)+"</td><td>"+fmt(x.fee)+"</td><td>"+fmt(x.pay)+"</td><td>"+fmt(x.left)+"</td></tr>"; });
+  $("sch").tBodies[0].innerHTML = tb;
+  $("sch").tFoot.innerHTML = "<tr><td>合計</td><td>"+fmt(r.price)+"</td><td>"+fmt(r.totalFee)+"</td><td>"+fmt(r.instTotal)+"</td><td></td></tr>";
+}
+function init(){
+  ["price","n","fee","cb","cbi","sav"].forEach(function(id){ $(id).addEventListener("input", render); });
+  ["feeMode","timing","basis"].forEach(function(id){ $(id).addEventListener("change", render); });
+  $("calcBtn").addEventListener("click", render);
+  Array.prototype.forEach.call(document.querySelectorAll("#scen button"), function(b){
+    b.addEventListener("click", function(){ $("n").value = b.dataset.n; $("feeMode").value = b.dataset.m; $("fee").value = b.dataset.f; $("timing").value = b.dataset.t; render(); });
+  });
+  render();
+}
+if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+</script>
+<script src="/assets/calctw.js" defer></script>
+</body>
+</html>
