@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>特休天數計算機＋未休特休折現試算｜週年制、曆年制特休怎麼算（2026）</title>
+<meta name="description" content="特休天數線上計算：輸入到職日，依勞基法第 38 條算出週年制或曆年制（按比例）特休天數；未休特休折現依施行細則第 24-1 條，以月薪 ÷ 30 × 未休日數試算年底結算或離職應發工資，附勞動部範例驗算。">
+<link rel="canonical" href="https://calctw.com/annual-leave/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="特休天數＋未休特休折現計算器">
+<meta property="og:description" content="週年制、曆年制按比例特休天數，加上未休特休換錢試算。">
+<meta property="og:url" content="https://calctw.com/annual-leave/">
+<meta property="og:image" content="https://calctw.com/og/annual-leave.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f766e">
+<!-- Google AdSense：取得核准後取消註解並替換發布商 ID
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376962477938948" crossorigin="anonymous"></script>
+-->
+<!-- 流量分析（預留，尚未啟用）：如採用 Google Analytics 4，取消註解並替換 G-XXXXXXXXXX，並同步更新 /privacy/
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XXXXXXXXXX");</script>
+-->
+<style>
+:root{--c:#0f766e;--c2:#115e59;--bg:#f6f8f8;--card:#fff;--tx:#1f2933;--mu:#5f6b76;--bd:#dfe5e8;--hl:#ecfdf5;--warn:#fff7ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header.site{background:var(--c);color:#fff;padding:10px 16px;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:12px}
+h1{font-size:1.5rem;line-height:1.35;margin:.6em 0 .3em}
+h2{font-size:1.2rem;margin:1.4em 0 .5em;border-left:4px solid var(--c);padding-left:8px}
+h3{font-size:1.05rem;margin:1em 0 .3em}
+p{margin:.4em 0 .8em}
+a{color:var(--c2)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:1fr}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:10px;border:1px solid #b8c3c9;border-radius:8px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--c);border-color:var(--c)}
+.hint{font-size:.85rem;color:var(--mu)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button{font-size:.95rem;padding:9px 14px;border-radius:8px;border:1px solid var(--c);background:#fff;color:var(--c);cursor:pointer}
+button.primary{background:var(--c);color:#fff}
+button.del{border-color:#b91c1c;color:#b91c1c;padding:6px 10px;font-size:.85rem}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--hl);border-radius:10px;padding:12px}
+.kpi .v{font-size:1.35rem;font-weight:800;color:var(--c2)}
+.kpi .l{font-size:.85rem;color:var(--mu)}
+.tbl{width:100%;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{border-bottom:1px solid var(--bd);padding:8px 6px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td.l,th.l{text-align:left;white-space:normal}
+thead th{background:#f0f4f5}
+tfoot td{font-weight:800;background:#f0f4f5}
+tr.on td{background:#fef9c3;font-weight:700}
+.row{border:1px solid var(--bd);border-radius:10px;padding:12px;margin:10px 0;background:#fbfcfc}
+.row .rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:700}
+.rg{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.warnl{color:#b45309;font-size:.85rem;margin:.3em 0 0}
+.ok{color:#047857;font-weight:700}.ng{color:#b91c1c;font-weight:700}
+.tabs{display:flex;gap:6px;margin:8px 0 0}
+.tabs button[aria-selected="true"]{background:var(--c);color:#fff}
+.ad-slot{margin:14px 0;min-height:100px;background:repeating-linear-gradient(45deg,#f3f4f6,#f3f4f6 10px,#eceff1 10px,#eceff1 20px);border:1px dashed #c4ccd1;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#8a959e;font-size:.8rem;position:relative}
+.ad-slot::before{content:"廣告";position:absolute;top:4px;left:8px}
+.ad-slot ins{width:100%}
+.note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
+details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:700;padding:12px 0}
+footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
+.src li{word-break:break-all}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.rg{grid-template-columns:repeat(6,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
+
+/* shared site nav (site-build) */
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+</style>
+</head>
+<body>
+<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/" aria-current="page">特休計算</a></nav></header>
+<main>
+<!-- AdSense 頂部廣告位 -->
+<div class="ad-slot" aria-label="廣告">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="7000000005" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+</div>
+
+<h1>特休天數與未休特休折現計算器</h1>
+<p>輸入到職日，依<strong>勞動基準法第 38 條</strong>算出特休天數，支援<strong>週年制</strong>與<strong>曆年制（按比例分段給假）</strong>；再用「未休特休折現」分頁，依<strong>施行細則第 24 條之 1</strong>算出年底結算或離職時應發的特休未休工資。</p>
+<p class="hint" id="dataStamp"></p>
+<div class="tabs" role="tablist" aria-label="計算項目"><button type="button" role="tab" id="tabDays" aria-controls="paneDays" aria-selected="true">① 特休天數</button><button type="button" role="tab" id="tabPay" aria-controls="panePay" aria-selected="false">② 未休特休折現</button></div>
+<div id="paneDays" role="tabpanel" aria-labelledby="tabDays">
+<section class="card" aria-labelledby="inTitle">
+<h2 id="inTitle" style="margin-top:0">特休天數試算</h2>
+<div class="grid">
+  <div><label for="hire">到職日</label><input id="hire" type="date" value="2024-07-15"></div>
+  <div><label for="sys">特休制度</label><select id="sys"><option value="cal" selected>曆年制（1/1～12/31，按比例）</option><option value="anni">週年制（依到職日）</option></select></div>
+  <div><label for="year" id="yearLabel">計算年度（西元）</label><input id="year" type="number" inputmode="numeric" min="1950" max="2100" step="1" value="2025">
+    <div class="hint">週年制請改填下方「查詢日期」</div></div>
+  <div><label for="asof">查詢日期（週年制用）</label><input id="asof" type="date" value="2026-10-18"></div>
+</div>
+<div class="btns"><button class="primary" id="calcDays" type="button">開始試算</button><button type="button" id="exNtpc">範例：113/7/15 到職（新北市勞工局例題）</button></div>
+</section>
+<section class="card" aria-labelledby="outTitle" aria-live="polite">
+<h2 id="outTitle" style="margin-top:0">特休天數結果</h2>
+<div class="kpis">
+  <div class="kpi"><div class="l" id="kDaysL">本年度特休天數</div><div class="v" id="kDays">-</div></div>
+  <div class="kpi"><div class="l">換算時數（每日 8 小時）</div><div class="v" id="kHours">-</div></div>
+  <div class="kpi"><div class="l">查詢日年資</div><div class="v" id="kSen">-</div></div>
+  <div class="kpi"><div class="l">到查詢日累計已取得特休</div><div class="v" id="kCum">-</div></div>
+</div>
+<p class="hint" id="daysText"></p>
+<div class="tbl"><table id="dTbl"><thead><tr><th>年資區間</th><th>週年期間（起～迄）</th><th>法定天數</th><th id="dCol">落在本年度</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+</section>
+</div>
+
+<div id="panePay" role="tabpanel" aria-labelledby="tabPay" hidden>
+<section class="card" aria-labelledby="payTitle">
+<h2 id="payTitle" style="margin-top:0">未休特休折現（特休換錢）</h2>
+<div class="grid">
+  <div><label for="wType">工資計算方式</label><select id="wType"><option value="monthly" selected>月薪制（÷30）</option><option value="daily">日薪（直接輸入一日工資）</option></select></div>
+  <div><label for="wage" id="wageLabel">年度終結前最近一個月正常工時工資（元）</label><input id="wage" type="number" inputmode="numeric" min="0" step="1" value="30000">
+    <div class="hint">不含加班費、假日出勤加給</div></div>
+  <div><label for="left">未休特休日數</label><input id="left" type="number" inputmode="decimal" min="0" step="0.5" value="7">
+    <div class="hint">可填小數，例如 3.5 日</div></div>
+</div>
+<div class="btns"><button class="primary" id="calcPay" type="button">開始試算</button><button type="button" data-w="30000" data-l="7">勞動部範例 3 萬／7 日</button><button type="button" data-w="45000" data-l="10">月薪 4.5 萬／10 日</button></div>
+</section>
+<section class="card" aria-live="polite">
+<h2 style="margin-top:0">折現結果</h2>
+<div class="kpis">
+  <div class="kpi"><div class="l">一日工資</div><div class="v" id="kDaily">-</div></div>
+  <div class="kpi"><div class="l">應發未休特休工資</div><div class="v" id="kPay">-</div></div>
+  <div class="kpi"><div class="l">發給期限（年度終結）</div><div class="v" id="kDue">30 日內</div></div>
+  <div class="kpi"><div class="l">遞延</div><div class="v" id="kDefer">限次一年度</div></div>
+</div>
+<p class="hint" id="payText"></p>
+<ul class="plain">
+<li><strong>計算基準：</strong>一日工資＝年度終結或契約終止前最近一個月正常工作時間所得工資 ÷ 30（施行細則第 24 條之 1）；<strong>不含加班費</strong>與假日出勤加給。</li>
+<li><strong>遞延：</strong>經勞雇雙方協商可遞延至<strong>次一年度</strong>實施，次一年度終結或離職仍未休完，按原年度終結時的工資基準發給。</li>
+<li><strong>期限：</strong>年度終結時，於約定工資給付日或年度終結後 30 日內發給；離職時依施行細則第 9 條發給。</li>
+<li><strong>紀錄：</strong>雇主應把每年特休期日與未休折發金額記載於工資清冊，並每年定期以書面通知勞工（第 38 條第 5 項）。</li>
+</ul>
+</section>
+</div>
+<!-- AdSense 結果下方廣告位 -->
+<div class="ad-slot" aria-label="廣告">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="7000000006" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+</div>
+
+<section class="card" aria-labelledby="ckTitle">
+<h2 id="ckTitle" style="margin-top:0">自我驗算：勞動部與地方勞工局範例</h2>
+<div class="tbl"><table id="ckTbl"><thead><tr><th class="l">驗算項目</th><th>官方答案</th><th>本工具結果</th><th>結果</th></tr></thead><tbody></tbody></table></div>
+<p class="hint">想再確認，可使用<a href="https://calcr2.mol.gov.tw/RestDays" rel="noopener" target="_blank">勞動部特別休假日數試算系統</a>交叉比對。</p>
+</section>
+
+<section aria-labelledby="tblTitle">
+<h2 id="tblTitle">勞基法第 38 條特休天數表</h2>
+<div class="tbl"><table><thead><tr><th>年資</th><th>特休天數</th></tr></thead><tbody>
+<tr><td>6 個月以上未滿 1 年</td><td>3 日</td></tr><tr><td>1 年以上未滿 2 年</td><td>7 日</td></tr><tr><td>2 年以上未滿 3 年</td><td>10 日</td></tr>
+<tr><td>3 年以上未滿 5 年</td><td>每年 14 日</td></tr><tr><td>5 年以上未滿 10 年</td><td>每年 15 日</td></tr><tr><td>10 年以上</td><td>每 1 年加 1 日（滿 10 年 16 日），加至 30 日為止</td></tr>
+</tbody></table></div>
+<h3>曆年制比例計算方式</h3>
+<p>本工具採勞工局例題的算法：滿 6 個月的 3 日於取得當年度給予；滿 1 年起每一週年的天數，按該週年期間落在各曆年的「月數＋畸零日數／當月日數」÷ 12 比例分配，同一週年分到兩個年度的天數合計等於法定天數。</p>
+</section>
+
+<div class="note"><strong>免責聲明：</strong>本工具依勞動基準法、施行細則與勞動部公開說明製作，僅供一般試算參考，不構成法律意見。留職停薪、年資併計、約定優於法令或會計年度制等情形可能不同；實際天數與金額以勞動契約、工作規則及主管機關解釋為準，有疑問可撥打 1955 勞工諮詢申訴專線。</div>
+
+<section aria-labelledby="faqTitle">
+<h2 id="faqTitle">常見問題 FAQ</h2>
+<details open><summary>特休天數怎麼算？年資和天數對照表</summary><p>依勞動基準法第 38 條：工作滿 6 個月未滿 1 年 3 日；滿 1 年 7 日；滿 2 年 10 日；滿 3 年、4 年每年 14 日；滿 5 年至未滿 10 年每年 15 日；滿 10 年 16 日，之後每多 1 年加 1 日，加到 30 日為止（滿 24 年起 30 日）。</p></details>
+<details><summary>週年制和曆年制有什麼不同？</summary><p>週年制以到職日起算每一週年給假；曆年制以每年 1 月 1 日至 12 月 31 日為一個年度，按年資比例分段給假（施行細則第 24 條第 2 項）。採曆年制不得讓勞工的法定天數減少，而且離職時必須改按到職日（週年制）結算實際應給天數。</p></details>
+<details><summary>曆年制的特休怎麼按比例計算？</summary><p>先依到職日算出每一週年應有的天數，再依該週年期間落在各曆年的月數比例分配。例如 113 年 7 月 15 日到職，114 年可休滿 6 個月的 3 日，加上滿 1 年 7 日 × (5 個月＋17/31 個月) ÷ 12 ≈ 3.2 日，合計約 6.2 日；滿 1 年剩下的約 3.8 日在 115 年度給假。</p></details>
+<details><summary>特休沒休完可以換錢嗎？怎麼算？</summary><p>可以。依第 38 條第 4 項，因年度終結或契約終止而未休的特休日數，雇主應發給工資。依施行細則第 24 條之 1，按未休日數 × 一日工資計算；月薪制的一日工資＝年度終結或契約終止前最近一個月正常工作時間所得工資 ÷ 30，不含加班費和假日出勤加給。例如月薪 30,000 元、剩 7 日，應發 7,000 元。</p></details>
+<details><summary>未休特休工資什麼時候要發？</summary><p>年度終結時，應於勞動契約約定的工資給付日發給，或於年度終結後 30 日內發給；契約終止（離職）時，依施行細則第 9 條規定發給。不可以拖到年終獎金一起發又不標明金額。</p></details>
+<details><summary>特休可以遞延到明年嗎？</summary><p>可以，但要經勞雇雙方協商同意，且只能遞延到次一年度。遞延的日數在次一年度請特休時優先扣除；次一年度終結或離職時仍未休完，雇主應按「原特別休假年度終結時」的工資基準發給工資。</p></details>
+<details><summary>滿半年的 3 天可以從滿一年的 7 天扣掉嗎？</summary><p>不行。勞動部說明，滿 6 個月的 3 日與滿 1 年的 7 日應分別給予。例如 111 年 3 月 1 日到職、112 年 4 月 1 日離職，法定特休合計 10 日。</p></details>
+<details><summary>曆年制算出來有小數（例如 6.2 天）怎麼辦？</summary><p>法令沒有強制規定畸零天數的給假方式，可以依比例換算成小時給假，或約定分段以完整 1 日計給，但不得低於法定標準。本工具同時列出天數與換算時數（以每日 8 小時計）。</p></details>
+</section>
+
+<section aria-labelledby="srcTitle">
+<h2 id="srcTitle">資料來源與查核日期</h2>
+<ul class="src" id="srcList"></ul>
+</section>
+</main>
+<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "特休天數與未休特休折現計算器", "url": "https://calctw.com/annual-leave/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依勞動基準法第 38 條計算週年制與曆年制特休天數，並依施行細則第 24 條之 1 計算未休特休工資。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-18"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "特休天數怎麼算？年資和天數對照表", "acceptedAnswer": {"@type": "Answer", "text": "依勞動基準法第 38 條：工作滿 6 個月未滿 1 年 3 日；滿 1 年 7 日；滿 2 年 10 日；滿 3 年、4 年每年 14 日；滿 5 年至未滿 10 年每年 15 日；滿 10 年 16 日，之後每多 1 年加 1 日，加到 30 日為止（滿 24 年起 30 日）。"}}, {"@type": "Question", "name": "週年制和曆年制有什麼不同？", "acceptedAnswer": {"@type": "Answer", "text": "週年制以到職日起算每一週年給假；曆年制以每年 1 月 1 日至 12 月 31 日為一個年度，按年資比例分段給假（施行細則第 24 條第 2 項）。採曆年制不得讓勞工的法定天數減少，而且離職時必須改按到職日（週年制）結算實際應給天數。"}}, {"@type": "Question", "name": "曆年制的特休怎麼按比例計算？", "acceptedAnswer": {"@type": "Answer", "text": "先依到職日算出每一週年應有的天數，再依該週年期間落在各曆年的月數比例分配。例如 113 年 7 月 15 日到職，114 年可休滿 6 個月的 3 日，加上滿 1 年 7 日 × (5 個月＋17/31 個月) ÷ 12 ≈ 3.2 日，合計約 6.2 日；滿 1 年剩下的約 3.8 日在 115 年度給假。"}}, {"@type": "Question", "name": "特休沒休完可以換錢嗎？怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "可以。依第 38 條第 4 項，因年度終結或契約終止而未休的特休日數，雇主應發給工資。依施行細則第 24 條之 1，按未休日數 × 一日工資計算；月薪制的一日工資＝年度終結或契約終止前最近一個月正常工作時間所得工資 ÷ 30，不含加班費和假日出勤加給。例如月薪 30,000 元、剩 7 日，應發 7,000 元。"}}, {"@type": "Question", "name": "未休特休工資什麼時候要發？", "acceptedAnswer": {"@type": "Answer", "text": "年度終結時，應於勞動契約約定的工資給付日發給，或於年度終結後 30 日內發給；契約終止（離職）時，依施行細則第 9 條規定發給。不可以拖到年終獎金一起發又不標明金額。"}}, {"@type": "Question", "name": "特休可以遞延到明年嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以，但要經勞雇雙方協商同意，且只能遞延到次一年度。遞延的日數在次一年度請特休時優先扣除；次一年度終結或離職時仍未休完，雇主應按「原特別休假年度終結時」的工資基準發給工資。"}}, {"@type": "Question", "name": "滿半年的 3 天可以從滿一年的 7 天扣掉嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不行。勞動部說明，滿 6 個月的 3 日與滿 1 年的 7 日應分別給予。例如 111 年 3 月 1 日到職、112 年 4 月 1 日離職，法定特休合計 10 日。"}}, {"@type": "Question", "name": "曆年制算出來有小數（例如 6.2 天）怎麼辦？", "acceptedAnswer": {"@type": "Answer", "text": "法令沒有強制規定畸零天數的給假方式，可以依比例換算成小時給假，或約定分段以完整 1 日計給，但不得低於法定標準。本工具同時列出天數與換算時數（以每日 8 小時計）。"}}]}
+</script>
+
+<script>
+
+/* ===== 法定規定（查核日期：2026-10-18） ===== */
+var CHECKED = "2026-10-18";
+function legalDays(k){ // 第 k 個週年（滿 k 年）起一年的天數；k=0 代表滿 6 個月
+  if (k === 0) return 3; if (k === 1) return 7; if (k === 2) return 10; if (k <= 4) return 14; if (k <= 9) return 15; return Math.min(30, k + 6);
+}
+var SOURCES = [
+  ["勞動基準法第 38 條（特別休假）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38"],
+  ["勞動基準法施行細則第 24 條（特休期間：週年、曆年、會計年度）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&flno=24"],
+  ["勞動基準法施行細則第 24 條之 1（未休工資計算與發給期限）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&flno=24-1"],
+  ["勞動部：特別休假未休工資（月薪 3 萬、7 日＝7,000 元範例）", "https://www.mol.gov.tw/1607/28162/28166/28180/81521/81536/"],
+  ["勞動部：曆年制特休如何計算、遞延與離職結算", "https://www.mol.gov.tw/1607/28690/2282/2284/2292/81173/"],
+  ["勞動部：常見特別休假 NG 態樣（3 日與 7 日分別給予）", "https://www.mol.gov.tw/1607/1632/1640/64844/"],
+  ["新北市政府：週年制與曆年制差異（113/7/15 到職例題）", "https://www.ntpc.gov.tw/ch/home.jsp?dataserno=202412170030&id=28"],
+  ["勞動部特別休假日數試算系統（官方）", "https://calcr2.mol.gov.tw/RestDays"]
+];
+
+/* ===== 日期工具（以 UTC 日數計算，避免時區誤差） ===== */
+function parseD(s){ var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s||"")); return m ? {y:+m[1], m:+m[2], d:+m[3]} : null; }
+function dim(y, m){ return new Date(Date.UTC(y, m, 0)).getUTCDate(); } // m: 1-12
+function dn(o){ return Date.UTC(o.y, o.m - 1, o.d) / 864e5; }
+function fromDn(n){ var t = new Date(n * 864e5); return {y:t.getUTCFullYear(), m:t.getUTCMonth()+1, d:t.getUTCDate()}; }
+function anniv(h, n){ // 到職日後 n 個月的「相當日」；該月無相當日者，取次月 1 日（取得權利之翌日）
+  var tm = h.m - 1 + n, y = h.y + Math.floor(tm / 12), m = ((tm % 12) + 12) % 12 + 1;
+  if (h.d <= dim(y, m)) return {y:y, m:m, d:h.d};
+  return m === 12 ? {y:y+1, m:1, d:1} : {y:y, m:m+1, d:1};
+}
+function monthsBetween(a, b){ // a 起算到 b（不含）的月數，畸零日數 ÷ 該月日數
+  var m = 0; while (dn(anniv(a, m + 1)) <= dn(b)) m++;
+  var last = anniv(a, m), next = anniv(a, m + 1);
+  return m + (dn(b) - dn(last)) / (dn(next) - dn(last));
+}
+function ds(o){ return o.y + "/" + ("0"+o.m).slice(-2) + "/" + ("0"+o.d).slice(-2); }
+function minusDay(o){ return fromDn(dn(o) - 1); }
+
+/* ===== 計算核心 ===== */
+function segments(hire, upto){ // 週年期間清單
+  var s = [], k = 0;
+  while (true){
+    var st = k === 0 ? anniv(hire, 6) : anniv(hire, 12 * k), en = anniv(hire, 12 * (k + 1));
+    if (dn(st) > dn(upto)) break;
+    s.push({k:k, start:st, end:en, days:legalDays(k), label:k === 0 ? "滿 6 個月～未滿 1 年" : "滿 " + k + " 年～未滿 " + (k+1) + " 年"});
+    k++; if (k > 80) break;
+  }
+  return s;
+}
+function calendarYear(hire, Y){ // 曆年制：年度 Y 可休天數與明細
+  var jan = {y:Y, m:1, d:1}, nextJan = {y:Y+1, m:1, d:1}, list = [], total = 0;
+  segments(hire, {y:Y, m:12, d:31}).forEach(function(sg){
+    var portion = 0;
+    if (sg.k === 0){ if (sg.start.y === Y) portion = sg.days; }
+    else if (sg.start.y === Y){ portion = dn(sg.start) === dn(jan) ? sg.days : sg.days * monthsBetween(sg.start, nextJan) / 12; }
+    else if (sg.start.y === Y - 1 && dn(sg.start) !== dn({y:Y-1, m:1, d:1})){ portion = sg.days - sg.days * monthsBetween(sg.start, jan) / 12; }
+    if (portion > 0){ total += portion; }
+    list.push({sg:sg, portion:portion});
+  });
+  return {total:total, list:list.filter(function(x){ return x.portion > 0 || x.sg.start.y >= Y - 1; })};
+}
+function anniversaryAt(hire, asof){ // 週年制：查詢日所在週年的天數與累計
+  var segs = segments(hire, asof), cur = null, cum = 0;
+  segs.forEach(function(sg){ cum += sg.days; if (dn(sg.start) <= dn(asof) && dn(asof) < dn(sg.end)) cur = sg; });
+  return {cur:cur, cum:cum, segs:segs};
+}
+function seniority(hire, asof){
+  if (dn(asof) < dn(hire)) return "尚未到職";
+  var m = 0; while (dn(anniv(hire, m + 1)) <= dn(asof)) m++;
+  return Math.floor(m / 12) + " 年 " + (m % 12) + " 個月";
+}
+function payout(type, wage, days){ var daily = type === "daily" ? wage : wage / 30; return {daily:daily, amount:daily * days}; }
+function r1(n){ return (Math.round(n * 10) / 10).toFixed(1); }
+function selfTests(){
+  var t = [], h = parseD("2024-07-15");
+  var c25 = calendarYear(h, 2025), c26 = calendarYear(h, 2026);
+  t.push({name:"新北市例題：113/7/15 到職，曆年制 114 年（2025）特休合計", expected:"6.2", got:r1(c25.total)});
+  t.push({name:"同例：滿 1 年 7 日 × (5＋17/31) ÷ 12 落在 114 年", expected:"3.2", got:r1(c25.list.filter(function(x){return x.sg.k===1;})[0].portion)});
+  t.push({name:"同例：滿 1 年剩餘天數於 115 年（2026）給假", expected:"3.8", got:r1(c26.list.filter(function(x){return x.sg.k===1;})[0].portion)});
+  var a = anniversaryAt(parseD("2022-03-01"), parseD("2023-04-01"));
+  t.push({name:"勞動部例：111/3/1 到職、112/4/1 離職，法定特休合計（3＋7）", expected:"10", got:String(a.cum)});
+  var yrs = [1,2,3,4,5,9,10,11,23,24,30].map(legalDays).join(",");
+  t.push({name:"第 38 條天數表：滿 1/2/3/4/5/9/10/11/23/24/30 年", expected:"7,10,14,14,15,15,16,17,29,30,30", got:yrs});
+  t.push({name:"勞動部例：月薪 30,000 元、未休 7 日應發", expected:"7000", got:String(Math.round(payout("monthly", 30000, 7).amount))});
+  t.forEach(function(x){ x.pass = String(x.expected) === String(x.got); });
+  return t;
+}
+
+/* ===== 介面 ===== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
+function f2(n){ return (Math.round(n * 100) / 100).toLocaleString("zh-TW", {maximumFractionDigits:2}); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function renderDays(){
+  var hire = parseD($("hire").value), sys = $("sys").value, Y = +$("year").value, asof = parseD($("asof").value) || {y:2026, m:10, d:18};
+  if (!hire){ $("kDays").textContent = "請輸入到職日"; return; }
+  var at = anniversaryAt(hire, asof);
+  $("kSen").textContent = seniority(hire, asof);
+  $("kCum").textContent = f2(at.cum) + " 日";
+  if (sys === "cal"){
+    var c = calendarYear(hire, Y);
+    $("kDaysL").textContent = Y + " 年度（曆年制）特休";
+    $("kDays").textContent = f2(c.total) + " 日";
+    $("kHours").textContent = f2(c.total * 8) + " 小時";
+    $("dCol").textContent = "落在 " + Y + " 年";
+    $("dTbl").tBodies[0].innerHTML = c.list.map(function(x){ return "<tr"+(x.portion>0?' class="on"':"")+"><td>"+x.sg.label+"</td><td>"+ds(x.sg.start)+"～"+ds(minusDay(x.sg.end))+"</td><td>"+x.sg.days+" 日</td><td>"+f2(x.portion)+" 日</td></tr>"; }).join("");
+    $("dTbl").tFoot.innerHTML = "<tr><td>"+Y+" 年度合計</td><td></td><td></td><td>"+f2(c.total)+" 日</td></tr>";
+    $("daysText").textContent = "曆年制按比例分段給假；離職時應改依到職日（週年制）結算實際年資的特休天數。小數天數可依比例換算時數給假。";
+  } else {
+    $("kDaysL").textContent = "查詢日所在週年特休";
+    $("kDays").textContent = at.cur ? at.cur.days + " 日" : "0 日（未滿 6 個月）";
+    $("kHours").textContent = at.cur ? (at.cur.days * 8) + " 小時" : "0 小時";
+    $("dCol").textContent = "查詢日所在";
+    var rows = at.segs.slice(-6);
+    $("dTbl").tBodies[0].innerHTML = rows.map(function(sg){ var on = at.cur && sg.k === at.cur.k; return "<tr"+(on?' class="on"':"")+"><td>"+sg.label+"</td><td>"+ds(sg.start)+"～"+ds(minusDay(sg.end))+"</td><td>"+sg.days+" 日</td><td>"+(on?"◀ 本期":"")+"</td></tr>"; }).join("") ||
+      '<tr><td colspan="4">到職未滿 6 個月，滿 6 個月（'+ds(anniv(hire,6))+'）起有 3 日特休。</td></tr>';
+    $("dTbl").tFoot.innerHTML = "<tr><td>到查詢日累計</td><td></td><td>"+at.cum+" 日</td><td></td></tr>";
+    $("daysText").textContent = at.cur ? "本期特休期間：" + ds(at.cur.start) + "～" + ds(minusDay(at.cur.end)) + "，期間屆滿（年度終結）仍未休的日數應折發工資。" : "";
+  }
+}
+function renderPay(){
+  var type = $("wType").value, w = +$("wage").value || 0, l = +$("left").value || 0, r = payout(type, w, l);
+  $("wageLabel").textContent = type === "daily" ? "一日工資（元）" : "年度終結前最近一個月正常工時工資（元）";
+  $("kDaily").textContent = f2(r.daily) + " 元";
+  $("kPay").textContent = fmt(r.amount) + " 元";
+  $("payText").textContent = (type === "daily" ? "一日工資 " + f2(r.daily) : "月薪 " + fmt(w) + " ÷ 30 ＝ 一日工資 " + f2(r.daily)) + " 元 × 未休 " + l + " 日 ＝ " + f2(r.amount) + " 元";
+}
+function renderChecks(){
+  var t = selfTests(); window.CALC_SELFTEST_RESULTS = t;
+  $("ckTbl").tBodies[0].innerHTML = t.map(function(x){ return '<tr><td class="l">'+esc(x.name)+"</td><td>"+esc(x.expected)+"</td><td>"+esc(x.got)+"</td><td class=\""+(x.pass?"ok":"ng")+"\">"+(x.pass?"✔ 相符":"✘ 不符")+"</td></tr>"; }).join("");
+}
+function tab(which){
+  var days = which === "days";
+  $("tabDays").setAttribute("aria-selected", days ? "true" : "false"); $("tabPay").setAttribute("aria-selected", days ? "false" : "true");
+  $("paneDays").hidden = !days; $("panePay").hidden = days;
+}
+function init(){
+  $("dataStamp").textContent = "依勞動基準法第 38 條、施行細則第 24、24-1 條｜查核日期：" + CHECKED;
+  $("srcList").innerHTML = SOURCES.map(function(s){ return '<li>'+s[0]+'：<a href="'+s[1]+'" rel="noopener" target="_blank">'+s[1]+'</a></li>'; }).join("") + "<li>查核日期："+CHECKED+"（台北時間）</li>";
+  ["hire","sys","year","asof"].forEach(function(id){ $(id).addEventListener("input", renderDays); $(id).addEventListener("change", renderDays); });
+  ["wType","wage","left"].forEach(function(id){ $(id).addEventListener("input", renderPay); $(id).addEventListener("change", renderPay); });
+  $("calcDays").addEventListener("click", renderDays); $("calcPay").addEventListener("click", renderPay);
+  $("exNtpc").addEventListener("click", function(){ $("hire").value = "2024-07-15"; $("sys").value = "cal"; $("year").value = 2025; renderDays(); });
+  Array.prototype.forEach.call(document.querySelectorAll("button[data-w]"), function(b){ b.addEventListener("click", function(){ $("wType").value = "monthly"; $("wage").value = b.getAttribute("data-w"); $("left").value = b.getAttribute("data-l"); renderPay(); }); });
+  $("tabDays").addEventListener("click", function(){ tab("days"); }); $("tabPay").addEventListener("click", function(){ tab("pay"); });
+  if (/#pay/.test(location.hash)) tab("pay");
+  renderChecks(); renderDays(); renderPay();
+}
+if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+
+</script>
+</body>
+</html>

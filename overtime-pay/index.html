@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>加班費計算機 2026｜平日、休息日、國定假日加班費怎麼算＋116年最低工資檢核</title>
+<meta name="description" content="加班費線上計算：輸入月薪或時薪與每筆加班日期、類型、時數，依勞基法第 24、39、40 條計算平日 1.34／1.67 倍、休息日 1.34／1.67／2.67 倍、國定假日加發 1 日工資，並檢核 116 年最低工資 30,900 元、時薪 205 元。">
+<link rel="canonical" href="https://calctw.com/overtime-pay/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="加班費計算機｜平日、休息日、國定假日一次算">
+<meta property="og:description" content="多筆加班加總、補休換算、116 年最低工資 30,900／205 元自動檢核。">
+<meta property="og:url" content="https://calctw.com/overtime-pay/">
+<meta property="og:image" content="https://calctw.com/og/overtime-pay.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f766e">
+<!-- Google AdSense：取得核准後取消註解並替換發布商 ID
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376962477938948" crossorigin="anonymous"></script>
+-->
+<!-- 流量分析（預留，尚未啟用）：如採用 Google Analytics 4，取消註解並替換 G-XXXXXXXXXX，並同步更新 /privacy/
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XXXXXXXXXX");</script>
+-->
+<style>
+:root{--c:#0f766e;--c2:#115e59;--bg:#f6f8f8;--card:#fff;--tx:#1f2933;--mu:#5f6b76;--bd:#dfe5e8;--hl:#ecfdf5;--warn:#fff7ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header.site{background:var(--c);color:#fff;padding:10px 16px;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:12px}
+h1{font-size:1.5rem;line-height:1.35;margin:.6em 0 .3em}
+h2{font-size:1.2rem;margin:1.4em 0 .5em;border-left:4px solid var(--c);padding-left:8px}
+h3{font-size:1.05rem;margin:1em 0 .3em}
+p{margin:.4em 0 .8em}
+a{color:var(--c2)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:1fr}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:10px;border:1px solid #b8c3c9;border-radius:8px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--c);border-color:var(--c)}
+.hint{font-size:.85rem;color:var(--mu)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button{font-size:.95rem;padding:9px 14px;border-radius:8px;border:1px solid var(--c);background:#fff;color:var(--c);cursor:pointer}
+button.primary{background:var(--c);color:#fff}
+button.del{border-color:#b91c1c;color:#b91c1c;padding:6px 10px;font-size:.85rem}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--hl);border-radius:10px;padding:12px}
+.kpi .v{font-size:1.35rem;font-weight:800;color:var(--c2)}
+.kpi .l{font-size:.85rem;color:var(--mu)}
+.tbl{width:100%;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{border-bottom:1px solid var(--bd);padding:8px 6px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td.l,th.l{text-align:left;white-space:normal}
+thead th{background:#f0f4f5}
+tfoot td{font-weight:800;background:#f0f4f5}
+tr.on td{background:#fef9c3;font-weight:700}
+.row{border:1px solid var(--bd);border-radius:10px;padding:12px;margin:10px 0;background:#fbfcfc}
+.row .rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:700}
+.rg{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.warnl{color:#b45309;font-size:.85rem;margin:.3em 0 0}
+.ok{color:#047857;font-weight:700}.ng{color:#b91c1c;font-weight:700}
+.tabs{display:flex;gap:6px;margin:8px 0 0}
+.tabs button[aria-selected="true"]{background:var(--c);color:#fff}
+.ad-slot{margin:14px 0;min-height:100px;background:repeating-linear-gradient(45deg,#f3f4f6,#f3f4f6 10px,#eceff1 10px,#eceff1 20px);border:1px dashed #c4ccd1;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#8a959e;font-size:.8rem;position:relative}
+.ad-slot::before{content:"廣告";position:absolute;top:4px;left:8px}
+.ad-slot ins{width:100%}
+.note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
+details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:700;padding:12px 0}
+footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
+.src li{word-break:break-all}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.rg{grid-template-columns:repeat(6,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
+
+/* shared site nav (site-build) */
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+</style>
+</head>
+<body>
+<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/" aria-current="page">加班費計算</a><a href="/annual-leave/">特休計算</a></nav></header>
+<main>
+<!-- AdSense 頂部廣告位 -->
+<div class="ad-slot" aria-label="廣告">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="7000000003" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+</div>
+
+<h1>加班費計算機（平日／休息日／國定假日）</h1>
+<p>輸入月薪或時薪，逐筆填寫加班日期、類型（平日、休息日、國定假日、例假日）與時數，依<strong>勞動基準法第 24、39、40 條</strong>算出每筆加班費並加總，同時依日期檢核是否低於最低工資（<strong>116 年 1 月 1 日起月薪 30,900 元、時薪 205 元</strong>）。</p>
+<p class="hint" id="dataStamp"></p>
+<section class="card" aria-labelledby="inTitle">
+<h2 id="inTitle" style="margin-top:0">輸入薪資與加班紀錄</h2>
+<div class="grid">
+  <div><label for="payType">薪資計算方式</label>
+    <select id="payType"><option value="monthly" selected>月薪制</option><option value="hourly">時薪制</option></select></div>
+  <div><label for="pay" id="payLabel">月薪（元）</label>
+    <input id="pay" type="number" inputmode="numeric" min="0" step="1" value="30000">
+    <div class="hint" id="payHint">正常工作時間所得工資，不含加班費</div></div>
+  <div><label for="mode">加成倍數算法</label>
+    <select id="mode"><option value="r">1.34／1.67／2.67（實務常用，進位）</option><option value="f" selected>4/3／5/3／8/3（精確分數，同勞動部試算）</option></select></div>
+</div>
+<div id="rows"></div>
+<div class="btns">
+  <button type="button" id="addRow">＋ 新增一筆加班</button>
+  <button class="primary" id="calcBtn" type="button">開始試算</button>
+  <button type="button" id="exMol">勞動部範例（月薪 3 萬）</button>
+</div>
+<p class="hint">※「時數」：平日填延長工時（正常 8 小時以外的時數）；休息日、國定假日、例假日填當天實際出勤時數。</p>
+</section>
+
+<section class="card" aria-labelledby="outTitle" aria-live="polite">
+<h2 id="outTitle" style="margin-top:0">試算結果</h2>
+<div class="kpis">
+  <div class="kpi"><div class="l">加班費合計（加給工資）</div><div class="v" id="kTotal">-</div></div>
+  <div class="kpi"><div class="l">平日每小時工資額</div><div class="v" id="kHour">-</div></div>
+  <div class="kpi"><div class="l">計入每月上限的加班時數</div><div class="v" id="kHours">-</div></div>
+  <div class="kpi"><div class="l">可換補休時數（§32-1）</div><div class="v" id="kComp">-</div></div>
+</div>
+<div id="warns"></div>
+<div class="tbl"><table id="resTbl"><thead><tr><th>日期</th><th>類型</th><th>時數</th><th class="l">計算方式</th><th>加班費</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+<p class="hint">※ 金額為月薪以外另應發給的加給工資；明細保留到小數 2 位、合計四捨五入到元。月薪制的國定假日、例假日「當日工資照給」已含在月薪內，不重複計入。</p>
+</section>
+<!-- AdSense 結果下方廣告位 -->
+<div class="ad-slot" aria-label="廣告">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="7000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+</div>
+
+<section class="card" aria-labelledby="ckTitle">
+<h2 id="ckTitle" style="margin-top:0">自我驗算：勞動部加班費試算系統範例</h2>
+<p class="hint">勞動部範例：月薪 30,000 元，平日加班 3 小時、休息日加班 6 小時、國定假日出勤 8 小時，加給工資 2,708.33… 元。</p>
+<div class="tbl"><table id="ckTbl"><thead><tr><th class="l">驗算項目</th><th>官方／法定</th><th>本工具結果</th><th>結果</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section aria-labelledby="howTitle">
+<h2 id="howTitle">加班費計算公式（勞基法第 24、39、40 條）</h2>
+<div class="tbl"><table><thead><tr><th>出勤類型</th><th>時段</th><th>加給倍數（× 平日時薪）</th><th class="l">依據</th></tr></thead><tbody>
+<tr><td>平日延長工時</td><td>第 1～2 小時</td><td>1.34（4/3）</td><td class="l">§24 Ⅰ①</td></tr>
+<tr><td></td><td>第 3～4 小時</td><td>1.67（5/3）</td><td class="l">§24 Ⅰ②</td></tr>
+<tr><td>平日（天災事變突發）</td><td>延長時數</td><td>2</td><td class="l">§24 Ⅰ③、§32 Ⅳ</td></tr>
+<tr><td>休息日</td><td>第 1～2 小時</td><td>1.34（4/3）</td><td class="l">§24 Ⅱ</td></tr>
+<tr><td></td><td>第 3～8 小時</td><td>1.67（5/3）</td><td class="l">§24 Ⅱ</td></tr>
+<tr><td></td><td>第 9～12 小時</td><td>2.67（8/3）</td><td class="l">勞動部試算系統說明</td></tr>
+<tr><td>國定假日／特休出勤</td><td>8 小時內</td><td>加發 1 日工資（時薪 × 8）</td><td class="l">§39</td></tr>
+<tr><td></td><td>第 9～10／11～12 小時</td><td>1.34／1.67</td><td class="l">§39、§24 Ⅰ</td></tr>
+<tr><td>例假日（天災事變突發）</td><td>8 小時內</td><td>加發 1 日工資，並事後補假</td><td class="l">§40</td></tr>
+<tr><td></td><td>超過 8 小時</td><td>2（按出勤時間加倍）</td><td class="l">§40、勞動部說明</td></tr>
+</tbody></table></div>
+<p>平日每小時工資額＝月薪 ÷ 30 ÷ 8。時薪制勞工直接以約定時薪計算；部分工時或時薪制在國定假日、例假的「當日工資照給」怎麼算，依個別約定與勞動部規定而定，本工具只計算加給部分。</p>
+<h3>補休換算</h3>
+<p>平日延長工時與休息日工作，勞工可依意願選擇補休（第 32 條之 1），按工作時數 1:1 換算；補休期限屆滿或離職時未休完的時數，雇主應依原加班當日的工資標準發給加班費。</p>
+</section>
+
+<div class="note"><strong>免責聲明：</strong>本工具依勞動基準法與勞動部公開說明製作，僅供一般適用勞基法之全時勞工試算參考，不構成法律意見。變形工時、責任制（第 84 條之 1）、部分工時等情形可能不同，實際權益以勞動契約、工作規則與主管機關解釋為準；有爭議可撥打勞工諮詢申訴專線 1955。</div>
+
+<section aria-labelledby="faqTitle">
+<h2 id="faqTitle">常見問題 FAQ</h2>
+<details open><summary>平日加班費怎麼算？</summary><p>依勞動基準法第 24 條第 1 項，平日延長工時前 2 小時按平日每小時工資額加給 1/3 以上（約 1.34 倍），第 3、4 小時加給 2/3 以上（約 1.67 倍）。一天正常工時加上加班不得超過 12 小時，所以平日加班最多 4 小時。</p></details>
+<details><summary>休息日加班費怎麼算？</summary><p>依第 24 條第 2 項，休息日工作前 2 小時另再加給 1 又 1/3 以上（約 1.34 倍），第 3～8 小時另再加給 1 又 2/3 以上（約 1.67 倍），第 9～12 小時按勞動部試算系統說明另再加給 2 又 2/3 以上（約 2.67 倍），並按實際工作時數計算。休息日工作時數要計入每月加班時數上限。</p></details>
+<details><summary>國定假日上班，加班費怎麼算？</summary><p>依第 39 條，經勞工同意於國定假日（休假日）出勤，工資加倍發給，也就是當日工資照給之外再加發 1 日工資；8 小時內不論做幾小時都加發 1 日。超過 8 小時的部分，前 2 小時加給 1/3、再 2 小時加給 2/3。特別休假日出勤也照此計算。</p></details>
+<details><summary>例假日可以叫員工上班嗎？</summary><p>原則上不行。依第 40 條，只有遇到天災、事變或突發事件，雇主認為有必要時才能讓勞工在例假出勤，且工資加倍發給（8 小時內加發 1 日工資，超過 8 小時的部分按出勤時間加倍發給），並應於事後補假休息。</p></details>
+<details><summary>時薪怎麼算？月薪要除以多少？</summary><p>月薪制勞工的平日每小時工資額＝月薪 ÷ 30 ÷ 8（也就是 ÷ 240）。月薪應以正常工作時間所得的工資計算，不含加班費。例如月薪 30,000 元，時薪為 125 元。</p></details>
+<details><summary>加班可以換補休嗎？怎麼換？</summary><p>依第 32 條之 1，平日延長工時或休息日工作後，勞工可以「依意願」選擇補休，經雇主同意後依工作時數 1:1 換算補休時數，補休期限由勞雇雙方協商。補休期限屆滿或契約終止時沒休完的時數，雇主應依加班當日的工資標準發給加班費。國定假日與例假出勤則依第 39、40 條處理，不適用 1:1 換補休規定。</p></details>
+<details><summary>每個月最多可以加班幾小時？</summary><p>依第 32 條，延長工時一個月不得超過 46 小時；經工會或勞資會議同意，一個月最多 54 小時、每 3 個月不得超過 138 小時。休息日工作時數也要計入。</p></details>
+<details><summary>2027 年（116 年）最低工資是多少？</summary><p>勞動部 115 年 10 月 16 日公告，自 116 年 1 月 1 日起每月最低工資調為 30,900 元、每小時最低工資調為 205 元；115 年為每月 29,500 元、每小時 196 元。本工具會依每筆加班日期自動檢核薪資是否低於當時的最低工資。</p></details>
+<details><summary>為什麼有的網站算 1.34 倍、勞動部算 4/3 倍？</summary><p>法律規定是「加給 1/3 以上」，精確倍數是 4/3（1.3333…）、5/3、8/3。實務上很多公司採 1.34、1.67、2.67 等進位後的倍數，結果會略高，仍符合「以上」的規定。本工具可切換兩種算法，選「精確分數」時與勞動部加班費試算系統一致。</p></details>
+</section>
+
+<section aria-labelledby="srcTitle">
+<h2 id="srcTitle">資料來源與查核日期</h2>
+<ul class="src" id="srcList"></ul>
+</section>
+</main>
+<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "加班費計算機", "url": "https://calctw.com/overtime-pay/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依勞動基準法第 24、39、40 條計算平日、休息日、國定假日與例假日出勤的加班費，可多筆加總並檢核最低工資。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-18"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "平日加班費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "依勞動基準法第 24 條第 1 項，平日延長工時前 2 小時按平日每小時工資額加給 1/3 以上（約 1.34 倍），第 3、4 小時加給 2/3 以上（約 1.67 倍）。一天正常工時加上加班不得超過 12 小時，所以平日加班最多 4 小時。"}}, {"@type": "Question", "name": "休息日加班費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "依第 24 條第 2 項，休息日工作前 2 小時另再加給 1 又 1/3 以上（約 1.34 倍），第 3～8 小時另再加給 1 又 2/3 以上（約 1.67 倍），第 9～12 小時按勞動部試算系統說明另再加給 2 又 2/3 以上（約 2.67 倍），並按實際工作時數計算。休息日工作時數要計入每月加班時數上限。"}}, {"@type": "Question", "name": "國定假日上班，加班費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "依第 39 條，經勞工同意於國定假日（休假日）出勤，工資加倍發給，也就是當日工資照給之外再加發 1 日工資；8 小時內不論做幾小時都加發 1 日。超過 8 小時的部分，前 2 小時加給 1/3、再 2 小時加給 2/3。特別休假日出勤也照此計算。"}}, {"@type": "Question", "name": "例假日可以叫員工上班嗎？", "acceptedAnswer": {"@type": "Answer", "text": "原則上不行。依第 40 條，只有遇到天災、事變或突發事件，雇主認為有必要時才能讓勞工在例假出勤，且工資加倍發給（8 小時內加發 1 日工資，超過 8 小時的部分按出勤時間加倍發給），並應於事後補假休息。"}}, {"@type": "Question", "name": "時薪怎麼算？月薪要除以多少？", "acceptedAnswer": {"@type": "Answer", "text": "月薪制勞工的平日每小時工資額＝月薪 ÷ 30 ÷ 8（也就是 ÷ 240）。月薪應以正常工作時間所得的工資計算，不含加班費。例如月薪 30,000 元，時薪為 125 元。"}}, {"@type": "Question", "name": "加班可以換補休嗎？怎麼換？", "acceptedAnswer": {"@type": "Answer", "text": "依第 32 條之 1，平日延長工時或休息日工作後，勞工可以「依意願」選擇補休，經雇主同意後依工作時數 1:1 換算補休時數，補休期限由勞雇雙方協商。補休期限屆滿或契約終止時沒休完的時數，雇主應依加班當日的工資標準發給加班費。國定假日與例假出勤則依第 39、40 條處理，不適用 1:1 換補休規定。"}}, {"@type": "Question", "name": "每個月最多可以加班幾小時？", "acceptedAnswer": {"@type": "Answer", "text": "依第 32 條，延長工時一個月不得超過 46 小時；經工會或勞資會議同意，一個月最多 54 小時、每 3 個月不得超過 138 小時。休息日工作時數也要計入。"}}, {"@type": "Question", "name": "2027 年（116 年）最低工資是多少？", "acceptedAnswer": {"@type": "Answer", "text": "勞動部 115 年 10 月 16 日公告，自 116 年 1 月 1 日起每月最低工資調為 30,900 元、每小時最低工資調為 205 元；115 年為每月 29,500 元、每小時 196 元。本工具會依每筆加班日期自動檢核薪資是否低於當時的最低工資。"}}, {"@type": "Question", "name": "為什麼有的網站算 1.34 倍、勞動部算 4/3 倍？", "acceptedAnswer": {"@type": "Answer", "text": "法律規定是「加給 1/3 以上」，精確倍數是 4/3（1.3333…）、5/3、8/3。實務上很多公司採 1.34、1.67、2.67 等進位後的倍數，結果會略高，仍符合「以上」的規定。本工具可切換兩種算法，選「精確分數」時與勞動部加班費試算系統一致。"}}]}
+</script>
+
+<script>
+
+/* ===== 法定倍數與最低工資（查核日期：2026-10-18） ===== */
+var CHECKED = "2026-10-18";
+var MIN_WAGE = [ // 依加班日期判斷適用期間
+  {from:"2026-01-01", to:"2026-12-31", monthly:29500, hourly:196, note:"115 年最低工資（勞動部公告，115/1/1 生效）"},
+  {from:"2027-01-01", to:"9999-12-31", monthly:30900, hourly:205, note:"116 年最低工資（勞動部 115/10/16 勞動條2字第1150148692號公告，116/1/1 生效）"}
+];
+var MULT = {
+  r:{a:1.34, b:1.67, c:2.67, label:"1.34／1.67／2.67"},
+  f:{a:4/3, b:5/3, c:8/3, label:"4/3／5/3／8/3"}
+};
+var TYPES = {
+  weekday:{name:"平日延長工時", max:4},
+  weekdayDisaster:{name:"平日（天災事變突發延長）", max:4},
+  rest:{name:"休息日", max:12},
+  holiday:{name:"國定假日／特休出勤", max:12},
+  regular:{name:"例假日（天災事變突發）", max:12}
+};
+var SOURCES = [
+  ["勞動基準法第 24 條（延長工時、休息日工資）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=24"],
+  ["勞動基準法第 32 條之 1（補休）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=32-1"],
+  ["勞動基準法第 39 條（假日工資加倍）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=39"],
+  ["勞動基準法第 40 條（例假停止假期）", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=40"],
+  ["勞動部加班費試算系統（含範例 2,708.33 元）", "https://calcr2.mol.gov.tw/Index"],
+  ["勞動部：休息日加班費、例假出勤工資計算", "https://www.mol.gov.tw/1607/28162/28166/28180/81521/81529/"],
+  ["勞動部：國定假日工資說明", "https://www.mol.gov.tw/1607/28162/28166/28180/81521/81533/"],
+  ["行政院公報：勞動部公告修正最低工資，116/1/1 起月薪 30,900 元、時薪 205 元（115/10/16）", "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032192/ch08/type1/gov82/num28/Eg.pdf"],
+  ["勞動部新聞稿：115/1/1 起最低工資月薪 29,500 元、時薪 196 元", "https://www.mol.gov.tw/1607/1632/1633/84947/"]
+];
+
+/* ===== 計算核心 ===== */
+function hourlyOf(payType, pay){ return payType === "hourly" ? pay : pay / 30 / 8; }
+function calcRow(type, h, H, m){
+  h = Math.max(0, h); var parts = [], amt = 0;
+  function seg(hrs, mul, label){ if (hrs > 0){ var v = H * hrs * mul; parts.push(label + " " + fmtH(hrs) + "h × " + fmtM(mul)); amt += v; } }
+  if (type === "weekday"){ seg(Math.min(h,2), m.a, "前2h"); seg(Math.min(Math.max(h-2,0),2), m.b, "第3-4h"); }
+  else if (type === "weekdayDisaster"){ seg(h, 2, "天災延長"); }
+  else if (type === "rest"){ seg(Math.min(h,2), m.a, "前2h"); seg(Math.min(Math.max(h-2,0),6), m.b, "第3-8h"); seg(Math.min(Math.max(h-8,0),4), m.c, "第9-12h"); }
+  else if (type === "holiday" || type === "regular"){
+    if (h > 0){ amt += H * 8; parts.push("8h內加發1日工資 " + fmt2(H) + "×8"); }
+    if (type === "holiday"){ seg(Math.min(Math.max(h-8,0),2), m.a, "第9-10h"); seg(Math.min(Math.max(h-10,0),2), m.b, "第11-12h"); }
+    else seg(Math.min(Math.max(h-8,0),4), 2, "超過8h加倍");
+  }
+  return {amount:amt, parts:parts};
+}
+function minWageFor(date){ for (var i = 0; i < MIN_WAGE.length; i++){ if (date >= MIN_WAGE[i].from && date <= MIN_WAGE[i].to) return MIN_WAGE[i]; } return null; }
+function calcAll(payType, pay, mode, rows){
+  var m = MULT[mode] || MULT.r, H = hourlyOf(payType, pay), out = {H:H, rows:[], total:0, capHours:0, compHours:0, warns:[]};
+  var mwSeen = {};
+  rows.forEach(function(r, i){
+    var t = TYPES[r.type] ? r.type : "weekday", h = +r.h || 0;
+    if (h > TYPES[t].max){ out.warns.push("第 " + (i+1) + " 筆：" + TYPES[t].name + "超過一日上限（" + (t.indexOf("weekday") === 0 ? "正常 8 小時＋加班 4 小時" : "12 小時") + "），只計 " + TYPES[t].max + " 小時。"); h = TYPES[t].max; }
+    var c = calcRow(t, h, H, m);
+    out.rows.push({date:r.date, type:t, h:h, amount:c.amount, parts:c.parts});
+    out.total += c.amount;
+    if (t === "weekday" || t === "rest"){ out.capHours += h; out.compHours += h; }
+    var mw = r.date ? minWageFor(r.date) : null;
+    if (mw && !mwSeen[mw.from]){
+      mwSeen[mw.from] = 1;
+      if (payType === "monthly" && pay < mw.monthly) out.warns.push(r.date + " 適用" + mw.note + "：月薪 " + fmt(pay) + " 元低於最低工資 " + fmt(mw.monthly) + " 元。");
+      if (payType === "hourly" && pay < mw.hourly) out.warns.push(r.date + " 適用" + mw.note + "：時薪 " + fmt(pay) + " 元低於最低時薪 " + mw.hourly + " 元。");
+    }
+  });
+  if (out.capHours > 46) out.warns.push("平日延長工時＋休息日工作合計 " + fmtH(out.capHours) + " 小時：如果都在同一個月，已超過每月 46 小時上限（經工會或勞資會議同意最多 54 小時）。");
+  return out;
+}
+var MOL_ROWS = [{date:"2026-10-20", type:"weekday", h:3},{date:"2026-10-24", type:"rest", h:6},{date:"2026-10-10", type:"holiday", h:8}];
+function selfTests(){
+  var t = [], f = calcAll("monthly", 30000, "f", MOL_ROWS), r = calcAll("monthly", 30000, "r", MOL_ROWS);
+  t.push({name:"勞動部範例合計（精確分數 4/3、5/3）", expected:"2708.33", got:f.total.toFixed(2)});
+  t.push({name:"月薪 30,000 → 平日每小時工資額（÷30÷8）", expected:"125.00", got:f.H.toFixed(2)});
+  t.push({name:"國定假日出勤 8 小時加發 1 日工資", expected:"1000.00", got:f.rows[2].amount.toFixed(2)});
+  t.push({name:"同範例改用 1.34／1.67 倍：125×(1.34×2+1.67)＋125×(1.34×2+1.67×4)＋1,000", expected:"2713.75", got:r.total.toFixed(2)});
+  t.push({name:"休息日 12 小時（1.34×2＋1.67×6＋2.67×4＝23.38）× 125", expected:"2922.50", got:calcRow("rest", 12, 125, MULT.r).amount.toFixed(2)});
+  var mw = minWageFor("2027-01-01");
+  t.push({name:"116/1/1 起最低工資（月薪／時薪）", expected:"30900/205", got:mw.monthly + "/" + mw.hourly});
+  var mw2 = minWageFor("2026-12-31");
+  t.push({name:"115 年最低工資（月薪／時薪）", expected:"29500/196", got:mw2.monthly + "/" + mw2.hourly});
+  t.forEach(function(x){ x.pass = String(x.expected) === String(x.got); });
+  return t;
+}
+
+/* ===== 介面 ===== */
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
+function fmt2(n){ return (Math.round(n * 100) / 100).toLocaleString("zh-TW", {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function fmtH(n){ return String(Math.round(n * 100) / 100); }
+function fmtM(n){ var s = {"1.3333":"4/3","1.6667":"5/3","2.6667":"8/3"}[n.toFixed(4)]; return s || String(n); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+var seq = 0;
+function addRow(d){
+  d = d || {date:"2026-10-20", type:"weekday", h:2};
+  var id = ++seq, div = document.createElement("div"); div.className = "row";
+  var opt = Object.keys(TYPES).map(function(k){ return '<option value="'+k+'"'+(d.type===k?" selected":"")+">"+TYPES[k].name+"</option>"; }).join("");
+  div.innerHTML = '<div class="rh"><span class="rn"></span><button type="button" class="del">刪除</button></div><div class="grid">'+
+    '<div><label for="d'+id+'">加班日期</label><input id="d'+id+'" data-k="date" type="date" value="'+esc(d.date)+'"></div>'+
+    '<div><label for="t'+id+'">類型</label><select id="t'+id+'" data-k="type">'+opt+'</select></div>'+
+    '<div><label for="h'+id+'">時數</label><input id="h'+id+'" data-k="h" type="number" inputmode="decimal" min="0" max="12" step="0.5" value="'+esc(d.h)+'"></div></div>';
+  div.querySelector(".del").addEventListener("click", function(){ div.parentNode.removeChild(div); renum(); render(); });
+  Array.prototype.forEach.call(div.querySelectorAll("input,select"), function(el){ el.addEventListener("input", render); el.addEventListener("change", render); });
+  $("rows").appendChild(div); renum();
+}
+function renum(){ Array.prototype.forEach.call(document.querySelectorAll("#rows .row"), function(r, i){ r.querySelector(".rn").textContent = "加班 " + (i+1); }); }
+function readRows(){ return Array.prototype.map.call(document.querySelectorAll("#rows .row"), function(r){ var o = {}; Array.prototype.forEach.call(r.querySelectorAll("[data-k]"), function(el){ o[el.getAttribute("data-k")] = el.value; }); return o; }); }
+function render(){
+  var pt = $("payType").value, pay = +$("pay").value || 0, mode = $("mode").value;
+  $("payLabel").textContent = pt === "hourly" ? "時薪（元）" : "月薪（元）";
+  var r = calcAll(pt, pay, mode, readRows());
+  $("kTotal").textContent = fmt(r.total) + " 元";
+  $("kHour").textContent = fmt2(r.H) + " 元";
+  $("kHours").textContent = fmtH(r.capHours) + " 小時";
+  $("kComp").textContent = fmtH(r.compHours) + " 小時";
+  $("warns").innerHTML = r.warns.map(function(x){ return '<p class="warnl">⚠ ' + esc(x) + "</p>"; }).join("");
+  $("resTbl").tBodies[0].innerHTML = r.rows.map(function(o){ return "<tr><td>"+esc(o.date||"－")+"</td><td>"+TYPES[o.type].name+"</td><td>"+fmtH(o.h)+'</td><td class="l">'+(o.parts.length ? esc(o.parts.join("；")) + "（時薪 " + fmt2(r.H) + "）" : "－")+"</td><td>"+fmt2(o.amount)+"</td></tr>"; }).join("");
+  $("resTbl").tFoot.innerHTML = "<tr><td>合計</td><td></td><td></td><td class=\"l\">倍數算法："+MULT[mode].label+"</td><td>"+fmt2(r.total)+"</td></tr>";
+}
+function renderChecks(){
+  var t = selfTests(); window.CALC_SELFTEST_RESULTS = t;
+  $("ckTbl").tBodies[0].innerHTML = t.map(function(x){ return '<tr><td class="l">'+esc(x.name)+"</td><td>"+esc(x.expected)+"</td><td>"+esc(x.got)+"</td><td class=\""+(x.pass?"ok":"ng")+"\">"+(x.pass?"✔ 相符":"✘ 不符")+"</td></tr>"; }).join("");
+}
+function loadMol(){ $("rows").innerHTML = ""; $("payType").value = "monthly"; $("pay").value = 30000; MOL_ROWS.forEach(function(r){ addRow(r); }); render(); }
+function init(){
+  $("dataStamp").textContent = "依勞動基準法第 24、32-1、39、40 條｜最低工資：115 年 29,500／196 元，116/1/1 起 30,900／205 元｜查核日期：" + CHECKED;
+  $("srcList").innerHTML = SOURCES.map(function(s){ return '<li>'+s[0]+'：<a href="'+s[1]+'" rel="noopener" target="_blank">'+s[1]+'</a></li>'; }).join("") + "<li>查核日期："+CHECKED+"（台北時間）</li>";
+  ["payType","pay","mode"].forEach(function(id){ $(id).addEventListener("input", render); $(id).addEventListener("change", render); });
+  $("addRow").addEventListener("click", function(){ addRow(); render(); });
+  $("calcBtn").addEventListener("click", render);
+  $("exMol").addEventListener("click", loadMol);
+  renderChecks();
+  loadMol();
+}
+if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+
+</script>
+</body>
+</html>
