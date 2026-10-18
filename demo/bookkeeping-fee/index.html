@@ -48,6 +48,12 @@ var year=m*mo;rows.push(["年度記帳費（"+f(m).replace(" 元","")+" × "+mo+
 $("kTotal").textContent=f(once+year);$("kYear").textContent=f(year);$("kOnce").textContent=f(once);$("kAvg").textContent=f((once+year)/12);$("kNext").textContent=f(year);
 $("tbl").tBodies[0].innerHTML=rows.map(function(r){return"<tr><td>"+r[0]+"</td><td>"+f(r[1])+"</td></tr>"}).join("")+"<tr><td><strong>第一年合計</strong></td><td><strong>"+f(once+year)+"</strong></td></tr>";}
 document.querySelectorAll("input,select").forEach(function(e){e.addEventListener("input",calc);e.addEventListener("change",calc)});calc();})();</script>
+<script>(function(){var ps=[],ok={};new URLSearchParams(location.search).forEach(function(v,k){if(/^[A-Za-z][\w-]{0,20}$/.test(k)&&v.length<=40)ps.push([k,v])});
+function el(k){return document.getElementById(k)}function isSel(p){var e=el(p[0]);return !!e&&e.tagName==="SELECT"}
+function apply(k,v){var e=el(k);if(!e||!/^(INPUT|SELECT)$/.test(e.tagName)||e.type==="hidden")return false;if(e.tagName==="SELECT"&&!Array.prototype.some.call(e.options,function(o){return o.value===v}))return false;
+e.value=v;e.dispatchEvent(new Event("input",{bubbles:true}));e.dispatchEvent(new Event("change",{bubbles:true}));return true}
+ps.filter(isSel).concat(ps.filter(function(p){return !isSel(p)})).forEach(function(p){if(apply(p[0],p[1]))ok[p[0]]=p[1]});
+Object.keys(ok).forEach(function(k){var e=el(k);if(e&&e.value!==ok[k])apply(k,ok[k])});window.CALCTW_PREFILLED=Object.keys(ok).length;})();</script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
 </body>
 </html>
