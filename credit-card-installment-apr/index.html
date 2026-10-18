@@ -74,16 +74,20 @@ footer{color:var(--mu);font-size:.85rem;text-align:center;padding:24px 12px}
 @media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
 
 /* shared site nav (site-build) */
-header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.topnav .ng{display:inline-flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}.topnav .ncat{font-size:.75rem;font-weight:700;opacity:.75;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:0 7px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
 
 /* growth wave 1 */.rel{display:grid;gap:8px;grid-template-columns:1fr;padding:0;list-style:none}.rel a{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:#fff;text-decoration:none}.rel strong{display:block}.rel span{font-size:.85rem;color:var(--mu)}.embedbox textarea{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;min-height:84px;border:1px solid var(--bd);border-radius:8px;padding:8px}.lt{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.lt a{display:inline-block;border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 12px;text-decoration:none}@media(min-width:720px){.rel{grid-template-columns:repeat(3,1fr)}}
 
 /* B2B */.b2b{margin:12px 0 0;padding:10px 12px;border:1px dashed var(--bd);border-radius:10px;background:#fafafa;font-size:.92rem}.b2b p{margin:0}.b2b a{font-weight:700}
+
+/* category label */.crumbs{font-size:.85rem;color:var(--mu);margin:.4em 0 0}.crumbs a{color:var(--mu)}.crumbs .catlink{font-weight:700}
 </style>
 </head>
 <body>
-<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/" aria-current="page">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a></nav></header>
+<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><span class="ng"><a class="ncat" href="/#cat-labor">勞動薪資</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a></span><span class="ng"><a class="ncat" href="/#cat-mortgage">房貸</a><a href="/youth-mortgage/">新青安房貸</a></span><span class="ng"><a class="ncat" href="/#cat-tax">稅務</a><a href="/land-value-tax/">地價稅試算</a></span><span class="ng"><a class="ncat" href="/#cat-shop">電商與消費</a><a href="/credit-card-installment-apr/" aria-current="page">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a></span></nav></header>
 <main>
+<nav class="crumbs catlabel" aria-label="麵包屑"><a href="/">首頁</a> › <a class="catlink" href="/#cat-shop">🛒 電商與消費</a> › 分期年利率</nav>
+
 <!-- AdSense 頂部廣告位 -->
 <div class="ad-slot" aria-label="廣告">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -180,7 +184,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <details><summary>分期會影響信用評分嗎？</summary><p>依約按時繳款的分期通常不會有負面影響，但分期會占用信用額度，並在聯徵資料中呈現分期負債。若同時有多筆分期，可能影響未來申請房貸、信貸時的負債比評估。</p></details>
 </section>
 </main>
-<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
+<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"信用卡分期實際年利率換算器","url":"https://calctw.com/credit-card-installment-apr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入商品金額、期數與手續費，用 IRR 換算信用卡分期實際年利率，並與一次付清＋回饋及存款機會成本比較。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-18"}

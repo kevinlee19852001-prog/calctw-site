@@ -46,7 +46,7 @@ a{color:var(--c2)}
 .note{background:var(--warn);border-left:4px solid #f59e0b;padding:10px 12px;border-radius:6px;font-size:.92rem}
 .tools{display:grid;gap:12px;grid-template-columns:1fr}
 .tool{display:flex;flex-direction:column;background:#fff;border:1px solid var(--bd);border-top:5px solid var(--tc);border-radius:12px;padding:16px;text-decoration:none;color:var(--tx)}
-.tool h2{border-left:0;padding-left:0;margin:0 0 .4em;color:var(--tc)}
+.tool h2,.tool h3{border-left:0;padding-left:0;margin:0 0 .4em;color:var(--tc);font-size:1.1rem}.cat{margin:22px 0 8px;scroll-margin-top:12px}.catdesc{color:var(--mu);margin:.2em 0 .8em}.catjump{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.catjump a{border:1px solid var(--bd);background:#fff;border-radius:999px;padding:4px 14px;text-decoration:none;font-weight:600}.ltlist{margin:10px 0 0;border:1px solid var(--bd);border-radius:10px;background:#fff;padding:8px 12px}.ltlist summary{cursor:pointer;font-weight:700}.ltlist h4{margin:.7em 0 .3em;font-size:.95rem}.ltlist ul{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none}
 .tool p{flex:1}
 .tool .go{font-weight:700;color:var(--tc)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
@@ -57,7 +57,7 @@ ul.plain li{margin:.25em 0}
 @media(min-width:720px){.tools{grid-template-columns:repeat(3,1fr)}h1{font-size:1.85rem}main{padding:16px 20px}}
 
 /* shared site nav (site-build) */
-header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
+header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.site a{color:#fff;text-decoration:none}header.site .brand{font-weight:800;font-size:1.05rem}.topnav{display:flex;flex-wrap:wrap;gap:2px 14px;font-weight:600;font-size:.92rem}.topnav a{opacity:.9;padding:2px 0}.topnav a:hover,.topnav a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:4px}.topnav .ng{display:inline-flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}.topnav .ncat{font-size:.75rem;font-weight:700;opacity:.75;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:0 7px}.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0 0 8px}.footnav a{color:var(--mu)}
 
 .crumbs{font-size:.85rem;color:var(--mu);margin:.4em 0 0}.crumbs a{color:var(--mu)}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{background:var(--hl);border-radius:10px;padding:12px}
@@ -74,9 +74,9 @@ details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px
 </style>
 </head>
 <body>
-<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a></nav></header>
+<header class="site"><a class="brand" href="/">理財小工具</a><nav class="topnav" aria-label="主選單"><span class="ng"><a class="ncat" href="/#cat-labor">勞動薪資</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a></span><span class="ng"><a class="ncat" href="/#cat-mortgage">房貸</a><a href="/youth-mortgage/">新青安房貸</a></span><span class="ng"><a class="ncat" href="/#cat-tax">稅務</a><a href="/land-value-tax/">地價稅試算</a></span><span class="ng"><a class="ncat" href="/#cat-shop">電商與消費</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a></span></nav></header>
 <main>
-<nav class="crumbs" aria-label="麵包屑"><a href="/">首頁</a> › <a href="/overtime-pay/">加班費計算機（平日／休息日／國定假日）</a> › 月薪 30,000</nav>
+<nav class="crumbs" aria-label="麵包屑"><a href="/">首頁</a> › <a class="catlink" href="/#cat-labor">💼 勞動薪資</a> › <a href="/overtime-pay/">加班費計算機（平日／休息日／國定假日）</a> › 月薪 30,000</nav>
 <div class="ad-slot" aria-label="廣告">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8376962477938948" data-ad-slot="9100000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
@@ -98,7 +98,7 @@ details{border:1px solid var(--bd);border-radius:10px;background:#fff;margin:8px
 <section aria-labelledby="sibTitle"><h2 id="sibTitle">其他金額試算</h2><ul class="sib"><li><a href="/overtime-pay/salary-30000/" aria-current="page">3 萬</a></li><li><a href="/overtime-pay/salary-40000/">4 萬</a></li><li><a href="/overtime-pay/salary-50000/">5 萬</a></li></ul><p><a href="/overtime-pay/">回到加班費計算機（平日／休息日／國定假日）（可輸入任意金額）</a></p></section>
 <div class="note"><strong>免責聲明：</strong>本頁數字由本站計算器依公開規定自動計算，僅供一般試算參考，不構成法律、稅務或貸款建議；實際金額以主管機關、雇主、銀行或發卡機構核定為準。資料查核日期：2026-10-18。</div>
 </main>
-<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/land-value-tax/">地價稅試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
+<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 理財小工具｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://calctw.com/"}, {"@type": "ListItem", "position": 2, "name": "加班費計算機（平日／休息日／國定假日）", "item": "https://calctw.com/overtime-pay/"}, {"@type": "ListItem", "position": 3, "name": "月薪 30,000", "item": "https://calctw.com/overtime-pay/salary-30000/"}]}
 </script>
