@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CalcTW demo | id=cleaning-fee | created=2026-10-19 | takedown_due=2026-11-18 -->
+<meta name="calctw-demo-created" content="2026-10-19">
+<meta name="calctw-demo-takedown" content="2026-11-18">
+<meta name="robots" content="noindex,nofollow">
+<title>清潔費用試算｜示範樣品</title>
+<style>:root{--b:#15803d}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:#f7f7f8;color:#1f2933;line-height:1.7}
+header{background:var(--b);color:#fff;padding:14px 18px}header .t{font-weight:800;font-size:1.1rem}header .s{opacity:.9;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:14px}.card{background:#fff;border:1px solid #e3e6ea;border-radius:12px;padding:16px;margin:12px 0}
+h1{font-size:1.45rem;margin:.4em 0}h2{font-size:1.1rem;margin:0 0 .5em;color:var(--b)}label{display:block;font-weight:600;font-size:.92rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:9px;border:1px solid #c5ccd3;border-radius:8px;background:#fff}.grid{display:grid;gap:12px;grid-template-columns:1fr}
+.kpis{display:grid;gap:10px;grid-template-columns:1fr 1fr}.kpi{background:#f3f4f6;border-left:4px solid var(--b);border-radius:8px;padding:10px}.kpi .v{font-size:1.3rem;font-weight:800}.kpi .l{font-size:.82rem;color:#5f6b76}
+table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1px solid #e3e6ea;padding:7px 6px;text-align:right}td:first-child,th:first-child{text-align:left}
+.ref{color:#9a3412;font-weight:700;font-size:.9rem}.hint{font-size:.85rem;color:#5f6b76}footer{text-align:center;font-size:.85rem;color:#5f6b76;padding:20px 12px 30px}
+.badge{display:inline-block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:999px;padding:2px 10px;font-size:.8rem}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="t">為清潔公司設計</div><div class="s">居家與辦公室清潔費用試算</div></header>
+<main>
+<p><span class="badge">示範樣品</span></p>
+<h1>清潔費用試算</h1>
+<p>選擇服務類型、每次清潔時數與次數，依每小時單價與最低時數規則估算清潔費用。</p>
+<section class="card" aria-labelledby="inT"><h2 id="inT">輸入條件</h2><div class="grid">
+<div><label for="svc">服務類型</label><select id="svc"><option value="0" selected>辦公室清潔（每小時 550 元）</option><option value="1">居家定期清潔（每小時 600 元）</option><option value="2">居家單次清潔（每小時 700 元）</option></select></div>
+<div><label for="hrs">每次清潔時數</label><input id="hrs" type="number" min="0" step="0.5" value="3"><div class="hint">每次最少 3 小時，未滿以 3 小時計</div></div>
+<div><label for="n">清潔次數</label><input id="n" type="number" min="1" step="1" value="4"><div class="hint">例如定期清潔每月 4 次</div></div>
+</div></section>
+<section class="card" aria-labelledby="outT" aria-live="polite"><h2 id="outT">試算結果</h2><p class="ref">僅供參考，實際以業者報價為準</p>
+<div class="kpis"><div class="kpi"><div class="l">每次費用</div><div class="v" id="kVisit">-</div></div><div class="kpi"><div class="l">合計</div><div class="v" id="kTotal">-</div></div><div class="kpi"><div class="l">每次計費時數</div><div class="v" id="kHrs">-</div></div><div class="kpi"><div class="l">每小時單價</div><div class="v" id="kRate">-</div></div></div>
+<table id="tbl"><tbody></tbody></table><p class="hint" id="kWarn"></p></section>
+<section class="card"><h2>各服務類型比較（同樣時數與次數）</h2><div style="overflow-x:auto"><table id="cmp"><thead><tr><th>服務類型</th><th>每小時</th><th>每次</th><th>合計</th></tr></thead><tbody></tbody></table></div></section><section class="card"><h2>計費說明</h2><ul class="hint"><li>每小時單價：辦公室清潔 550 元、居家定期清潔 600 元、居家單次清潔 700 元，取自業者官網公開價格。</li><li>每次最少 3 小時，未滿 3 小時以 3 小時計費。</li><li>套房清潔、空屋清潔（現場估價）與除塵蟎未公開價格，本試算不計入，請洽詢。</li></ul></section>
+<section class="card"><h2>想要一個屬於您的版本？</h2><p>品牌色、欄位、計費規則與文字都可以客製，並可嵌入您的官網。<a href="mailto:kevinlee19852001@gmail.com?subject=CalcTW%20%E5%AE%A2%E8%A3%BD%E5%A7%94%E8%A8%97">歡迎來信委託客製</a></p></section>
+</main>
+<footer>此為 CalcTW 製作之示範樣品，非任何公司官方工具｜製作：<a href="https://calctw.com/" target="_blank" rel="noopener">CalcTW.com</a></footer>
+<script>(function(){var C={"services": [{"label": "辦公室清潔", "rate": 550}, {"label": "居家定期清潔", "rate": 600}, {"label": "居家單次清潔", "rate": 700}], "service_default": 0, "min_hours": 3, "hours_default": 3, "visits_default": 4, "notes": ["每小時單價：辦公室清潔 550 元、居家定期清潔 600 元、居家單次清潔 700 元，取自業者官網公開價格。", "每次最少 3 小時，未滿 3 小時以 3 小時計費。", "套房清潔、空屋清潔（現場估價）與除塵蟎未公開價格，本試算不計入，請洽詢。"]};function $(i){return document.getElementById(i)}function f(n){return Math.round(n).toLocaleString("zh-TW")+" 元"}
+function calc(){var s=C.services[+$("svc").value],h=Math.max(0,+$("hrs").value||0),bh=Math.max(C.min_hours,h),n=Math.max(1,Math.floor(+$("n").value||1)),v=s.rate*bh,tot=v*n;
+$("kVisit").textContent=f(v);$("kTotal").textContent=f(tot);$("kHrs").textContent=bh+" 小時";$("kRate").textContent=f(s.rate);
+$("kWarn").textContent=h<C.min_hours?"未達每次最少 "+C.min_hours+" 小時，以 "+C.min_hours+" 小時計費。":"";
+$("tbl").tBodies[0].innerHTML="<tr><td>"+s.label+"："+s.rate.toLocaleString("zh-TW")+" 元 × "+bh+" 小時</td><td>"+f(v)+"</td></tr><tr><td>× "+n+" 次</td><td></td></tr><tr><td><strong>合計</strong></td><td><strong>"+f(tot)+"</strong></td></tr>";
+$("cmp").tBodies[0].innerHTML=C.services.map(function(q){return"<tr><td>"+q.label+"</td><td>"+q.rate.toLocaleString("zh-TW")+"</td><td>"+f(q.rate*bh)+"</td><td>"+f(q.rate*bh*n)+"</td></tr>"}).join("")}
+document.addEventListener("input",calc);document.addEventListener("change",calc);calc();})();</script>
+<script>(function(){var ps=[],ok={};new URLSearchParams(location.search).forEach(function(v,k){if(/^[A-Za-z][\w-]{0,20}$/.test(k)&&v.length<=40)ps.push([k,v])});
+function el(k){return document.getElementById(k)}function isSel(p){var e=el(p[0]);return !!e&&e.tagName==="SELECT"}
+function apply(k,v){var e=el(k);if(!e||!/^(INPUT|SELECT)$/.test(e.tagName)||e.type==="hidden")return false;if(e.tagName==="SELECT"&&!Array.prototype.some.call(e.options,function(o){return o.value===v}))return false;
+e.value=v;e.dispatchEvent(new Event("input",{bubbles:true}));e.dispatchEvent(new Event("change",{bubbles:true}));return true}
+ps.filter(isSel).concat(ps.filter(function(p){return !isSel(p)})).forEach(function(p){if(apply(p[0],p[1]))ok[p[0]]=p[1]});
+Object.keys(ok).forEach(function(k){var e=el(k);if(e&&e.value!==ok[k])apply(k,ok[k])});window.CALCTW_PREFILLED=Object.keys(ok).length;})();</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
+</body>
+</html>
