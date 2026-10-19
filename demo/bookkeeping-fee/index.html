@@ -25,10 +25,10 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1
 <main>
 <p><span class="badge">示範樣品</span></p>
 <h1>設立登記與記帳費試算</h1>
-<p>依事務所公開的收費標準設定預設值：選擇組織型態、資本額級距與加值服務，估算第一年與之後每年的費用。</p>
+<p>依事務所公開的收費標準設定預設值：選擇組織型態（行號或公司）與加值服務，估算第一年與之後每年的費用。設立費用依組織型態自動帶入。</p>
 <section class="card" aria-labelledby="inT"><h2 id="inT">輸入條件</h2><div class="grid">
 <div><label for="ent">組織型態</label><select id="ent"><option value="biz">行號</option><option value="co" selected>公司</option></select></div>
-<div><label for="setup">設立登記</label><select id="setup"><option value="0">不需要（已設立）</option><option value="8000" selected>資本額 25 萬元以內（8,000 元）</option><option value="12000">資本額 400 萬元以內（12,000 元）</option></select></div>
+<div><label for="setup">設立登記</label><select id="setup"><option value="0">不需要（已設立）</option><option value="8000" data-ent="biz">行號設立・資本額 25 萬元以內（8,000 元）</option><option value="12000" data-ent="co" selected>公司設立・資本額 400 萬元以內（12,000 元）</option></select></div>
 <div><label for="mfee">每月記帳費（元）</label><input id="mfee" type="number" min="0" step="100" value="2200"><div class="hint">公開起價，依帳務複雜度調整</div></div>
 <div><label for="months">每年收費月數</label><input id="months" type="number" min="12" max="14" step="1" value="14"><div class="hint">按月計費、每年收 14 個月（含結算申報與文具郵資）</div></div>
 <div><label for="ad0">工商憑證申請（與設立一併辦理）（500 元）</label><select id="ad0" data-fee="500" data-only=""><option value="1" selected>需要</option><option value="0">不需要</option></select></div><div><label for="ad1">公司法 22-1 條資訊申報代辦（500 元）</label><select id="ad1" data-fee="500" data-only="co"><option value="1">需要</option><option value="0" selected>不需要</option></select></div></div></section>
@@ -37,11 +37,11 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1
 <div class="kpis"><div class="kpi"><div class="l">第一年合計</div><div class="v" id="kTotal">-</div></div><div class="kpi"><div class="l">年度記帳費</div><div class="v" id="kYear">-</div></div>
 <div class="kpi"><div class="l">設立與加值服務</div><div class="v" id="kOnce">-</div></div><div class="kpi"><div class="l">第一年平均每月</div><div class="v" id="kAvg">-</div></div></div>
 <table id="tbl"><tbody></tbody></table><p class="hint">第二年起每年約 <strong id="kNext">-</strong>（不含設立費用）。</p></section>
-<section class="card"><h2>計費說明</h2><ul class="hint"><li>設立費用適用非特許行業；資本額超過級距上限的部分依實際支出收費。</li><li>記帳費報價適用書審申報；查帳案件另行報價。</li><li>實際服務費會依年度盈餘、記帳複雜程度與額外服務調整。</li><li>工商憑證可用於線上加退勞健保、調閱稅務資料等作業。</li></ul></section>
+<section class="card"><h2>計費說明</h2><ul class="hint"><li>設立費用依組織型態計價：行號 8,000 元（資本額 25 萬元以內）、公司 12,000 元（資本額 400 萬元以內），適用非特許行業；資本額超過上限的部分依實際支出收費。</li><li>記帳費報價適用書審申報；查帳案件另行報價。</li><li>實際服務費會依年度盈餘、記帳複雜程度與額外服務調整。</li><li>工商憑證可用於線上加退勞健保、調閱稅務資料等作業。</li></ul></section>
 <section class="card"><h2>想要一個屬於您的版本？</h2><p>品牌色、欄位、計費規則與文字都可以客製，並可嵌入您的官網。<a href="mailto:kevinlee19852001@gmail.com?subject=CalcTW%20%E5%AE%A2%E8%A3%BD%E5%A7%94%E8%A8%97">歡迎來信委託客製</a></p></section>
 </main>
 <footer>此為 CalcTW 製作之示範樣品，非任何公司官方工具｜製作：<a href="https://calctw.com/" target="_blank" rel="noopener">CalcTW.com</a></footer>
-<script>(function(){function $(i){return document.getElementById(i)}function f(n){return Math.round(n).toLocaleString("zh-TW")+" 元"}
+<script>(function(){var e=document.getElementById("ent"),s=document.getElementById("setup");function t(){if(s.value==="0")return;var o=s.querySelector('option[data-ent="'+e.value+'"]');if(o)s.value=o.value}e.addEventListener("input",t);e.addEventListener("change",t)})();(function(){function $(i){return document.getElementById(i)}function f(n){return Math.round(n).toLocaleString("zh-TW")+" 元"}
 function calc(){var ent=$("ent").value,setup=+$("setup").value||0,m=+$("mfee").value||0,mo=+$("months").value||0,rows=[],once=setup;
 if(setup)rows.push(["設立登記",setup]);document.querySelectorAll("select[data-fee]").forEach(function(s){var only=s.getAttribute("data-only"),on=s.value==="1"&&(!only||only===ent);s.disabled=!!only&&only!==ent;if(on){var v=+s.getAttribute("data-fee");if(s.id&&s.previousElementSibling){rows.push([s.previousElementSibling.textContent.replace(/（.*$/,""),v]);}once+=v;}});
 var year=m*mo;rows.push(["年度記帳費（"+f(m).replace(" 元","")+" × "+mo+" 個月）",year]);
