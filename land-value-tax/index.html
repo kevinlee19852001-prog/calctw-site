@@ -179,6 +179,40 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 
 <div class="note"><strong>免責聲明：</strong>本工具依土地稅法與財政部稅務入口網公開說明製作，僅供試算參考，不構成稅務建議。實際應納稅額以直轄市、縣（市）地方稅稽徵機關核定之地價稅繳款書為準；減免面積、特殊用地、公有土地等情形請洽各地稅捐機關。</div>
 
+<section class="card" aria-labelledby="workedLandTitle">
+<h2 id="workedLandTitle">完整算例：同縣市兩筆土地跨累進級距</h2>
+<p><strong>示範假設：</strong>同一所有權人在桃園市只有甲、乙兩筆一般用地，每筆申報地價 120,000 元／㎡、面積 100㎡、持分 1、無減免；公告地價欄留空。累進起點地價 X＝3,439,000 元，<strong>依頁面所列資料</strong>，沿用原有參考值，並非本次重新查核或更新地方公告。</p>
+<ol>
+<li>每筆課稅地價＝120,000 × 100 × 1＝12,000,000 元；同縣市地價總額 V＝12,000,000＋12,000,000＝24,000,000 元。以上不取整。</li>
+<li>超過起點的金額＝24,000,000－3,439,000＝20,561,000 元。第一段累進部分上限為 5X＝17,195,000 元；地價總額的對應門檻為 6X＝20,634,000 元。V 已跨過這個門檻，進入 25‰ 的部分。</li>
+</ol>
+<div class="tbl"><table><thead><tr><th>分段</th><th>本段算式（元）</th><th>本段稅額（元）</th></tr></thead><tbody>
+<tr><td>起點以內 10‰</td><td>3,439,000 × 0.010</td><td>34,390</td></tr>
+<tr><td>超過起點至 6X 的部分 15‰</td><td>(20,634,000－3,439,000) × 0.015</td><td>257,925</td></tr>
+<tr><td>超過 6X 至本例總額的部分 25‰</td><td>(24,000,000－20,634,000) × 0.025</td><td>84,150</td></tr>
+</tbody></table></div>
+<p>分段合計＝34,390＋257,925＋84,150＝<strong>376,465 元</strong>。速算互驗：V × 25‰－X × 0.065＝24,000,000 × 0.025－3,439,000 × 0.065＝600,000－223,535＝<strong>376,465 元</strong>。各段保留原值不先取整，全年合計才依本工具以 Math.round 四捨五入至整元；本例各段恰為整元。</p>
+<h3>自用住宅 2‰ 對照</h3>
+<p><strong>示範假設：</strong>另設相同兩筆土地均屬同一處都市自用住宅用地，已核准適用 2‰，合計面積 100＋100＝200㎡，在 300㎡ 上限內；沒有其他土地，其餘數值相同。這是替代情境，不與前例一般用地同時計入。</p>
+<p>每筆稅額＝120,000 × 100 × 1 × 0.002＝24,000 元；合計＝24,000＋24,000＝<strong>48,000 元</strong>。中間不取整，合計四捨五入至整元仍為 48,000 元；與一般用地情境相比少 376,465－48,000＝328,465 元。勾選稅地種類只會改變試算方式，不能取代資格審查。</p>
+<p>來源：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096">土地稅法第 15、16、17 條</a>；起點地價沿用<a href="https://tytax.tycg.gov.tw/cp.aspx?n=4482">本頁原列桃園市級距表來源</a>。</p>
+</section>
+<section aria-labelledby="landInputsTitle">
+<h2 id="landInputsTitle">從稅單／地價資料取得輸入值</h2>
+<ol><li>先依所有權人、縣市與年度整理土地明細。第 15 條以每一所有權人在每一直轄市或縣（市）的地價總額計徵；本工具一次只放同一縣市的土地，其他縣市另開一次試算。</li>
+<li>逐筆對照地號，找出「申報地價（元／㎡）」、「面積（㎡）」及自己的持分。若手上的欄位只有整筆地價總額，不能直接當每平方公尺單價輸入；應先取得對應明細，避免再乘一次面積。</li>
+<li>填土地完整面積與持分，讓工具計算面積 × 持分。若明細已列自己的持分面積，應先確認欄位口徑，不能又乘一次持分。</li>
+<li>從同年度、同縣市資料取得累進起點地價；申報地價與累進起點地價是不同欄位。依核定稅地種類選一般或特別稅率，不能只因自住就自行認定已核准。</li></ol>
+<h3>常見錯誤</h3>
+<ul><li>漏掉同縣市另一筆一般用地，或把不同縣市一起累進。</li><li>把所有地價一律乘最高適用稅率，忘了扣累進差額；本例直接乘 25‰ 會得 600,000 元，而非 376,465 元。</li><li>把「超過起點的 5 倍」誤當「地價總額的 5 倍」；前者對應的總額門檻是 6X。</li><li>把單價、整筆總額、持分面積混填，或把每筆分攤稅額先取整再相加；本工具以未取整合計計算全年稅額。</li></ul>
+<h3>適用對象與例外</h3>
+<p>本例供同一所有權人核對同縣市一般用地合併累進的算術。自用住宅對照僅適用於假設已符合並核准的情境：第 9 條所定自用住宅用地須由所有權人或其配偶、直系親屬設籍，且無出租或供營業；第 17 條 2‰ 的面積限都市三公畝、非都市七公畝，同一人及其配偶與未成年受扶養親屬以一處為限。面積合格本身不代表其他要件也成立。</p>
+<p>依第 40 條，納稅義務基準日為每年 8 月 31 日，11 月 1 日起一個月內徵收；依第 41 條，適用特別稅率須在開徵 40 日前申請，逾期自次年適用。特殊減免或其他不在本例假設內的案件，不能直接套用本例結果。來源：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096">土地稅法第 9、15、16、17、40、41 條</a>。</p>
+<h3>名詞解釋</h3>
+<ul><li><strong>申報地價：</strong>本工具每筆土地採用的每平方公尺地價輸入值，與乘上面積、持分後的課稅地價總額不同；請照明細欄位填寫。</li><li><strong>累進起點地價：</strong>第 16 條所定各直轄市或縣（市）土地七公畝平均地價，不含工業、礦業、農業及免稅土地，是本例的 X，不是自己的土地單價。</li><li><strong>持分：</strong>本工具用來表示自己的比例，例如 1/2＝0.5；100㎡ × 1/2＝50㎡，不能在單價與面積兩處重複折半。</li><li><strong>納稅義務基準日：</strong>第 40 條所定每年 8 月 31 日，用來判定該年度納稅義務，與 11 月的徵收期間不同。</li></ul>
+<h3>更新紀錄</h3><p>2026-10-27：修正土地稅法錯連；新增兩筆土地累進算例、自用住宅對照、輸入值指南、常見錯誤與名詞說明。算例已用現有計算核心驗算，未調整公式、預設值或縣市參考數字。</p>
+</section>
+
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
 <details open><summary>地價稅什麼時候繳？繳納期限是哪一天？</summary><p>地價稅每年開徵一次，繳納期間為每年 11 月 1 日至 11 月 30 日，課稅所屬期間為當年 1 月 1 日至 12 月 31 日。115 年地價稅的繳納截止日是 115 年 11 月 30 日。逾期繳納每超過 3 日加徵 1% 滯納金，最高加徵 10%。</p></details>
@@ -200,7 +234,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "WebApplication", "name": "115年地價稅試算器", "url": "https://calctw.com/land-value-tax/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "輸入多筆土地的申報地價、面積與持分，依土地稅法計算一般用地累進稅率與自用住宅、公設保留地、工業用地特別稅率的地價稅。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-18"}
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "115年地價稅試算器", "url": "https://calctw.com/land-value-tax/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "輸入多筆土地的申報地價、面積與持分，依土地稅法計算一般用地累進稅率與自用住宅、公設保留地、工業用地特別稅率的地價稅。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-27"}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "地價稅什麼時候繳？繳納期限是哪一天？", "acceptedAnswer": {"@type": "Answer", "text": "地價稅每年開徵一次，繳納期間為每年 11 月 1 日至 11 月 30 日，課稅所屬期間為當年 1 月 1 日至 12 月 31 日。115 年地價稅的繳納截止日是 115 年 11 月 30 日。逾期繳納每超過 3 日加徵 1% 滯納金，最高加徵 10%。"}}, {"@type": "Question", "name": "8 月 31 日納稅義務基準日是什麼意思？年中買賣土地誰繳？", "acceptedAnswer": {"@type": "Answer", "text": "以每年 8 月 31 日當天土地登記簿上記載的土地所有權人（或典權人）為當年度全年地價稅的納稅義務人，不論實際持有多久。所以 9 月 1 日以後才過戶，當年地價稅仍由原所有權人繳納；買賣雙方如要分擔，需自行在契約中約定。"}}, {"@type": "Question", "name": "地價稅可以在超商繳嗎？有金額上限嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。持繳款書到便利商店繳納限稅額 3 萬元以內；超過 3 萬元請改用金融機構臨櫃（郵局除外）、ATM 轉帳、信用卡或晶片金融卡網路／電話繳稅、行動支付掃描 TWQR 等方式。"}}, {"@type": "Question", "name": "累進起點地價是什麼？115 年為什麼會變？", "acceptedAnswer": {"@type": "Answer", "text": "累進起點地價是各直轄市、縣（市）土地 7 公畝（700 平方公尺）的平均地價，但不含工業、礦業、農業及免稅土地。公告地價每 2 年重新規定一次，115 年正好是重新規定地價年度，各縣市的累進起點地價也跟著重新計算，115 年至 116 年適用同一數字。本頁附有已查證的各縣市參考值。"}}, {"@type": "Question", "name": "一般用地的累進稅率怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "把同一縣市內所有一般用地的課稅地價加總：未超過累進起點地價按 10‰；超過累進起點地價未達 5 倍的部分 15‰、5 至 10 倍 25‰、10 至 15 倍 35‰、15 至 20 倍 45‰、20 倍以上 55‰。速算公式為「地價總額 × 適用稅率 － 累進起點地價 × 累進差額係數（0、0.005、0.065、0.175、0.335、0.545）」。注意「倍數」是指超過累進起點地價的部分，所以第 2 級的上限是累進起點地價的 6 倍。"}}, {"@type": "Question", "name": "自用住宅用地 2‰ 要符合哪些條件？什麼時候申請？", "acceptedAnswer": {"@type": "Answer", "text": "需由土地所有權人或配偶、直系親屬在該地設籍，無出租、無營業，房屋為本人或配偶、直系親屬所有；都市土地以 300 平方公尺、非都市土地以 700 平方公尺為限，且本人、配偶及未成年受扶養親屬以一處為限。應在地價稅開徵 40 日前（9 月 22 日前）向稅捐機關申請，核准後當年適用，逾期自次年起適用。超過面積上限的部分按一般用地稅率課徵。"}}, {"@type": "Question", "name": "申報地價和公告地價有什麼不同？", "acceptedAnswer": {"@type": "Answer", "text": "地價稅以「申報地價」計算。土地所有權人可在公告地價 80% 至 120% 範圍內申報；沒有申報的以公告地價 80% 為申報地價；申報超過 120% 的部分不計，以 120% 計；低於 80% 的以 80% 計。多數人沒有另外申報，所以稅單上的申報地價通常是公告地價的 8 成。"}}, {"@type": "Question", "name": "共有土地怎麼算？持分要填什麼？", "acceptedAnswer": {"@type": "Answer", "text": "分別共有的土地，由各共有人按應有部分（持分）分別繳納，並把自己的持分地價併入自己在該縣市的地價總額累進計算。本工具的「持分」可填 1、1/2、1/3 或 0.25 等，課稅地價＝申報地價 × 面積 × 持分。"}}, {"@type": "Question", "name": "試算結果和稅單不一樣，可能是什麼原因？", "acceptedAnswer": {"@type": "Answer", "text": "常見原因有：漏填同縣市其他土地（累進是按縣市歸戶合計）、申報地價不是公告地價 8 成、有減免面積（如騎樓、道路用地）、自用住宅面積超過上限、或累進起點地價填錯縣市。實際稅額以地方稅稽徵機關核定的稅單為準。"}}]}
@@ -254,7 +288,7 @@ var REF = [
 var SOURCES = [
   ["財政部稅務入口網：地價稅的課徵（稅率、計算公式、例題、8/31 基準日、超商 3 萬元）", "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/land-value-tax/bD9Bk19"],
   ["財政部稅務入口網：地價稅問答實例（自用住宅要件、滯納金）", "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/land-value-tax/ozqr68"],
-  ["土地稅法（全國法規資料庫）", "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340051"],
+  ["土地稅法（全國法規資料庫）", "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096"],
   ["各縣市累進起點地價：見上方參考表每列來源", "#refTitle"]
 ];
 var EXAMPLES = {

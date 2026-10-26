@@ -183,6 +183,36 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 
 <div class="note"><strong>免責聲明：</strong>本工具依勞動基準法、施行細則與勞動部公開說明製作，僅供一般試算參考，不構成法律意見。留職停薪、年資併計、約定優於法令或會計年度制等情形可能不同；實際天數與金額以勞動契約、工作規則及主管機關解釋為準，有疑問可撥打 1955 勞工諮詢申訴專線。</div>
 
+<section class="card" aria-labelledby="workedLeaveTitle">
+<h2 id="workedLeaveTitle">完整算例：同一名員工的兩個曆年時間軸</h2>
+<p><strong>示範假設：</strong>2024-07-01 到職，持續任職至 2026-12-31；比較 2025、2026 兩年度，沒有年資中斷、遞延或優於法令的額外給假。週年制與曆年制是兩種替代安排，不是可以重複領取的兩份假。天數沿用本頁年資表：滿半年 3 日、滿 1 年 7 日、滿 2 年 10 日。</p>
+<h3>週年制：依取得日期列出期間</h3>
+<div class="tbl"><table><thead><tr><th>取得日期</th><th>取得天數與計算</th><th>對應休假期間</th></tr></thead><tbody>
+<tr><td>2025-01-01（滿半年）</td><td>年資表 3 日，不取整</td><td>2025-01-01～2025-06-30</td></tr>
+<tr><td>2025-07-01（滿 1 年）</td><td>年資表 7 日，不扣前面的 3 日</td><td>2025-07-01～2026-06-30</td></tr>
+<tr><td>2026-07-01（滿 2 年）</td><td>年資表 10 日，不取整</td><td>2026-07-01～2027-06-30</td></tr>
+</tbody></table></div>
+<p>查詢日輸入 2025-12-31，本期 7 日、到查詢日累計取得 3＋7＝10 日；改查 2026-12-31，本期 10 日、累計取得 3＋7＋10＝20 日。這些是取得天數，尚未扣除已休日數，不能當成剩餘天數。</p>
+<h3>曆年制：同一批權利依本工具比例模型分配</h3>
+<p>沿用相同到職日，選曆年制，分別輸入年度 2025 與 2026。7 月 1 日至次年 1 月 1 日恰為 6 個月，不含次年 1 月 1 日，因此無畸零日數。</p>
+<div class="tbl"><table><thead><tr><th>曆年</th><th>分段算式</th><th>年度合計</th></tr></thead><tbody>
+<tr><td>2025-01-01～2025-12-31</td><td>滿半年 3 日全數列入取得年度；滿 1 年部分＝7 × 6 ÷ 12＝3.5 日</td><td>3＋3.5＝6.5 日（52 小時）</td></tr>
+<tr><td>2026-01-01～2026-12-31</td><td>滿 1 年餘額＝7－7 × 6 ÷ 12＝3.5 日；滿 2 年部分＝10 × 6 ÷ 12＝5 日</td><td>3.5＋5＝8.5 日（68 小時）</td></tr>
+</tbody></table></div>
+<p>各段不先取整，年度合計顯示至小數二位（本例為 6.5、8.5 日）；時數依工具每日 8 小時換算：6.5 × 8＝52、8.5 × 8＝68。滿 1 年的 7 日核對：3.5＋3.5＝7 日；滿 2 年的 10 日另有 10－5＝5 日分配到 2027 年，本表只列 2025、2026，不能把兩年合計誤認為所有週年權利。曆年比例是本工具呈現模型，採用的休假期間須依勞雇協商安排。</p>
+<h3>未休工資：月薪 30,000 元、未休 7 日</h3>
+<p><strong>示範假設：</strong>同一員工於年度終結結算，已依休假紀錄確認未休 7 日，最近一個月正常工時工資為 30,000 元，沒有遞延；7 日是另行輸入的未休餘額，不是從上表年度天數直接推定。</p>
+<ol><li>薪資類型選月薪制，月薪填 30,000、未休日數填 7。一日工資＝30,000 ÷ 30＝1,000 元，不先取整。</li><li>未休工資＝1,000 × 7＝<strong>7,000 元</strong>；本工具保留乘積再將總額四捨五入至整元，本例無小數。</li></ol>
+<p>現有腳本 payout 的月薪基準就是 wage ÷ 30，與本例一致。依<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&amp;flno=24-1">施行細則第 24-1 條</a>，計月者使用年度終結或契約終止前最近一個月正常工作時間所得工資除以三十；不能拿含額外加班報酬的總額替代這個基準。</p>
+<h3>常見錯誤、適用對象與例外</h3>
+<ul><li>把滿半年的 3 日從滿 1 年的 7 日扣掉；本頁年資表與腳本把兩次取得分別計入。</li><li>把週年制本期天數、累計取得天數或曆年分配天數當成「未休餘額」；未休工資仍須另核對已休紀錄。</li><li>把 3.5 日直接捨去為 3 日；這會在數學上減少權利，本工具保留小數分配。</li></ul>
+<p>本例適合連續任職、年資起算清楚且可核對休假紀錄者。年資中斷或其他特殊安排未納入此示範。遞延至次年度的未休工資，細則第 24-1 條另以原特休年度終結時的工資基準計算，不能直接代入後來調整的薪資。</p>
+<h3>名詞解釋</h3>
+<ul><li><strong>週年制：</strong>依到職日起算週年期間；滿半年取得的假另以取得後六個月為期間。</li><li><strong>曆年制：</strong>以每年 1 月 1 日至 12 月 31 日為休假期間，本工具將跨年度的週年權利按比例分配。</li><li><strong>正常工時工資：</strong>本例折現所用的正常工作時間所得工資；計月者依細則第 24-1 條的時點與除以三十規則，與額外加班報酬分開核對。</li></ul>
+<p>來源：<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=38">勞基法第 38 條</a>、<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&amp;flno=24">施行細則第 24 條</a>及<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&amp;flno=24-1">第 24-1 條</a>。</p>
+<h3>更新紀錄</h3><p>2026-10-27：新增同一員工跨 2025、2026 年的兩制時間軸、未休 7 日工資算例及名詞說明，已以現有核心驗算，未改計算基準或預設值。</p>
+</section>
+
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
 <details open><summary>特休天數怎麼算？年資和天數對照表</summary><p>依勞動基準法第 38 條：工作滿 6 個月未滿 1 年 3 日；滿 1 年 7 日；滿 2 年 10 日；滿 3 年、4 年每年 14 日；滿 5 年至未滿 10 年每年 15 日；滿 10 年 16 日，之後每多 1 年加 1 日，加到 30 日為止（滿 24 年起 30 日）。</p></details>
@@ -203,7 +233,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "WebApplication", "name": "特休天數與未休特休折現計算器", "url": "https://calctw.com/annual-leave/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依勞動基準法第 38 條計算週年制與曆年制特休天數，並依施行細則第 24 條之 1 計算未休特休工資。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-18"}
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "特休天數與未休特休折現計算器", "url": "https://calctw.com/annual-leave/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依勞動基準法第 38 條計算週年制與曆年制特休天數，並依施行細則第 24 條之 1 計算未休特休工資。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-27"}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "特休天數怎麼算？年資和天數對照表", "acceptedAnswer": {"@type": "Answer", "text": "依勞動基準法第 38 條：工作滿 6 個月未滿 1 年 3 日；滿 1 年 7 日；滿 2 年 10 日；滿 3 年、4 年每年 14 日；滿 5 年至未滿 10 年每年 15 日；滿 10 年 16 日，之後每多 1 年加 1 日，加到 30 日為止（滿 24 年起 30 日）。"}}, {"@type": "Question", "name": "週年制和曆年制有什麼不同？", "acceptedAnswer": {"@type": "Answer", "text": "週年制以到職日起算每一週年給假；曆年制以每年 1 月 1 日至 12 月 31 日為一個年度，按年資比例分段給假（施行細則第 24 條第 2 項）。採曆年制不得讓勞工的法定天數減少，而且離職時必須改按到職日（週年制）結算實際應給天數。"}}, {"@type": "Question", "name": "曆年制的特休怎麼按比例計算？", "acceptedAnswer": {"@type": "Answer", "text": "先依到職日算出每一週年應有的天數，再依該週年期間落在各曆年的月數比例分配。例如 113 年 7 月 15 日到職，114 年可休滿 6 個月的 3 日，加上滿 1 年 7 日 × (5 個月＋17/31 個月) ÷ 12 ≈ 3.2 日，合計約 6.2 日；滿 1 年剩下的約 3.8 日在 115 年度給假。"}}, {"@type": "Question", "name": "特休沒休完可以換錢嗎？怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "可以。依第 38 條第 4 項，因年度終結或契約終止而未休的特休日數，雇主應發給工資。依施行細則第 24 條之 1，按未休日數 × 一日工資計算；月薪制的一日工資＝年度終結或契約終止前最近一個月正常工作時間所得工資 ÷ 30，不含加班費和假日出勤加給。例如月薪 30,000 元、剩 7 日，應發 7,000 元。"}}, {"@type": "Question", "name": "未休特休工資什麼時候要發？", "acceptedAnswer": {"@type": "Answer", "text": "年度終結時，應於勞動契約約定的工資給付日發給，或於年度終結後 30 日內發給；契約終止（離職）時，依施行細則第 9 條規定發給。不可以拖到年終獎金一起發又不標明金額。"}}, {"@type": "Question", "name": "特休可以遞延到明年嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以，但要經勞雇雙方協商同意，且只能遞延到次一年度。遞延的日數在次一年度請特休時優先扣除；次一年度終結或離職時仍未休完，雇主應按「原特別休假年度終結時」的工資基準發給工資。"}}, {"@type": "Question", "name": "滿半年的 3 天可以從滿一年的 7 天扣掉嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不行。勞動部說明，滿 6 個月的 3 日與滿 1 年的 7 日應分別給予。例如 111 年 3 月 1 日到職、112 年 4 月 1 日離職，法定特休合計 10 日。"}}, {"@type": "Question", "name": "曆年制算出來有小數（例如 6.2 天）怎麼辦？", "acceptedAnswer": {"@type": "Answer", "text": "法令沒有強制規定畸零天數的給假方式，可以依比例換算成小時給假，或約定分段以完整 1 日計給，但不得低於法定標準。本工具同時列出天數與換算時數（以每日 8 小時計）。"}}]}

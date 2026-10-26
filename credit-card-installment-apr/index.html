@@ -154,11 +154,6 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </div>
 
 <!-- 聯盟推廣連結位置（替換 href 與文案；需標示廣告/合作） -->
-<aside class="aff" aria-label="合作推廣">
-  <strong>推薦｜</strong><a href="#AFFILIATE_LINK_1" rel="sponsored nofollow noopener" target="_blank">【合作推廣位】2026 高回饋信用卡比較／雙11 刷卡優惠整理</a>
-  <div class="hint">本區為合作推廣連結，點擊後可能使本站獲得分潤，不影響您的權益。</div>
-</aside>
-
 <section class="card" aria-labelledby="tblTitle">
 <h2 id="tblTitle" style="margin-top:0">每期繳款明細</h2>
 <div class="tbl"><table id="sch"><thead><tr><th>期數</th><th>本金</th><th>手續費</th><th>當期應繳</th><th>剩餘未繳本金</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
@@ -175,6 +170,15 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 
 <div class="note"><strong>免責聲明：</strong>本工具僅供試算與教育用途，不構成金融或投資建議。各銀行分期手續費、回饋與計算方式不同，請以發卡銀行公告、契約條款及帳單為準。申辦前請詳閱銀行提供之費用與條款資訊。理性消費，避免過度分期造成財務負擔。</div>
 
+<section class="card" aria-labelledby="exampleTitle">
+<h2 id="exampleTitle">完整算例：30,000 元分 12 期的現金流</h2>
+<p><strong>示範假設：</strong>預設商品 30,000 元、12 期、總手續費率 3.5%、平均分攤、首期帳單基準；一次付清回饋 1%、分期回饋 0%、存款年報酬率 1.5%。以下先驗證不含回饋與機會成本的名目 APR，並列刷卡日基準比較。</p><ol><li>總手續費＝Math.round(30,000 × 3.5%)＝1,050 元。</li><li>本金每期＝floor(30,000 ÷ 12)＝2,500 元，無餘數；手續費每期先取 floor(1,050 ÷ 12)＝87 元，餘數 1,050 − 87 × 12＝6 元併入首期，所以首期手續費 93 元，後 11 期各 87 元。</li><li>首期付款＝2,500＋93＝2,593 元；其餘各期＝2,500＋87＝2,587 元；合計＝2,593＋2,587 × 11＝31,050 元，不再取整。</li></ol>
+<div class="tbl"><table><caption>完整現金流（借入／可動用為正，付款為負，元）</caption><thead><tr><th>月份</th><th>首期帳單基準</th><th>刷卡日基準</th></tr></thead><tbody><tr><td>0</td><td>27,407</td><td>30,000</td></tr><tr><td>1</td><td>-2,587</td><td>-2,593</td></tr><tr><td>2</td><td>-2,587</td><td>-2,587</td></tr><tr><td>3</td><td>-2,587</td><td>-2,587</td></tr><tr><td>4</td><td>-2,587</td><td>-2,587</td></tr><tr><td>5</td><td>-2,587</td><td>-2,587</td></tr><tr><td>6</td><td>-2,587</td><td>-2,587</td></tr><tr><td>7</td><td>-2,587</td><td>-2,587</td></tr><tr><td>8</td><td>-2,587</td><td>-2,587</td></tr><tr><td>9</td><td>-2,587</td><td>-2,587</td></tr><tr><td>10</td><td>-2,587</td><td>-2,587</td></tr><tr><td>11</td><td>-2,587</td><td>-2,587</td></tr><tr><td>12</td><td>0</td><td>-2,587</td></tr></tbody></table></div><p>首期帳單基準第 0 月已扣首期：30,000 − 2,593＝27,407 元，第 12 月無付款；刷卡日基準第 0 月為 30,000 元，第 1 月才付首期。兩者不能混用。</p>
+<p>IRR 殘差驗證：首期帳單基準 r＝0.006318897334589131，代回 27,407 − Σ<sub>t＝1…11</sub> 2,587 ÷ (1＋r)<sup>t</sup>＝約 −5.00 × 10<sup>−12</sup> 元；刷卡日基準 r＝0.005333513996045689，30,000 − 2,593 ÷ (1＋r) − Σ<sub>t＝2…12</sub> 2,587 ÷ (1＋r)<sup>t</sup>＝約 3.50 × 10<sup>−11</sup> 元，均接近 0。IRR 以完整精度求解，不先截短 r。</p>
+<p>本站名目 APR＝r × 12、EAR＝(1＋r)<sup>12</sup> − 1，百分比顯示至小數二位。首期帳單基準 APR 7.58%、EAR 7.85%；刷卡日基準 APR 6.40%、EAR 6.59%。預設回饋比較另以 30,000 × (1 − 1%)＝29,700 元為一次付清成本；含回饋的 APR 為 9.83%，不要和前述 7.58% 混比。存款折現比較使用 1.5% ÷ 12，不是 IRR。</p>
+<p>適用於每期一個月、付款依表安排的數學比較；實際日期不等距或費用收取方式不同時，本例不代表實際帳單。銀行依法揭露的「總費用年百分率」須按其揭露的費用範圍、時點及條件理解，本站名目 APR 與 EAR 是上述現金流的數學指標，不能直接視為同一揭露值；本頁沒有可用的官方範例作交叉驗證。</p><p>常見錯誤：把 3.5% 當 APR、把每期手續費都四捨五入成 88 元、漏列第 0 月首期付款，或把回饋成本與未含回饋 APR 混用。計算來源：<a href="#howTitle">本頁 IRR 方法說明</a>及既有前端函式 splitEven、cashflows、calcInstallment；無新增外部法規引用。</p>
+</section>
+<section aria-labelledby="changeTitle"><h2 id="changeTitle">更新紀錄</h2><p>2026-10-27：移除合作推廣佔位區塊，補上兩種付款基準、尾數分配與 IRR 殘差；計算公式、預設值與輸出未變更。</p></section>
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
 <details open><summary>信用卡分期「0 利率」真的不用付利息嗎？</summary><p>「0 利率」只代表沒有另外收利息，但很多分期會收「手續費」。手續費本質上就是借錢的成本，例如 12 期總手續費 3%～4%，換算成年利率約 5.5%～7.4%。真正不用多付錢的是「0 利率且 0 手續費」的分期。</p></details>
@@ -190,7 +194,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"信用卡分期實際年利率換算器","url":"https://calctw.com/credit-card-installment-apr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入商品金額、期數與手續費，用 IRR 換算信用卡分期實際年利率，並與一次付清＋回饋及存款機會成本比較。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-26"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"信用卡分期實際年利率換算器","url":"https://calctw.com/credit-card-installment-apr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入商品金額、期數與手續費，用 IRR 換算信用卡分期實際年利率，並與一次付清＋回饋及存款機會成本比較。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-27"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[

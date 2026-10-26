@@ -159,11 +159,6 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </div>
 
 <!-- 聯盟推廣連結位置（替換 href 與文案；需標示廣告/合作） -->
-<aside class="aff" aria-label="合作推廣">
-  <strong>推薦｜</strong><a href="#AFFILIATE_LINK_1" rel="sponsored nofollow noopener" target="_blank">【合作推廣位】房貸利率比較／房屋險、火險地震險線上比價</a>
-  <div class="hint">本區為合作推廣連結，點擊後可能使本站獲得分潤，不影響您的權益。</div>
-</aside>
-
 <section class="card" aria-labelledby="tblTitle">
 <h2 id="tblTitle" style="margin-top:0">每期攤還明細表</h2>
 <div class="grid">
@@ -189,6 +184,17 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 
 <section aria-labelledby="ltTitle"><h2 id="ltTitle">常見金額試算結果</h2><p>直接看常見金額的完整計算明細與比較表：</p><ul class="lt"><li><a href="/youth-mortgage/loan-1000wan/">1,000 萬</a></li><li><a href="/youth-mortgage/loan-1200wan/">1,200 萬</a></li><li><a href="/youth-mortgage/loan-1500wan/">1,500 萬</a></li></ul></section>
 
+<section class="card" aria-labelledby="exampleTitle">
+<h2 id="exampleTitle">完整算例：預設房貸的逐期拆解</h2>
+<p><strong>示範假設：</strong>沿用預設貸款 10,000,000 元、480 期、60 期寬限期、本息平均攤還。利率路徑僅為試算假設：第 1～36 期 1.775%、37～48 期 1.9%、49～60 期 2.025%、61～72 期 2.15%、73 期起 2.275%；不保證未來利率。</p>
+<h3>第一期本金與利息</h3><p>月利率 i＝1.775% ÷ 12＝0.001479166666666667。利息＝10,000,000 × i＝14,791.666666…元；寬限期本金＝月付 − 利息＝0，月付顯示為 14,792 元，餘額仍是 10,000,000 元。程式保留未取整數值逐期運算，僅顯示與 CSV 各欄用 Math.round 四捨五入到元，不能把顯示值帶回逐期累算。</p>
+<p>比較同條件但無寬限期：月付 M＝B × i ÷ [1 − (1＋i)<sup>−R</sup>]，B＝10,000,000、R＝480，M＝29,111.848045555842，顯示 29,112 元。本金＝29,111.848045555842 − 14,791.666666666666＝14,320.181378889176，顯示 14,320 元；期末餘額顯示 9,985,680 元。</p>
+<h3>利率切換與寬限期結束</h3><p>每期以當期剩餘本金 B、月利率 i 與剩餘期數 R＝480 − 期數＋1 計算；有攤本金時用上式重算月付。寬限期內本金不減，第 37 期利息＝10,000,000 × 1.9% ÷ 12＝15,833.333333…，顯示 15,833 元；第 49～60 期＝10,000,000 × 2.025% ÷ 12＝16,875 元。</p>
+<p>第 61 期以 B＝10,000,000、i＝2.15% ÷ 12、R＝420 代入上式，月付＝33,901.26455610463，顯示 33,901 元；利息＝17,916.666666666664，顯示 17,917 元；本金＝15,984.597889437966，顯示 15,985 元。因各欄獨立取整，顯示本金與利息相加可能差 1 元。與第 60 期的未取整月付相減後四捨五入，增加 17,026 元。</p>
+<p>第 73 期再切換：第 72 期期末餘額 B＝9,806,283.312421316、R＝408、i＝2.275% ÷ 12；M＝B × i ÷ [1 − (1＋i)<sup>−408</sup>]＝34,538.790196922455，顯示 34,539 元。這是用剩餘本金重算，不能再用原始貸款金額。</p>
+<h3>三個不同層次</h3><ul><li>政策資格：請逐項核對既有來源的<a href="https://www.nta.gov.tw/singlehtml/108">國庫署貸款原則</a>與<a href="https://www.nta.gov.tw/singlehtml/109">問答集</a>。本算例不判定是否符合資格，未取得原文的條件不另補述。</li><li>銀行核貸：試算輸入並非銀行承諾的核貸金額、年限或利率，須依實際契約核對。</li><li>純數學試算：適合比較上述假設下的還款現金流；本例按月利率計算，不模擬實際日數計息或其他費用。</li></ul><p>常見錯誤：把首期利息當成整段寬限期固定月付、把寬限期誤認為免息、用原始本金重算後段月付，或先取整再扣本金。</p>
+</section>
+<section aria-labelledby="changeTitle"><h2 id="changeTitle">更新紀錄</h2><p>2026-10-27：移除無實際目的地的合作推廣，補上預設房貸拆解、分段重算與資格界線；計算公式、預設值與輸出未變更。</p></section>
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
 <details open><summary>新青安（青安3.0）最多可以貸多少？年限多長？</summary><p>依財政部國庫署公告的「青安3.0」貸款原則（115年8月1日起受理，申辦至118年7月31日），一般家庭最高 1,000 萬元，申請日前 2 年內結婚的新婚家庭最高 1,200 萬元，育有未成年子女家庭最高 1,500 萬元；貸款年限最長 40 年，含寬限期 5 年，可選本息或本金平均攤還。另新增借款人未滿 50 歲、年所得不逾 200 萬元及房屋總價上限等條件。</p></details>
@@ -206,14 +212,14 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <li>財政部國庫署｜貸款原則（青安3.0）：<a href="https://www.nta.gov.tw/singlehtml/108" rel="noopener" target="_blank">https://www.nta.gov.tw/singlehtml/108</a></li>
 <li>財政部國庫署｜問答集（青安3.0）：<a href="https://www.nta.gov.tw/singlehtml/109" rel="noopener" target="_blank">https://www.nta.gov.tw/singlehtml/109</a></li>
 <li>財政部｜青安貸款3.0 新聞稿（115年7月16日行政院通過，8月1日實施）：<a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=482aa9c142b34abc83750cb64c15cb11" rel="noopener" target="_blank">https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=482aa9c142b34abc83750cb64c15cb11</a></li>
-<li>資料查核日期：2026-10-18。利率與補貼方案如有異動，以財政部及公股銀行最新公告為準。</li>
+<li>內容更新日期：2026-10-27；原資料查核日期：2026-10-18。利率與補貼方案如有異動，以財政部及公股銀行最新公告為準。</li>
 </ul>
 </section>
 </main>
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"新青安房貸試算器（含寬限期比較）","url":"https://calctw.com/youth-mortgage/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入貸款金額、年限、分段利率與寬限期，比較有無寬限期的月付金與總利息，支援本息/本金平均攤還與 CSV 匯出。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-18"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"新青安房貸試算器（含寬限期比較）","url":"https://calctw.com/youth-mortgage/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入貸款金額、年限、分段利率與寬限期，比較有無寬限期的月付金與總利息，支援本息/本金平均攤還與 CSV 匯出。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-27"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[

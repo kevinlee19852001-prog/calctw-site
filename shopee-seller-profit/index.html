@@ -101,7 +101,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <h1>蝦皮賣家實拿利潤計算器（2026 費率）</h1>
 <p>輸入商品售價、成本、運費與手續費設定，依<strong>蝦皮購物 2026 年收費規定（含 7 月 1 日方案二調整）</strong>（成交手續費依分類費率、金流與系統處理費 2.5%、免運及進階賣家專案方案一 6%；方案二訂單金額 ≤99 元收 6%、≥100 元每單 60 元（2026-07-01 起）、發票服務費每張 2.5 元），算出每筆訂單的<strong>平台費用、實際撥款、實拿利潤與利潤率</strong>，並反推<strong>損益兩平售價</strong>與<strong>目標利潤率售價</strong>。</p>
 <p class="hint" id="dataStamp"></p>
-<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>僅供試算：</strong>本工具為獨立第三方試算工具，非蝦皮官方工具。費率依蝦皮賣家幫助中心公開資訊整理（費率更新日期：2026-10-26），實際費用以蝦皮賣家中心公告與對帳單為準。</p>
+<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>適用範圍與來源限制：</strong>本工具依「非商城賣家」費用結構設計，商城賣家僅改費率不一定等同商城實際收費，結果僅供估算。費率與方案二規則依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。</p>
 <section class="card" aria-labelledby="inTitle">
 <h2 id="inTitle" style="margin-top:0">輸入商品與費用</h2>
 <div class="grid">
@@ -111,7 +111,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
   <div><label for="cat">商品分類（一般賣家基本費率）</label><select id="cat"></select></div>
   <div><label for="rate">成交手續費基本費率（%）</label><input id="rate" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="6"><div class="hint">選分類會自動帶入，也可自行修改</div></div>
   <div><label for="promo">是否為蝦皮促銷檔期</label><select id="promo"><option value="0" selected>否（非檔期）</option><option value="1">是（加收促銷檔期費率）</option></select></div>
-  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint">預設 2%（依官方範例推得，可修改）</div></div>
+  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint">預設 2%（依賣家中心公告整理，原文待查證，可修改）</div></div>
   <div><label for="plan">免運及進階賣家專案</label><select id="plan"><option value="p1" selected>方案一：商品金額 × 6%</option><option value="p2">方案二：訂單金額 ≤99 元收 6%、≥100 元每單 60 元</option><option value="none">未參加</option></select></div>
   <div><label for="payRate">金流與系統處理費（%）</label><input id="payRate" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2.5"><div class="hint">信用卡分期另依銀行期數，可修改</div></div>
   <div><label for="shipBuyer">買家支付運費（元）</label><input id="shipBuyer" type="number" inputmode="numeric" min="0" step="1" value="60"><div class="hint">計入金流費基礎；運費本身由平台代收付物流</div></div>
@@ -136,7 +136,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </div>
 <p id="sumText"></p>
 <div class="tbl"><table id="resTbl"><thead><tr><th>項目</th><th class="l">計算方式</th><th>金額（元）</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
-<p class="hint">※ 方案二自 2026-07-01 起：訂單金額（商品單價 × 數量，不含運費）≤99 元收 6%、≥100 元每單 60 元。每項費用依蝦皮規定各自四捨五入到元後相加；發票服務費每張 2.5 元。費率更新日期：2026-10-26｜僅供試算，實際以蝦皮對帳單為準。</p>
+<p class="hint">※ 方案二自 2026-07-01 起：訂單金額（商品單價 × 數量，不含運費）≤99 元收 6%、≥100 元每單 60 元。本工具各項比例費用各自四捨五入到元後相加；發票服務費保留每張 2.5 元。依賣家中心公告整理，請以賣家中心最新公告為準。內容更新日期：2026-10-27；原費率整理日期：2026-10-26｜僅供試算，實際以蝦皮對帳單為準。</p>
 </section>
 <aside class="b2b b2b-result" aria-label="客製計算機"><p>💼 想在自己的網站放一個專屬計算機？我們可以依您的價目表或計算規則，客製一個放在您網站上的試算工具。<a href="/contact/#custom">了解客製計算機 →</a> <a class="line-link" href="https://lin.ee/9klwToW" target="_blank" rel="noopener" style="color:#06C755;font-weight:700;font-size:.92em">LINE 洽詢</a></p></aside>
 <section aria-labelledby="relTitle"><h2 id="relTitle">相關計算機推薦</h2><ul class="rel"><li><a href="/credit-card-installment-apr/"><strong>信用卡分期實際年利率換算器</strong><span>買家分期付款的真實成本</span></a></li><li><a href="/labor-health-insurance/"><strong>勞健保自付額試算器</strong><span>聘請員工時的勞健保雇主負擔</span></a></li></ul></section>
@@ -148,37 +148,57 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </div>
 
 <section class="card" aria-labelledby="ckTitle">
-<h2 id="ckTitle" style="margin-top:0">自我驗算：蝦皮官方公告範例</h2>
-<div class="tbl"><table id="ckTbl"><thead><tr><th class="l">驗算項目</th><th>官方範例</th><th>本工具結果</th><th>結果</th></tr></thead><tbody></tbody></table></div>
+<h2 id="ckTitle" style="margin-top:0">自我驗算：依賣家中心公告整理的算式（原文待查證）</h2>
+<div class="tbl"><table id="ckTbl"><thead><tr><th class="l">驗算項目</th><th>整理採用值</th><th>本工具結果</th><th>結果</th></tr></thead><tbody></tbody></table></div>
 </section>
 
 <section aria-labelledby="howTitle">
 <h2 id="howTitle">蝦皮賣家費用怎麼算（2026 年起）</h2>
 <div class="tbl"><table><thead><tr><th>費用</th><th class="l">計算方式</th><th class="l">查核狀態</th></tr></thead><tbody>
-<tr><td>成交手續費</td><td class="l">單件售出金額（上限 35,000 元）× 數量 × 分類基本費率；促銷檔期＋促銷檔期費率</td><td class="l">分類費率依官方分類費率表 PDF（一般賣家欄）</td></tr>
-<tr><td>促銷檔期加收</td><td class="l">預設 2%</td><td class="l">依官方 2025-08 公告範例（5.5% → 7.5%）推得，2026 年各類別請以官方表為準，可自行修改</td></tr>
-<tr><td>金流與系統處理費</td><td class="l">（商品金額＋運費＋蝦皮提供折扣）× 2.5%</td><td class="l">官方公告，2026-01-01 起</td></tr>
+<tr><td>成交手續費</td><td class="l">單件售出金額（上限 35,000 元）× 數量 × 分類基本費率；促銷檔期＋促銷檔期費率</td><td class="l">分類費率依賣家中心公告整理（非商城），原文待查證</td></tr>
+<tr><td>促銷檔期加收</td><td class="l">預設 2%</td><td class="l">依賣家中心公告整理，原文與各分類最新費率待查證，可自行修改</td></tr>
+<tr><td>金流與系統處理費</td><td class="l">（商品金額＋運費＋蝦皮提供折扣）× 2.5%</td><td class="l">依賣家中心公告整理；採用 2026-01-01 起的整理值，原文待查證</td></tr>
 <tr><td>免運及進階賣家專案</td><td class="l">方案一：商品成交金額 × 6%（運費不計）；方案二：訂單金額 ≤99 元收 6%、≥100 元每單 60 元，2026-07-01 起</td><td class="l">方案一：2026-01-01 起；方案二調整：2026-07-01 起</td></tr>
-<tr><td>代收轉付開立發票服務</td><td class="l">每張發票 2.5 元（每筆訂單一張）</td><td class="l">官方公告，2026-01 起</td></tr>
+<tr><td>代收轉付開立發票服務</td><td class="l">每張發票 2.5 元（每筆訂單一張）</td><td class="l">依賣家中心公告整理；採用 2026-01 起的整理值，原文待查證</td></tr>
 <tr><td>其他活動服務費</td><td class="l">依報名的行銷活動費率</td><td class="l">各活動不同，請自行填寫</td></tr>
 </tbody></table></div>
 <p>實拿利潤＝商品金額 − 蝦皮費用合計 − 商品成本 − 賣家自付運費 − 包材 − 廣告費。利潤率以商品金額為分母。買家支付的運費由平台代收後支付給物流，不算入賣家收入，但會計入金流與系統處理費的計算基礎。</p>
-<h3>內建分類費率（一般賣家，摘自官方分類費率表）</h3>
+<h3>內建分類費率（非商城，依賣家中心公告整理，原文待查證）</h3>
 <div class="tbl"><table id="catTbl"><thead><tr><th>分類</th><th>基本費率</th><th class="l">出處</th></tr></thead><tbody></tbody></table></div>
 </section>
 
 <div class="note"><strong>免責聲明：</strong>本工具為 CalcTW 製作的獨立試算工具，與蝦皮購物無任何關係，非官方工具。費率依公開資訊整理，可能隨平台公告調整；實際費用以蝦皮賣家中心公告、分類費率表與對帳單為準，本站不負任何損失責任。</div>
 
+<section class="card" aria-labelledby="exampleTitle">
+<h2 id="exampleTitle">完整算例：預設訂單與低客單價比較</h2>
+<p><strong>示範假設：</strong>預設售價 590 元、數量 1、成本每件 250 元、非檔期、成交費率 6%、促銷加收欄 2%（本例不啟用）、方案一、金流費率 2.5%、買家運費 60 元、賣家運費 0 元、包材 10 元、開立發票服務啟用、其他活動 0%、廣告 0 元、目標利潤率 30%。以下費率與方案二規則為「依賣家中心公告整理」的工具採用值；官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。</p>
+<div class="tbl"><table><caption>依現有公式逐欄重現（元）</caption><thead><tr><th>項目</th><th>計費基礎、算式與取整</th><th>金額</th></tr></thead><tbody>
+<tr><td>商品金額</td><td>590 × 1，不另取整</td><td>590</td></tr>
+<tr><td>成交手續費</td><td>round[min(590, 35,000) × 1 × 6%]＝round(35.4)</td><td>35</td></tr>
+<tr><td>金流費</td><td>round[(590＋60) × 2.5%]＝round(16.25)</td><td>16</td></tr>
+<tr><td>方案一費用</td><td>round(590 × 6%)＝round(35.4)</td><td>35</td></tr>
+<tr><td>其他活動</td><td>round(590 × 0%)</td><td>0</td></tr>
+<tr><td>發票服務</td><td>啟用時固定 2.5，程式不取整</td><td>2.5</td></tr>
+<tr><td>費用合計</td><td>35＋16＋35＋0＋2.5</td><td>88.5</td></tr>
+<tr><td>工具撥款估值</td><td>590 − 88.5</td><td>501.5</td></tr>
+<tr><td>商品成本</td><td>250 × 1，不另取整</td><td>250</td></tr>
+<tr><td>賣家運費／包材／廣告</td><td>0＋10＋0，不另取整</td><td>10</td></tr>
+<tr><td>工具利潤</td><td>501.5 − 250 − 0 − 10 − 0</td><td>241.5</td></tr></tbody></table></div>
+<p>round 是 Math.round(x＋1e−9)，各項比例費用先四捨五入到元再加總；發票費保留 2.5 元，合計與利潤顯示至小數一位。利潤率＝241.5 ÷ 590 × 100%＝40.932203…%，畫面顯示 40.9%（小數一位）。買家支付運費 60 元只加入金流費基礎，不另加入本工具的商品收入。</p>
+<h3>方案二低客單價對照</h3><p><strong>示範假設：</strong>僅把上例方案改為方案二、單價分別改為 99 與 100 元，其餘輸入全部相同（成本仍為 250 元，故為虧損示範）。依本工具規則，商品金額不含運費。</p><ul><li>99 元：成交費＝round(99 × 6%)＝6；金流＝round[(99＋60) × 2.5%]＝4；方案二＝round(99 × 6%)＝6；其他＝round(99 × 0%)＝0；發票＝2.5（不取整）。費用＝6＋4＋6＋0＋2.5＝18.5，工具撥款＝99 − 18.5＝80.5，成本合計＝250＋0＋10＋0＝260，利潤＝80.5 − 260＝−179.5 元，利潤率＝−179.5 ÷ 99 × 100%＝−181.3%（小數一位）。</li><li>100 元：成交費＝round(100 × 6%)＝6；金流＝round[(100＋60) × 2.5%]＝4；方案二為固定 60 元（不另取整）；其他＝round(100 × 0%)＝0；發票＝2.5（不取整）。費用＝6＋4＋60＋0＋2.5＝72.5，工具撥款＝100 − 72.5＝27.5，成本仍為 260，利潤＝27.5 − 260＝−232.5 元，利潤率＝−232.5 ÷ 100 × 100%＝−232.5%。</li></ul>
+<p>適用於本工具的非商城費用模型。商城僅改費率仍會保留非商城單件金額上限，未必符合商城實際收費。常見錯誤：把費用合計最後才取整、把發票費先取成 3 元、把買家運費當利潤，或忽略方案二的門檻跳變。</p><p>「工具利潤」≠ 撥款金額 ≠ 稅後所得：工具先估商品金額扣平台費用的撥款，再扣輸入的成本；實際撥款還須核對退款、折扣與對帳差異，而工具未計所得稅及未輸入的支出，不是稅後所得。</p><p>來源沿用：<a href="https://seller.shopee.tw/edu/article/18733">賣家中心費率頁</a>、<a href="https://seller.shopee.tw/edu/article/26430">平台費率與方案公告</a>、<a href="https://seller.shopee.tw/edu/article/25681">非商城上限相關公告</a>。本次無法取得需 JavaScript 的官方原文，費率與方案二規則不標為已逐項查證的官方原文。</p>
+</section>
+<section aria-labelledby="changeTitle"><h2 id="changeTitle">更新紀錄</h2><p>2026-10-27：補上非商城適用範圍、費率來源限制、逐欄算例與方案二門檻對照；計算公式、預設值與輸出未變更。</p></section>
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
-<details open><summary>蝦皮賣家要付哪些費用？</summary><p>一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。</p></details>
+<details open><summary>蝦皮賣家要付哪些費用？</summary><p>依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。</p></details>
 <details><summary>成交手續費怎麼算？</summary><p>單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。</p></details>
-<details><summary>金流與系統處理費 2.5% 的計算基礎是什麼？</summary><p>自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。官方例子：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。</p></details>
+<details><summary>金流與系統處理費 2.5% 的計算基礎是什麼？</summary><p>自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。本工具算式示例：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。</p></details>
 <details><summary>免運及進階賣家專案方案一和方案二怎麼選？</summary><p>方案一依商品成交單價 × 數量收 6%（運費不計）。2026-07-01 起，方案二訂單金額 ≤99 元收 6%（四捨五入到元），≥100 元每單 60 元。本工具以商品單價 × 數量作為訂單金額，不含運費。訂單金額 ≤99 元時兩方案相同，選擇只影響 ≥100 元的訂單。≥100 元時，60 ÷ 6% ＝ 1,000，商品金額低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省，1,000 元時相同（四捨五入可能使鄰近金額也相同）；本工具可切換兩個方案直接比較。</p></details>
-<details><summary>促銷檔期費率是多少？</summary><p>促銷檔期的成交手續費為基本費率加上促銷檔期費率。蝦皮 2025 年 8 月公告的範例是一般賣家非檔期 5.5%、檔期 7.5%（即加收 2%），本工具以 2% 為預設，但 2026 年各類別的促銷檔期費率請以賣家中心分類費率表為準，可自行修改。</p></details>
+<details><summary>促銷檔期費率是多少？</summary><p>促銷檔期的成交手續費為基本費率加上促銷檔期費率。本工具預設加收 2%，依賣家中心公告整理，原文與各分類最新費率尚待查證；請以賣家中心最新分類費率表為準，可自行修改。</p></details>
 <details><summary>損益兩平售價和建議售價怎麼算？</summary><p>本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。</p></details>
 <details><summary>為什麼和蝦皮對帳單有差異？</summary><p>對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。</p></details>
-<details><summary>商城賣家也能用嗎？</summary><p>可以改用「自訂費率」輸入商城的分類費率。商城賣家的成交手續費率與促銷檔期加收比例和一般賣家不同（分類費率表中另列「商城賣家」欄），且沒有 35,000 元的單件上限規定，結果僅供參考。</p></details>
+<details><summary>商城賣家也能用嗎？</summary><p>本工具依「非商城賣家」費用結構設計，計算核心固定套用非商城單件金額上限 35,000 元。商城賣家僅改費率不一定等同商城實際收費，結果僅供估算；請核對賣家中心最新公告與對帳單。</p></details>
 </section>
 
 <section aria-labelledby="srcTitle">
@@ -189,10 +209,10 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "WebApplication", "name": "蝦皮賣家實拿利潤計算器", "url": "https://calctw.com/shopee-seller-profit/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依 2026 年蝦皮台灣一般賣家收費規定，計算成交手續費、金流與系統處理費、免運及進階賣家專案費用、發票服務費，以及實拿利潤、利潤率與損益兩平售價。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-26"}
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "蝦皮賣家實拿利潤計算器", "url": "https://calctw.com/shopee-seller-profit/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依 2026 年蝦皮台灣一般賣家收費規定，計算成交手續費、金流與系統處理費、免運及進階賣家專案費用、發票服務費，以及實拿利潤、利潤率與損益兩平售價。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-27"}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "蝦皮賣家要付哪些費用？", "acceptedAnswer": {"@type": "Answer", "text": "一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。"}}, {"@type": "Question", "name": "成交手續費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。"}}, {"@type": "Question", "name": "金流與系統處理費 2.5% 的計算基礎是什麼？", "acceptedAnswer": {"@type": "Answer", "text": "自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。官方例子：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。"}}, {"@type": "Question", "name": "免運及進階賣家專案方案一和方案二怎麼選？", "acceptedAnswer": {"@type": "Answer", "text": "方案一依商品成交單價 × 數量收 6%（運費不計）。2026-07-01 起，方案二訂單金額 ≤99 元收 6%（四捨五入到元），≥100 元每單 60 元。本工具以商品單價 × 數量作為訂單金額，不含運費。訂單金額 ≤99 元時兩方案相同，選擇只影響 ≥100 元的訂單。≥100 元時，60 ÷ 6% ＝ 1,000，商品金額低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省，1,000 元時相同（四捨五入可能使鄰近金額也相同）；本工具可切換兩個方案直接比較。"}}, {"@type": "Question", "name": "促銷檔期費率是多少？", "acceptedAnswer": {"@type": "Answer", "text": "促銷檔期的成交手續費為基本費率加上促銷檔期費率。蝦皮 2025 年 8 月公告的範例是一般賣家非檔期 5.5%、檔期 7.5%（即加收 2%），本工具以 2% 為預設，但 2026 年各類別的促銷檔期費率請以賣家中心分類費率表為準，可自行修改。"}}, {"@type": "Question", "name": "損益兩平售價和建議售價怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。"}}, {"@type": "Question", "name": "為什麼和蝦皮對帳單有差異？", "acceptedAnswer": {"@type": "Answer", "text": "對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。"}}, {"@type": "Question", "name": "商城賣家也能用嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以改用「自訂費率」輸入商城的分類費率。商城賣家的成交手續費率與促銷檔期加收比例和一般賣家不同（分類費率表中另列「商城賣家」欄），且沒有 35,000 元的單件上限規定，結果僅供參考。"}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "蝦皮賣家要付哪些費用？", "acceptedAnswer": {"@type": "Answer", "text": "依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。"}}, {"@type": "Question", "name": "成交手續費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。"}}, {"@type": "Question", "name": "金流與系統處理費 2.5% 的計算基礎是什麼？", "acceptedAnswer": {"@type": "Answer", "text": "自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。本工具算式示例：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。"}}, {"@type": "Question", "name": "免運及進階賣家專案方案一和方案二怎麼選？", "acceptedAnswer": {"@type": "Answer", "text": "方案一依商品成交單價 × 數量收 6%（運費不計）。2026-07-01 起，方案二訂單金額 ≤99 元收 6%（四捨五入到元），≥100 元每單 60 元。本工具以商品單價 × 數量作為訂單金額，不含運費。訂單金額 ≤99 元時兩方案相同，選擇只影響 ≥100 元的訂單。≥100 元時，60 ÷ 6% ＝ 1,000，商品金額低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省，1,000 元時相同（四捨五入可能使鄰近金額也相同）；本工具可切換兩個方案直接比較。"}}, {"@type": "Question", "name": "促銷檔期費率是多少？", "acceptedAnswer": {"@type": "Answer", "text": "促銷檔期的成交手續費為基本費率加上促銷檔期費率。本工具預設加收 2%，依賣家中心公告整理，原文與各分類最新費率尚待查證；請以賣家中心最新分類費率表為準，可自行修改。"}}, {"@type": "Question", "name": "損益兩平售價和建議售價怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。"}}, {"@type": "Question", "name": "為什麼和蝦皮對帳單有差異？", "acceptedAnswer": {"@type": "Answer", "text": "對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。"}}, {"@type": "Question", "name": "商城賣家也能用嗎？", "acceptedAnswer": {"@type": "Answer", "text": "本工具依「非商城賣家」費用結構設計，計算核心固定套用非商城單件金額上限 35,000 元。商城賣家僅改費率不一定等同商城實際收費，結果僅供估算；請核對賣家中心最新公告與對帳單。"}}]}
 </script>
 
 <script>
@@ -208,7 +228,7 @@ var CATS = [
   ["美妝保養（彩妝、肌膚保養、香水）", 6.0, "beauty"], ["美食、伴手禮（休閒零食、飲品、禮盒）", 5.5, "beauty"],
   ["寵物食品", 5.5, "beauty"], ["居家生活（收納）", 6.0, "home"],
   ["手機", 5.5, "tech"], ["手機周邊配件", 7.5, "tech"], ["耳機／耳麥／藍牙耳機", 5.5, "tech"], ["筆記型電腦", 5.0, "tech"],
-  ["自訂費率（其他分類或商城）", null, ""]
+  ["自訂費率（其他非商城分類）", null, ""]
 ];
 var SOURCES = [
   ["蝦皮賣家幫助中心｜免運及進階賣家專案方案二調整（2026-07-01 起：訂單金額 ≤99 元收 6%；本頁依賣家中心公告整理）", "https://seller.shopee.tw/edu/article/18733"],
@@ -303,10 +323,10 @@ function render(){
   $("resTbl").tFoot.innerHTML = "<tr><td>實拿利潤</td><td class=\"l\">利潤率 " + (r.margin * 100).toFixed(1) + "%</td><td>" + fmtF(r.profit) + "</td></tr>";
 }
 function init(){
-  $("dataStamp").textContent = "費率更新日期：" + CHECKED + "｜依蝦皮購物賣家幫助中心 2026-01-01 起收費公告、2026-07-01 方案二調整與官方分類費率表（一般賣家）｜僅供試算";
+  $("dataStamp").textContent = "內容更新日期：2026-10-27；原費率整理日期：" + CHECKED + "｜依賣家中心公告整理；官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準｜僅供試算";
   $("cat").innerHTML = CATS.map(function(c, i){ return '<option value="' + i + '"' + (i === 0 ? " selected" : "") + ">" + c[0] + (c[1] === null ? "" : "（" + c[1].toFixed(1) + "%）") + "</option>"; }).join("");
   $("catTbl").tBodies[0].innerHTML = CATS.filter(function(c){ return c[1] !== null; }).map(function(c){ return "<tr><td>" + c[0] + "</td><td>" + c[1].toFixed(1) + '%</td><td class="l"><a href="' + PDF[c[2]] + '" rel="noopener" target="_blank">官方分類費率表 PDF</a></td></tr>'; }).join("");
-  $("srcList").innerHTML = SOURCES.map(function(s){ return "<li>" + s[0] + '：<a href="' + s[1] + '" rel="noopener" target="_blank">' + (s[1].length > 80 ? s[1].slice(0, 60) + "…" : s[1]) + "</a></li>"; }).join("") + "<li>費率更新日期：" + CHECKED + "（台北時間）。促銷檔期加收 2% 為依官方範例推得之預設值，未能逐類別核對，請以賣家中心最新分類費率表為準。</li>";
+  $("srcList").innerHTML = SOURCES.map(function(s){ return "<li>" + s[0] + '：<a href="' + s[1] + '" rel="noopener" target="_blank">' + (s[1].length > 80 ? s[1].slice(0, 60) + "…" : s[1]) + "</a></li>"; }).join("") + "<li>費率更新日期：" + CHECKED + "（台北時間）。促銷檔期加收 2% 為本工具預設值，依賣家中心公告整理，官方原文與各類別費率待查證，請以賣家中心最新分類費率表為準。</li>";
   $("cat").addEventListener("change", function(){ var c = CATS[+$("cat").value]; if (c[1] !== null) $("rate").value = c[1]; render(); });
   ["price","qty","cost","rate","promo","promoAdd","plan","payRate","shipBuyer","shipSeller","pack","invoice","other","ad","target"].forEach(function(id){ $(id).addEventListener("input", render); $(id).addEventListener("change", render); });
   $("calcBtn").addEventListener("click", render);

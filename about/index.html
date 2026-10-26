@@ -63,22 +63,46 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <body>
 <header class="site"><a class="brand" href="/">CalcTW 台灣試算</a><nav class="topnav" aria-label="主選單"><span class="ng"><a class="ncat" href="/#cat-labor">勞動薪資</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a></span><span class="ng"><a class="ncat" href="/#cat-mortgage">房貸</a><a href="/youth-mortgage/">新青安房貸</a></span><span class="ng"><a class="ncat" href="/#cat-tax">稅務</a><a href="/land-value-tax/">地價稅試算</a></span><span class="ng"><a class="ncat" href="/#cat-shop">電商與消費</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a></span></nav></header>
 <main>
-<h1>關於我們</h1>
+<h1>關於我們</h1><p class="hint">最後更新：2026-10-27</p>
 <p>CalcTW 台灣試算是一個專注台灣生活與理財情境的免費線上計算工具網站。我們把勞健保、房貸、信用卡分期這類常見卻容易算錯的問題，做成打開就能用、公式透明的計算機，幫助您在跟公司、銀行或發卡機構確認之前，先掌握大概的數字。</p>
 <h2>目前提供的工具</h2>
 <ul class="plain"><li><a href="/labor-health-insurance/">2026 勞健保自付額試算器</a>：輸入月薪，自動對應 115 年（2026）勞保、就保、職災、健保投保級距，算出員工自付額、雇主與政府負擔，以及勞退 6% 提繳；可選眷屬人數與勞退自提。</li><li><a href="/overtime-pay/">加班費計算機（平日／休息日／國定假日）</a>：輸入月薪或時薪與每筆加班日期、類型、時數，依勞基法第 24、39、40 條算出加班費並加總，附補休換算與 116 年最低工資 30,900 元、時薪 205 元檢核。</li><li><a href="/annual-leave/">特休天數與未休特休折現計算器</a>：輸入到職日算出週年制或曆年制（按比例）特休天數；再依施行細則第 24-1 條，用月薪 ÷ 30 × 未休日數試算年底或離職應發的特休未休工資。</li><li><a href="/youth-mortgage/">新青安房貸月付金試算器（含寬限期比較）</a>：輸入貸款金額、年限、分段利率與寬限期，比較有無寬限期的月付金與總利息；支援本息／本金平均攤還、逐期攤還表與 CSV 匯出。</li><li><a href="/land-value-tax/">115年地價稅試算器</a>：輸入多筆土地的申報地價、面積與持分，自動合併計算一般用地 10‰～55‰ 累進稅率與自用住宅 2‰、公設保留地 6‰、工業用地 10‰，附各縣市 115 年累進起點地價與分級明細。</li><li><a href="/credit-card-installment-apr/">信用卡分期實際年利率換算器</a>：輸入商品金額、期數與每期手續費率或總手續費，用內部報酬率（IRR）換算實際年利率，並和「一次付清＋刷卡回饋」比較哪個划算。</li><li><a href="/shopee-seller-profit/">蝦皮賣家實拿利潤計算器（2026 費率）</a>：輸入售價、成本、運費與商品分類，依 2026 年蝦皮成交手續費、金流與系統處理費 2.5%、免運及進階賣家專案 6% 或每單 60 元與發票服務費，算出每筆訂單實拿利潤、利潤率與損益兩平售價。</li></ul>
-<h2>我們如何製作內容</h2>
+<section class="card">
+<h2>維護責任與方法論</h2>
+<p>CalcTW 由 CalcTW 網站營運者維護，負責工具程式、來源整理與文字更正。本站不以法律、稅務或會計專業資格提供服務。</p>
+<p>各工具的資料來源與適用條件應一起閱讀：勞動工具對照法規及主管機關表格；房貸工具分開呈現政策來源與貸款數學；分期工具以現金流運算；賣家工具參考平台公告，平台規則不等於政府法規。</p>
+<ol>
+<li><strong>選用來源：</strong>先辨識工具所需的法規、年度、適用身分與生效日，再對照工具頁列出的官方文件。只有來源網址並不代表其中所有費率或特殊情境都已查核。</li>
+<li><strong>公式寫成程式：</strong>將輸入條件、級距或分段規則轉為頁面內的 JavaScript，計算後再格式化顯示；使用者可檢視頁面原始碼核對實作。</li>
+<li><strong>例題驗算：</strong>有官方例題或負擔表時，應先固定相同年度與條件，逐項對照中間值及合計。部分工具已有驗算區；這不代表所有工具、所有輸入組合都已經官方認證。沒有對應官方例題的純數學模型，應另以公式或現金流核對。</li>
+<li><strong>取整一致性：</strong>核對時須分清內部精度、逐項取整與最終顯示位數；不可直接把畫面已取整的中間值當成程式內部值。以各工具公式說明與原始碼的取整順序為核對依據。</li>
+<li><strong>資料更新：</strong>請先看各工具的資料日期與適用期間，不能把本頁更新日當成全站費率更新日。收到新公告或錯誤回報後，處理流程是核對來源及生效日、重現差異、修正適用文字或程式，再在相關頁面註明實際變更；未完成查核的事項不應當作已確認規則。</li>
+</ol>
+</section>
+<section class="card">
+<h2>資料來源與核對入口</h2>
+<p>以下整理各工具現有來源類型與入口，供追查依據；不是主管機關對本站的背書，也不表示本次重新驗證全部文件內容。</p>
 <ul class="plain">
-<li><strong>引用官方資料：</strong>級距、費率與政策條件以勞動部勞工保險局、衛福部中央健康保險署、財政部等主管機關公告為準，並在各工具頁列出來源連結與資料整理日期。</li>
-<li><strong>驗算：</strong>計算結果會與官方公告的負擔金額表或獨立程式交叉比對。</li>
-<li><strong>定期更新：</strong>主管機關公告調整時，我們會更新工具並註明更新日期。</li>
+<li>特休與加班：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001">勞動基準法</a>、<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030002">勞動基準法施行細則</a>；特休日數另可對照<a href="https://calcr2.mol.gov.tw/RestDays">勞動部特別休假日數試算系統</a>。</li>
+<li>勞健保：<a href="https://www.bli.gov.tw/0011588.html">勞保局一般單位保險費分擔金額表</a>與<a href="https://www.nhi.gov.tw/ch/cp-19418-9eefb-2576-1.html">健保署受僱者保險費負擔金額表</a>，核對時須確認年度與身分。</li>
+<li>青安房貸：國庫署<a href="https://www.nta.gov.tw/singlehtml/108">貸款原則</a>與<a href="https://www.nta.gov.tw/singlehtml/109">問答集</a>；銀行核貸及契約條件仍須另行確認。</li>
+<li>地價稅：<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096">土地稅法</a>；地方公告的累進起點地價須另對照工具頁的地方資料。</li>
+<li>信用卡分期：工具以現金流與內部報酬率建立試算模型，不能直接視為發卡機構依法揭露的總費用年百分率；核對方式見<a href="/credit-card-installment-apr/">分期工具公式說明</a>。</li>
+<li>蝦皮賣家利潤：<a href="https://seller.shopee.tw/edu/article/18733">蝦皮賣家教育中心公告</a>等平台來源，屬平台官方資料而非政府法源；實際費用應與適用公告及訂單對帳單核對。</li>
 </ul>
+</section>
+<section class="card">
+<h2>更正管道與公開紀錄</h2>
+<p>發現差異時，請寄至 <a href="mailto:kevinlee19852001@gmail.com">kevinlee19852001@gmail.com</a>，並依<a href="/contact/">聯絡頁的回報說明</a>提供頁面、輸入條件、實際結果與參考依據。營運者依資料版本及輸入重現問題，必要時請您補充去識別資訊，確認後回覆處理結果。公開更正以相關頁面的更新日期與更新紀錄說明修正範圍，不公開來信者的個人資料。</p>
+</section>
 <h2>免責聲明</h2>
 <div class="note">本站工具與文章僅供一般資訊與試算參考，不構成法律、稅務、投資或貸款建議。實際金額以主管機關核定之繳款單、銀行貸款契約或發卡機構帳單為準。如發現資料有誤，歡迎<a href="/contact/">來信告知</a>。</div>
+<h2>適用範圍</h2><p>工具只處理頁面列出的輸入與假設，不能涵蓋所有身分、特殊工時、減免、銀行核貸或平台訂單情境。資料年度、適用條件或帳單項目不同時，請先核對差異，再向主管機關或契約相對人確認。</p>
 <h2>聯絡方式</h2>
 <p>電子郵件：<a href="mailto:kevinlee19852001@gmail.com">kevinlee19852001@gmail.com</a></p>
+<section class="card"><h2>更新紀錄</h2><p>2026-10-27：補充維護責任、來源選用與驗算方法、取整核對、資料更新及更正流程，整理來源入口與適用範圍。本次未變更工具公式。</p></section>
 </main>
-<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
+<footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜所有計算皆在您的瀏覽器完成，計算輸入不由本站計算程式上傳；第三方連線請見隱私權政策。</div></footer>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://calctw.com/"}, {"@type": "ListItem", "position": 2, "name": "關於我們", "item": "https://calctw.com/about/"}]}
 </script>

@@ -65,7 +65,7 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 <main>
 <h1 class="eh">蝦皮賣家實拿利潤計算器（2026 費率）</h1>
 <p class="hint" id="dataStamp"></p>
-<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>僅供試算：</strong>本工具為獨立第三方試算工具，非蝦皮官方工具。費率依蝦皮賣家幫助中心公開資訊整理（費率更新日期：2026-10-26），實際費用以蝦皮賣家中心公告與對帳單為準。</p>
+<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>適用範圍：</strong>本工具依非商城賣家費用結構設計，核心固定套用非商城單件金額上限；商城僅修改費率未必符合實際收費，結果僅供估算。費率與方案二規則依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。</p>
 <section class="card" aria-labelledby="inTitle">
 <h2 id="inTitle" style="margin-top:0">輸入商品與費用</h2>
 <div class="grid">
@@ -75,7 +75,7 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
   <div><label for="cat">商品分類（一般賣家基本費率）</label><select id="cat"></select></div>
   <div><label for="rate">成交手續費基本費率（%）</label><input id="rate" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="6"><div class="hint">選分類會自動帶入，也可自行修改</div></div>
   <div><label for="promo">是否為蝦皮促銷檔期</label><select id="promo"><option value="0" selected>否（非檔期）</option><option value="1">是（加收促銷檔期費率）</option></select></div>
-  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint">預設 2%（依官方範例推得，可修改）</div></div>
+  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint">預設 2%（公告原文待查證，可修改）</div></div>
   <div><label for="plan">免運及進階賣家專案</label><select id="plan"><option value="p1" selected>方案一：商品金額 × 6%</option><option value="p2">方案二：訂單金額 ≤99 元收 6%、≥100 元每單 60 元</option><option value="none">未參加</option></select></div>
   <div><label for="payRate">金流與系統處理費（%）</label><input id="payRate" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2.5"><div class="hint">信用卡分期另依銀行期數，可修改</div></div>
   <div><label for="shipBuyer">買家支付運費（元）</label><input id="shipBuyer" type="number" inputmode="numeric" min="0" step="1" value="60"><div class="hint">計入金流費基礎；運費本身由平台代收付物流</div></div>
@@ -100,7 +100,7 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 </div>
 <p id="sumText"></p>
 <div class="tbl"><table id="resTbl"><thead><tr><th>項目</th><th class="l">計算方式</th><th>金額（元）</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
-<p class="hint">※ 方案二自 2026-07-01 起：訂單金額（商品單價 × 數量，不含運費）≤99 元收 6%、≥100 元每單 60 元。每項費用依蝦皮規定各自四捨五入到元後相加；發票服務費每張 2.5 元。費率更新日期：2026-10-26｜僅供試算，實際以蝦皮對帳單為準。</p>
+<p class="hint">※ 方案二自 2026-07-01 起：訂單金額（商品單價 × 數量，不含運費）≤99 元收 6%、≥100 元每單 60 元。本工具各項比例費用各自四捨五入到元後相加；發票服務費保留每張 2.5 元。依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。費率更新日期：2026-10-26｜僅供試算，實際以蝦皮對帳單為準。</p>
 </section>
 
 <div hidden><section class="card" aria-labelledby="ckTitle">
@@ -129,6 +129,7 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 <ul class="src" id="srcList"></ul>
 </section>
 </div>
+<section><h2>更新紀錄</h2><p>2026-10-27：釐清非商城適用範圍、公告查證限制及發票費取整說明；計算未變更。</p></section>
 </main>
 <footer class="credit"><a href="https://calctw.com/shopee-seller-profit/" target="_blank" rel="noopener">由 CalcTW.com 提供</a>｜完整說明與常見問題請見原頁面</footer>
 <script>
@@ -144,7 +145,7 @@ var CATS = [
   ["美妝保養（彩妝、肌膚保養、香水）", 6.0, "beauty"], ["美食、伴手禮（休閒零食、飲品、禮盒）", 5.5, "beauty"],
   ["寵物食品", 5.5, "beauty"], ["居家生活（收納）", 6.0, "home"],
   ["手機", 5.5, "tech"], ["手機周邊配件", 7.5, "tech"], ["耳機／耳麥／藍牙耳機", 5.5, "tech"], ["筆記型電腦", 5.0, "tech"],
-  ["自訂費率（其他分類或商城）", null, ""]
+  ["自訂費率（其他非商城分類）", null, ""]
 ];
 var SOURCES = [
   ["蝦皮賣家幫助中心｜免運及進階賣家專案方案二調整（2026-07-01 起：訂單金額 ≤99 元收 6%）", "https://seller.shopee.tw/edu/article/18733"],
@@ -239,7 +240,7 @@ function render(){
   $("resTbl").tFoot.innerHTML = "<tr><td>實拿利潤</td><td class=\"l\">利潤率 " + (r.margin * 100).toFixed(1) + "%</td><td>" + fmtF(r.profit) + "</td></tr>";
 }
 function init(){
-  $("dataStamp").textContent = "費率更新日期：" + CHECKED + "｜依蝦皮購物賣家幫助中心 2026-01-01 起收費公告、2026-07-01 方案二調整與官方分類費率表（一般賣家）｜僅供試算";
+  $("dataStamp").textContent = "內容更新日期：2026-10-27；原費率整理日期：" + CHECKED + "｜依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準｜僅供試算";
   $("cat").innerHTML = CATS.map(function(c, i){ return '<option value="' + i + '"' + (i === 0 ? " selected" : "") + ">" + c[0] + (c[1] === null ? "" : "（" + c[1].toFixed(1) + "%）") + "</option>"; }).join("");
   $("catTbl").tBodies[0].innerHTML = CATS.filter(function(c){ return c[1] !== null; }).map(function(c){ return "<tr><td>" + c[0] + "</td><td>" + c[1].toFixed(1) + '%</td><td class="l"><a href="' + PDF[c[2]] + '" rel="noopener" target="_blank">官方分類費率表 PDF</a></td></tr>'; }).join("");
   $("srcList").innerHTML = SOURCES.map(function(s){ return "<li>" + s[0] + '：<a href="' + s[1] + '" rel="noopener" target="_blank">' + (s[1].length > 80 ? s[1].slice(0, 60) + "…" : s[1]) + "</a></li>"; }).join("") + "<li>費率更新日期：" + CHECKED + "（台北時間）。促銷檔期加收 2% 為依官方範例推得之預設值，未能逐類別核對，請以賣家中心最新分類費率表為準。</li>";
