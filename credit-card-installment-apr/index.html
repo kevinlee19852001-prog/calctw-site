@@ -141,6 +141,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <tbody id="cmpBody"></tbody></table></div>
 <div id="verdict" class="verdict even">-</div>
 <p class="hint" id="approx"></p>
+<aside class="notice" aria-label="計算基準說明" style="background:var(--warn,#fff7ed);border:1px solid var(--bd);border-left:4px solid var(--c);border-radius:8px;padding:12px;font-size:1rem;line-height:1.7"><strong>預設計算基準：</strong>以首期帳單為基準，第一期與一次付清同時支付，視為第 0 個月，並非實際購買當日付款。可使用上方「計算基準」選單切換為「以刷卡日為基準」（刷卡日起算，第一期於購買後 1 個月支付）。年利率為 IRR 求得的月利率 × 12（名目 APR）；按月複利換算的有效年利率另列為 EAR。付款時點或不同銀行算法不同，結果會有差異。本工具無官方範例可交叉驗證，僅供試算參考。</aside>
 </section>
 
 <aside class="b2b b2b-result" aria-label="客製計算機"><p>💼 想在自己的網站放一個專屬計算機？我們可以依您的價目表或計算規則，客製一個放在您網站上的試算工具。<a href="/contact/#custom">了解客製計算機 →</a> <a class="line-link" href="https://lin.ee/9klwToW" target="_blank" rel="noopener" style="color:#06C755;font-weight:700;font-size:.92em">LINE 洽詢</a></p></aside>
@@ -182,13 +183,14 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <details><summary>0 利率 0 手續費的分期一定划算嗎？</summary><p>如果分期沒有手續費，而且一次付清也沒有額外折扣，分期通常比較划算，因為錢可以晚點付、先賺利息。但如果一次付清能拿到較高的刷卡回饋或現金折扣，而分期沒有回饋，就要比較「少拿的回饋」和「多賺的利息」哪個多，本工具會幫你算出來。</p></details>
 <details><summary>「名目年利率 APR」和「有效年利率 EAR」差在哪？</summary><p>APR 是月利率乘以 12，是一般銀行揭露利率的習慣算法；EAR 則考慮每月複利，代表一年下來真實的資金成本，數字會略高於 APR。比較不同分期方案時，用同一種指標比較即可。</p></details>
 <details><summary>為什麼計算基準建議選「以首期帳單為基準」？</summary><p>不論一次付清或分期，你都是在第一期帳單繳款日才開始付錢。以首期帳單為基準時，第 1 期繳款視為與一次付清同時發生，真正「借到」的只有剩下的金額，換算出的年利率較能反映實際成本，也比較嚴格；以刷卡日為基準則假設第 1 期在 1 個月後才付，數字會比較低。</p></details>
+<details><summary>為什麼我算出的年利率和銀行不一樣？</summary><p>付款時點與年利率定義不同，都會影響結果。本工具預設以首期帳單為基準，第一期與一次付清同時支付，視為第 0 個月；切換為以刷卡日為基準時，則假設第一期在購買後 1 個月支付。以金額 30,000 元、總手續費平均分攤為例，第 0 個月與第 1 個月的名目 APR 分別為：6 期、總手續費率 2%：9.59% 與 6.82%；12 期、3.5%：7.58% 與 6.40%；24 期、7%：7.17% 與 6.58%。因此，不同基準也可能改變哪個方案年利率最低的排序。本工具的名目 APR 為 IRR 求得的月利率 × 12；有效年利率 EAR 則考慮每月複利，另行顯示。銀行可能採用平均年利率等不同呈現方式，手續費一次收取、尾數處理也會造成差異；各行公告的「年百分率」有其自行揭露的算法與條件，未必等同本工具的名目 APR。本工具無官方範例可交叉驗證，結果僅供試算參考，請核對銀行自身揭露的年百分率（APR）、付款時點及費用條件。</p></details>
 <details><summary>分期會影響信用評分嗎？</summary><p>依約按時繳款的分期通常不會有負面影響，但分期會占用信用額度，並在聯徵資料中呈現分期負債。若同時有多筆分期，可能影響未來申請房貸、信貸時的負債比評估。</p></details>
 </section>
 </main>
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/credit-card-installment-apr/">分期年利率</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜所有計算皆在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"信用卡分期實際年利率換算器","url":"https://calctw.com/credit-card-installment-apr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入商品金額、期數與手續費，用 IRR 換算信用卡分期實際年利率，並與一次付清＋回饋及存款機會成本比較。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-18"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"信用卡分期實際年利率換算器","url":"https://calctw.com/credit-card-installment-apr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"zh-Hant-TW","description":"輸入商品金額、期數與手續費，用 IRR 換算信用卡分期實際年利率，並與一次付清＋回饋及存款機會成本比較。","offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"},"dateModified":"2026-10-26"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -198,6 +200,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 {"@type":"Question","name":"0 利率 0 手續費的分期一定划算嗎？","acceptedAnswer":{"@type":"Answer","text":"如果分期沒有手續費，而且一次付清也沒有額外折扣，分期通常比較划算，因為錢可以晚點付、先賺利息。但如果一次付清能拿到較高的刷卡回饋或現金折扣，而分期沒有回饋，就要比較「少拿的回饋」和「多賺的利息」哪個多，本工具會幫你算出來。"}},
 {"@type":"Question","name":"「名目年利率 APR」和「有效年利率 EAR」差在哪？","acceptedAnswer":{"@type":"Answer","text":"APR 是月利率乘以 12，是一般銀行揭露利率的習慣算法；EAR 則考慮每月複利，代表一年下來真實的資金成本，數字會略高於 APR。比較不同分期方案時，用同一種指標比較即可。"}},
 {"@type":"Question","name":"為什麼計算基準建議選「以首期帳單為基準」？","acceptedAnswer":{"@type":"Answer","text":"不論一次付清或分期，你都是在第一期帳單繳款日才開始付錢。以首期帳單為基準時，第 1 期繳款視為與一次付清同時發生，真正「借到」的只有剩下的金額，換算出的年利率較能反映實際成本，也比較嚴格；以刷卡日為基準則假設第 1 期在 1 個月後才付，數字會比較低。"}},
+{"@type":"Question","name":"為什麼我算出的年利率和銀行不一樣？","acceptedAnswer":{"@type":"Answer","text":"付款時點與年利率定義不同，都會影響結果。本工具預設以首期帳單為基準，第一期與一次付清同時支付，視為第 0 個月；切換為以刷卡日為基準時，則假設第一期在購買後 1 個月支付。以金額 30,000 元、總手續費平均分攤為例，第 0 個月與第 1 個月的名目 APR 分別為：6 期、總手續費率 2%：9.59% 與 6.82%；12 期、3.5%：7.58% 與 6.40%；24 期、7%：7.17% 與 6.58%。因此，不同基準也可能改變哪個方案年利率最低的排序。本工具的名目 APR 為 IRR 求得的月利率 × 12；有效年利率 EAR 則考慮每月複利，另行顯示。銀行可能採用平均年利率等不同呈現方式，手續費一次收取、尾數處理也會造成差異；各行公告的「年百分率」有其自行揭露的算法與條件，未必等同本工具的名目 APR。本工具無官方範例可交叉驗證，結果僅供試算參考，請核對銀行自身揭露的年百分率（APR）、付款時點及費用條件。"}},
 {"@type":"Question","name":"分期會影響信用評分嗎？","acceptedAnswer":{"@type":"Answer","text":"依約按時繳款的分期通常不會有負面影響，但分期會占用信用額度，並在聯徵資料中呈現分期負債。若同時有多筆分期，可能影響未來申請房貸、信貸時的負債比評估。"}}
 ]}
 </script>
