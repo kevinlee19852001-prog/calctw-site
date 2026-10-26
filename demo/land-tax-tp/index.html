@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CalcTW demo | id=land-tax-tp | created=2026-10-25 | takedown_due=2026-11-24 -->
+<meta name="calctw-demo-created" content="2026-10-25">
+<meta name="calctw-demo-takedown" content="2026-11-24">
+<meta name="robots" content="noindex,nofollow">
+<title>臺北市地價稅自用住宅 2‰ 試算｜示範樣品</title>
+<style>:root{--b:#7c2d12}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:#f7f7f8;color:#1f2933;line-height:1.7}
+header{background:var(--b);color:#fff;padding:14px 18px}header .t{font-weight:800;font-size:1.1rem}header .s{opacity:.9;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:14px}.card{background:#fff;border:1px solid #e3e6ea;border-radius:12px;padding:16px;margin:12px 0}
+h1{font-size:1.45rem;margin:.4em 0}h2{font-size:1.1rem;margin:0 0 .5em;color:var(--b)}label{display:block;font-weight:600;font-size:.92rem;margin-bottom:4px}
+input,select{width:100%;font-size:1rem;padding:9px;border:1px solid #c5ccd3;border-radius:8px;background:#fff}.grid{display:grid;gap:12px;grid-template-columns:1fr}
+.kpis{display:grid;gap:10px;grid-template-columns:1fr 1fr}.kpi{background:#f3f4f6;border-left:4px solid var(--b);border-radius:8px;padding:10px}.kpi .v{font-size:1.3rem;font-weight:800}.kpi .l{font-size:.82rem;color:#5f6b76}
+table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1px solid #e3e6ea;padding:7px 6px;text-align:right}td:first-child,th:first-child{text-align:left}
+.ref{color:#9a3412;font-weight:700;font-size:.9rem}.hint{font-size:.85rem;color:#5f6b76}footer{text-align:center;font-size:.85rem;color:#5f6b76;padding:20px 12px 30px}
+.badge{display:inline-block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:999px;padding:2px 10px;font-size:.8rem}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="t">為地政士事務所設計</div><div class="s">地價稅自用住宅優惠稅率試算</div></header>
+<main>
+<p><span class="badge">示範樣品</span></p>
+<h1>11/1 稅單寄到時，讓客戶自己算出明年能省多少</h1>
+<p>為地政士事務所設計的臺北市地價稅自用住宅 2‰ 試算工具，可嵌入您的官網，讓客戶收到稅單後自行輸入申報地價與持分面積，了解明年起每年可少繳多少。<strong>今年 9/22 申請期限已過，現在申請並經核准後，明年起適用。</strong></p>
+<section class="card" aria-labelledby="inT"><h2 id="inT">輸入條件</h2><div class="grid">
+<div><label>適用縣市</label><p>臺北市累進起點地價 43,957,000 元</p></div>
+<div><label for="price">申報地價（元／㎡）</label><input id="price" type="number" min="0" step="1" value="200000"><div class="hint">示範數字，請依地價稅單填寫</div></div>
+<div><label for="area">持分面積（㎡）</label><input id="area" type="number" min="0" step="0.01" value="100"><div class="hint">示範數字</div></div>
+<div><label for="zone">土地類別</label><select id="zone"><option value="0" selected>都市土地（上限 3 公畝＝300㎡）</option><option value="1">非都市土地（上限 7 公畝＝700㎡）</option></select></div>
+<div><label for="fee">申請服務費（元）</label><input id="fee" type="number" min="0" step="1" value=""><div class="hint">留空則不顯示金額</div></div>
+</div><p class="hint">內建示範數字：200,000 元／㎡ × 100 ㎡＝20,000,000 元，低於臺北市累進起點地價，一般用地適用第一級 10‰；符合自用住宅條件且核准後為 2‰。</p></section>
+<section class="card" aria-labelledby="outT" aria-live="polite"><h2 id="outT">試算結果</h2><p class="ref">僅供參考，實際以地方稅務局核定為準</p>
+<div class="kpis"><div class="kpi"><div class="l">一般稅率每年稅額</div><div class="v" id="kGen">-</div></div><div class="kpi"><div class="l">自用住宅稅率每年稅額</div><div class="v" id="kSelf">-</div></div><div class="kpi"><div class="l">明年起每年可少繳</div><div class="v" id="kSave">-</div></div><div class="kpi"><div class="l">適用 2‰ 面積</div><div class="v" id="kArea">-</div></div></div>
+<table id="tbl"><tbody></tbody></table><p class="hint" id="kWarn"></p></section>
+<section class="card" id="cta"><h2>委託申請自用住宅優惠稅率</h2><p id="ctaFee"></p><p>請向您委託的地政士洽詢申請與服務費。</p><p class="hint">依土地稅法第 41 條，自用住宅優惠稅率須於地價稅開徵 40 日前（9/22）申請。今年期限已過，現在申請並經核准後，明年起適用。</p><p class="hint">11 月開徵、收到稅單時，正是檢查是否符合自用住宅優惠的時候；現在申請，可從明年起適用。</p></section>
+<section class="card"><h2>自用住宅用地 2‰ 適用條件（土地稅法第 17 條）</h2><ul class="hint">
+<li>土地所有權人或其配偶、直系親屬於該地<strong>辦竣戶籍登記</strong>。</li>
+<li><strong>無出租或供營業使用</strong>的住宅用地。</li>
+<li>面積：<strong>都市土地 3 公畝（300㎡）、非都市土地 7 公畝（700㎡）</strong>為限，超過部分按一般用地稅率課徵。</li>
+<li>土地所有權人與其配偶及未成年之受扶養親屬，<strong>以一處為限</strong>。</li>
+</ul></section><section class="card"><h2>計費說明</h2><ul class="hint"><li>一般用地依土地稅法第 16 條累進稅率 10‰～55‰ 計算；累進起點地價採 115～116 年各縣市地方稅務機關公告值。</li><li>本試算假設該縣市內只有這一筆土地；同縣市有其他一般用地時須合併累進。</li><li>申報地價與面積為示範數字，非任何實際地號。</li><li>實際稅額以地方稅務局核定為準。</li></ul></section>
+<section class="card"><h2>想要一個屬於您的版本？</h2><p>可為地政士事務所客製品牌色、欄位、服務費與說明文字，並嵌入官網，讓客戶自行試算明年起的節稅空間。</p></section>
+<section class="card"><h2>常見問題</h2>
+<details><summary>什麼是自用住宅用地 2‰？有哪些條件？</summary><p>符合條件且經核准的自用住宅用地，可按 2‰ 課徵地價稅。須由土地所有權人、配偶或直系親屬在該地辦竣戶籍登記，住宅無出租或供營業使用，並符合一處限制等規定。實際資格由地方稅務局核定。</p></details>
+<details><summary>自用住宅優惠的面積上限是多少？</summary><p>都市土地上限 300㎡，非都市土地上限 700㎡；超過部分按一般用地累進稅率計算。本工具以輸入的持分面積計算，假設同縣市沒有其他土地占用優惠額度或須合併累進。</p></details>
+<details><summary>已核准後，每年都要重新申請嗎？</summary><p>不用。已核准且用途與適用條件未變更者，不必每年重新申請；若有出租、營業或戶籍等異動，應向地方稅務局確認並依規定申報。</p></details>
+<details><summary>現在何時申請？今年還能適用嗎？</summary><p>今年 9/22 的申請期限已過。現在可準備資料提出申請，經核准後明年起適用；今年稅單不會因本次逾期申請改按 2‰。未來欲於指定年度適用，應於該年度 9/22 前提出申請。</p></details>
+<details><summary>稅單上要看哪裡？</summary><p>可查看土地明細的稅地種類、適用稅率、申報地價及課稅面積；欄位名稱可能略有不同。先確認是否已列為自用住宅用地，再用申報地價與持分面積試算。若稅單僅列總額，請向地方稅務局確認明細，勿將公告土地現值當成申報地價。</p></details>
+</section>
+</main>
+<footer>地價稅白牌試算示範樣品｜所有輸入均為示範數字，非實際地號</footer>
+<script>(function(){var X=43957000;function $(i){return document.getElementById(i)}function f(n){return Math.round(n).toLocaleString("zh-TW")+" 元"}
+var B=[[1,0.010,0],[6,0.015,0.005],[11,0.025,0.065],[16,0.035,0.175],[21,0.045,0.335],[1/0,0.055,0.545]];
+function prog(V,X){if(V<=0)return 0;for(var i=0;i<B.length;i++)if(V<=B[i][0]*X)return V*B[i][1]-X*B[i][2];}
+function calc(){var p=Math.max(0,+$("price").value||0),a=Math.max(0,+$("area").value||0),cap=+$("zone").value?700:300,sa=Math.min(a,cap),ex=a-sa,
+g=Math.round(prog(p*a,X)),s=Math.round(p*sa*0.002+prog(p*ex,X)),sv=Math.max(0,g-s),fv=$("fee").value.trim(),fee=/^\d+$/.test(fv)?+fv:0;
+$("kGen").textContent=f(g);$("kSelf").textContent=f(s);$("kSave").textContent=f(sv);$("kArea").textContent=sa.toLocaleString("zh-TW")+" ㎡";
+$("kWarn").textContent=ex>0?"超過面積上限的 "+ex.toLocaleString("zh-TW")+" ㎡ 按一般用地累進稅率計算。":"";
+$("tbl").tBodies[0].innerHTML="<tr><td>課稅地價："+p.toLocaleString("zh-TW")+" 元 × "+a.toLocaleString("zh-TW")+" ㎡</td><td>"+f(p*a)+"</td></tr><tr><td>一般用地累進（10‰～55‰）</td><td>"+f(g)+"</td></tr><tr><td>自用住宅 2‰"+(ex>0?"＋超過部分累進":"")+"</td><td>"+f(s)+"</td></tr><tr><td><strong>明年起每年可少繳</strong></td><td><strong>"+f(sv)+"</strong></td></tr>";
+$("ctaFee").textContent=fee>0?"申請服務費 "+fee.toLocaleString("zh-TW")+" 元；以本試算，明年起每年可少繳 "+f(sv)+"，首個適用年度扣除服務費後約 "+f(sv-fee)+"。":"服務費請洽詢。"}
+document.addEventListener("input",calc);document.addEventListener("change",calc);calc();})();</script>
+<script>(function(){var ps=[],ok={};new URLSearchParams(location.search).forEach(function(v,k){if(/^[A-Za-z][\w-]{0,20}$/.test(k)&&v.length<=40)ps.push([k,v])});
+function el(k){return document.getElementById(k)}function isSel(p){var e=el(p[0]);return !!e&&e.tagName==="SELECT"}
+function apply(k,v){var e=el(k);if(!e||!/^(INPUT|SELECT)$/.test(e.tagName)||e.type==="hidden")return false;if(e.tagName==="SELECT"&&!Array.prototype.some.call(e.options,function(o){return o.value===v}))return false;
+e.value=v;e.dispatchEvent(new Event("input",{bubbles:true}));e.dispatchEvent(new Event("change",{bubbles:true}));return true}
+ps.filter(isSel).concat(ps.filter(function(p){return !isSel(p)})).forEach(function(p){if(apply(p[0],p[1]))ok[p[0]]=p[1]});
+Object.keys(ok).forEach(function(k){var e=el(k);if(e&&e.value!==ok[k])apply(k,ok[k])});window.CALCTW_PREFILLED=Object.keys(ok).length;})();</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03bc7ab880ec41acb96ea0b1a2ed22d0"}'></script>
+</body>
+</html>
