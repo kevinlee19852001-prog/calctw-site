@@ -199,11 +199,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -304,11 +299,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -345,11 +335,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -429,11 +414,6 @@
           },
           {
             "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -538,11 +518,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -579,11 +554,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -673,11 +643,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -768,11 +733,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -848,11 +808,6 @@
           },
           {
             "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -947,11 +902,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -1033,11 +983,6 @@
         },
         {
           "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -1127,11 +1072,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -1207,11 +1147,6 @@
           },
           {
             "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -1301,11 +1236,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -1391,11 +1321,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -1462,11 +1387,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -1550,11 +1470,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -1621,11 +1536,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -1715,11 +1625,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -1805,11 +1710,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -1885,11 +1785,6 @@
           },
           {
             "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -1979,11 +1874,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -2069,11 +1959,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -2135,11 +2020,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -2223,11 +2103,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -2289,345 +2164,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/shopee-seller-profit/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/about/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/privacy/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/contact/",
-            "local_exists": true,
-            "http_status": 200
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://calctw.com/credit-card-installment-apr/",
-      "path": "/credit-card-installment-apr/",
-      "status": 200,
-      "bytes": 39414,
-      "error": null,
-      "title": "信用卡分期實際年利率換算器｜分期手續費換算年利率（IRR）＋一次付清回饋比較",
-      "title_length": 38,
-      "description": "信用卡分期 0 利率真的划算嗎？輸入商品金額、期數與每期手續費率或總手續費，用內部報酬率（IRR）換算實際年利率，並和一次付清＋刷卡回饋、存款利息機會成本比較，雙11購物前先算一下。",
-      "description_length": 91,
-      "viewport": "width=device-width, initial-scale=1",
-      "internal_links": [
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/labor-health-insurance/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/overtime-pay/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/annual-leave/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/youth-mortgage/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/shopee-seller-profit/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/contact/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/youth-mortgage/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/labor-health-insurance/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/shopee-seller-profit/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/contact/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/labor-health-insurance/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/overtime-pay/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/annual-leave/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/youth-mortgage/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/shopee-seller-profit/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/about/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/privacy/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/contact/",
-          "local_exists": true,
-          "http_status": 200
-        }
-      ],
-      "local": {
-        "title": "信用卡分期實際年利率換算器｜分期手續費換算年利率（IRR）＋一次付清回饋比較",
-        "title_length": 38,
-        "description": "信用卡分期 0 利率真的划算嗎？輸入商品金額、期數與每期手續費率或總手續費，用內部報酬率（IRR）換算實際年利率，並和一次付清＋刷卡回饋、存款利息機會成本比較，雙11購物前先算一下。",
-        "description_length": 91,
-        "viewport": "width=device-width, initial-scale=1",
-        "bytes": 39414,
-        "internal_links": [
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/labor-health-insurance/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/overtime-pay/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/annual-leave/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/youth-mortgage/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/shopee-seller-profit/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/contact/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/youth-mortgage/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/labor-health-insurance/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/shopee-seller-profit/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/contact/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/labor-health-insurance/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/overtime-pay/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/annual-leave/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/youth-mortgage/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -2717,11 +2253,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -2738,11 +2269,6 @@
         },
         {
           "path": "/contact/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -2783,11 +2309,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -2871,11 +2392,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -2892,11 +2408,6 @@
           },
           {
             "path": "/contact/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -2937,11 +2448,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -3031,11 +2537,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -3066,17 +2567,7 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -3117,11 +2608,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -3205,11 +2691,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -3240,17 +2721,7 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -3291,11 +2762,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -3385,11 +2851,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -3426,11 +2887,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -3514,11 +2970,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -3555,11 +3006,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
@@ -3649,11 +3095,6 @@
           "http_status": 200
         },
         {
-          "path": "/credit-card-installment-apr/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
           "path": "/shopee-seller-profit/",
           "local_exists": true,
           "http_status": 200
@@ -3695,11 +3136,6 @@
         },
         {
           "path": "/land-value-tax/",
-          "local_exists": true,
-          "http_status": 200
-        },
-        {
-          "path": "/credit-card-installment-apr/",
           "local_exists": true,
           "http_status": 200
         },
@@ -3783,11 +3219,6 @@
             "http_status": 200
           },
           {
-            "path": "/credit-card-installment-apr/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
             "path": "/shopee-seller-profit/",
             "local_exists": true,
             "http_status": 200
@@ -3829,11 +3260,6 @@
           },
           {
             "path": "/land-value-tax/",
-            "local_exists": true,
-            "http_status": 200
-          },
-          {
-            "path": "/credit-card-installment-apr/",
             "local_exists": true,
             "http_status": 200
           },
