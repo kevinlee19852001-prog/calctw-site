@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2026 勞健保自付額試算器｜嵌入版｜CalcTW.com</title>
+<title>勞健保自付額試算器（115／116年）｜嵌入版｜CalcTW.com</title>
 <meta name="robots" content="noindex,follow">
 <base target="_self">
 <style>
@@ -55,12 +55,19 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 </head>
 <body>
 <main>
-<h1 class="eh">2026 勞健保自付額試算器</h1>
+<h1 class="eh">勞健保自付額試算器（115／116年）</h1>
 <p class="hint" id="dataStamp"></p>
+<p class="note" id="yearNote" hidden></p>
 
 <section class="card" aria-labelledby="inTitle">
 <h2 id="inTitle" style="margin-top:0">輸入薪資資料</h2>
 <div class="grid">
+  <div><label for="rocYear">適用年度</label>
+    <select id="rocYear">
+      <option value="115">115 年（2026）</option>
+      <option value="116">116 年（2027）1 月 1 日起</option>
+    </select>
+    <div class="hint">預設依裝置日期自動帶入，可手動切換</div></div>
   <div><label for="salary">每月薪資總額（元）</label>
     <input id="salary" type="number" inputmode="numeric" min="0" step="100" value="52000">
     <div class="hint">含本薪、經常性津貼、伙食費等每月工資</div></div>
@@ -78,7 +85,7 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 </div>
 <div class="btns">
   <button class="primary" id="calcBtn" type="button">開始試算</button>
-  <button type="button" data-s="29500">最低工資 29,500</button>
+  <button type="button" id="minWageBtn" data-s="29500">最低工資 29,500</button>
   <button type="button" data-s="36000">月薪 36,000</button>
   <button type="button" data-s="45800">月薪 45,800</button>
   <button type="button" data-s="80000">月薪 80,000</button>
@@ -116,132 +123,95 @@ body{background:#fff}main{padding:8px}.eh{font-size:1.2rem;margin:.2em 0 .4em}.c
 </div>
 </main>
 <footer class="credit"><a href="https://calctw.com/labor-health-insurance/" target="_blank" rel="noopener">由 CalcTW.com 提供</a>｜完整說明與常見問題請見原頁面</footer>
+<script src="/labor-health-insurance/calc.js"></script>
 <script>
-/* ===== 官方資料常數（資料整理日：2026-10-18） ===== */
-var DATA_UPDATED = "2026-10-18";
-var EFFECTIVE = "115年（2026年）1月1日起適用";
-var MIN_WAGE = 29500; // 最低工資月薪，115/1/1 起
-/* 勞工保險投保薪資分級表（全時受僱者，115/1/1 起）— 勞保局 https://www.bli.gov.tw/0005475.htm */
-var LI_LEVELS = [29500,30300,31800,33300,34800,36300,38200,40100,42000,43900,45800];
-/* 勞工職業災害保險投保薪資分級表（115/1/1 起）— 勞動部開放資料 A17000000J-030566 */
-var OA_LEVELS = LI_LEVELS.concat([48200,50600,53000,55400,57800,60800,63800,66800,69800,72800]);
-/* 全民健保投保金額分級表（115/1/1 生效）— 健保署 https://www.nhi.gov.tw/ch/cp-19421-f9533-2569-1.html */
-var NHI_LEVELS = [29500,30300,31800,33300,34800,36300,38200,40100,42000,43900,45800,48200,50600,53000,55400,57800,60800,63800,66800,69800,72800,76500,80200,83900,87600,92100,96600,101100,105600,110100,115500,120900,126300,131700,137100,142500,147900,150000,156400,162800,169200,175600,182000,189500,197000,204500,212000,219500,228200,236900,245600,254300,263000,273000,283000,293000,303000,313000];
-/* 勞工退休金月提繳分級表（115/1/1 生效）— 勞保局 https://www.bli.gov.tw/0102563.html */
-var PENSION_LEVELS = [1500,3000,4500,6000,7500,8700,9900,11100,12540,13500,15840,16500,17280,17880,19047,20008,21009,22000,23100,24000,25250,26400,27600,28590,29500,30300,31800,33300,34800,36300,38200,40100,42000,43900,45800,48200,50600,53000,55400,57800,60800,63800,66800,69800,72800,76500,80200,83900,87600,92100,96600,101100,105600,110100,115500,120900,126300,131700,137100,142500,147900,150000];
-/* 費率（以萬分比整數表示，避免浮點誤差） */
-var RATE = {
-  LI: 1150,        // 勞保普通事故 11.5%（114/1/1 起）
-  EI: 100,         // 就業保險 1%
-  NHI: 517,        // 健保 5.17%（110/1/1 起）
-  WAGE_FUND: 2.5,  // 積欠工資墊償基金 0.025%
-  COMMUTE: 7       // 職災上下班費率 0.07%
-};
-var LI_SHARE = {emp:20, er:70, gov:10};   // 一般受僱勞工 %
-var NHI_SHARE = {emp:30, er:60, gov:10};  // 第一類受僱者 %
-var NHI_AVG_DEP = 0.56;                    // 平均眷口數（113/1/1 起）
-/* 勞工職業災害保險適用行業別及費率表（114/1/1 起施行，每3年調整）— 行業別費率 %，另加上下班 0.07% */
-var OA_INDUSTRY = [
-["01 農、林、牧業",0.18],["02 漁業",0.14],["03 石油及天然氣礦業、砂石採取及其他礦業",0.89],["04 食品及飼品、飲料及菸草製造業",0.15],["05 紡織業（紡織品製造業除外）",0.14],["06 紡織品製造業",0.10],["07 成衣及服飾品製造業",0.08],["08 皮革、毛皮及其製品製造業",0.13],["09 木竹製品及家具製造業",0.36],["10 紙漿、紙及紙製品製造業",0.32],["11 印刷及資料儲存媒體複製業",0.14],["12 石油及煤製品、化學材料、藥品等製造業",0.15],["13 橡膠製品、塑膠製品製造業",0.19],["14 非金屬礦物製品製造業",0.33],["15 基本金屬製造業",0.36],["16 金屬製品製造業",0.27],["17 金屬刀具、手工具及模具、金屬容器製造業",0.20],["18 電子零組件、電腦、電子產品及光學製品、電力設備製造業",0.05],["19 機械設備製造業、產業用機械設備維修及安裝業",0.19],["20 汽車及其零件、其他運輸工具製造業",0.19],["21 其他製造業",0.13],["22 電力及燃氣供應業",0.21],["23 廢水污水處理、廢棄物清除處理及資源回收業",0.32],["24 用水供應業",0.18],["25 建築工程業",0.50],["26 土木工程業",0.30],["27 庭園景觀工程業",0.38],["28 專門營造業",0.46],["29 機電、管道及其他建築設備安裝業",0.37],["30 批發業",0.12],["31 零售業",0.10],["32 陸上運輸業",0.32],["33 水上運輸業",0.80],["34 航空運輸業",0.14],["35 報關業及船務代理業",0.10],["36 運輸輔助業、倉儲業",0.16],["37 陸上運輸輔助業",0.14],["38 郵政及遞送服務業",0.13],["39 住宿業、餐飲業",0.12],["40 出版、影視、廣播電視及傳播業",0.06],["41 電信業",0.06],["42 電腦程式設計、諮詢及資訊服務業",0.05],["43 金融服務業、保險業、證券期貨業",0.05],["44 不動產開發、經營及相關服務業",0.09],["45 法律會計、管理顧問、建築工程服務、廣告、設計等專業服務業",0.08],["46 研究發展服務業",0.06],["47 旅行及其他相關服務業",0.07],["48 租賃、人力仲介、保全、建物及綠化服務等支援服務業",0.18],["49 公共行政及國防、強制性社會安全",0.12],["50 教育業",0.05],["51 醫療保健業、居住型照顧及社會工作服務業",0.05],["52 藝術、娛樂及休閒服務業",0.09],["53 宗教、職業及類似組織",0.07],["54 個人及家庭用品維修業",0.18],["55 未分類其他服務業",0.12]
-];
-var SOURCES = [
-["勞動部勞工保險局｜勞工保險投保薪資分級表（115年1月1日起適用）","https://www.bli.gov.tw/0005475.htm"],
-["勞動部勞工保險局｜一般單位保險費分擔金額表（115年1月1日起適用，用於驗證）","https://www.bli.gov.tw/0011588.html"],
-["勞動部勞工保險局｜投保薪資(月提繳)分級表修正新聞稿（2025-11-28）","https://www.bli.gov.tw/0109538.html"],
-["勞動部勞工保險局｜勞保、就保、災保保險費試算（費率沿革）","https://www.bli.gov.tw/0014162.html"],
-["勞動部勞工保險局｜勞工職業災害保險適用行業別及費率表（114年1月1日起施行）","https://www.bli.gov.tw/Files/24759"],
-["勞動部開放資料｜勞工職業災害保險投保薪資分級表","https://apiservice.mol.gov.tw/OdService/download/A17000000J-030566-fay"],
-["勞動部勞工保險局｜勞工退休金月提繳分級表（115年1月1日生效）","https://www.bli.gov.tw/0102563.html"],
-["衛福部中央健康保險署｜投保金額分級表（115.01.01生效）","https://www.nhi.gov.tw/ch/cp-19421-f9533-2569-1.html"],
-["衛福部中央健康保險署｜保險費負擔金額表：有一定雇主之受僱者（115.1.1生效）","https://www.nhi.gov.tw/ch/cp-19418-9eefb-2576-1.html"],
-["衛福部中央健康保險署｜一般保險費計算公式及釋例（費率5.17%、平均眷口數0.56）","https://www.nhi.gov.tw/ch/cp-3277-6c895-2588-1.html"]
-];
-
-/* ===== 純計算函式 ===== */
-function lookupLevel(levels, salary){
-  var s = Math.max(0, Number(salary)||0);
-  for (var i=0;i<levels.length;i++){ if (s <= levels[i]) return {level:i+1, amount:levels[i]}; }
-  return {level:levels.length, amount:levels[levels.length-1]};
-}
-// amount × rate(萬分比) × share(%)，四捨五入
-function prem(amount, rateBp, sharePct){ return Math.round(amount*rateBp*sharePct/1e6 + 1e-9); }
-function calcAll(opt){
-  var salary = Math.max(0, Number(opt.salary)||0);
-  var deps = Math.min(3, Math.max(0, parseInt(opt.deps,10)||0));
-  var selfPct = Math.min(6, Math.max(0, Number(opt.selfPct)||0));
-  var oaRatePct = Number(opt.oaRatePct)||0; // 行業別費率 %
-  var withEI = opt.withEI !== false;
-  var li = lookupLevel(LI_LEVELS, salary);
-  var oa = lookupLevel(OA_LEVELS, salary);
-  var nhi = lookupLevel(NHI_LEVELS, salary);
-  var pen = lookupLevel(PENSION_LEVELS, salary);
-  var r = {salary:salary, deps:deps, li:li, oa:oa, nhi:nhi, pen:pen, rows:[]};
-  var liRow = {name:"勞保（普通事故 11.5%）", base:li.amount,
-    emp:prem(li.amount,RATE.LI,LI_SHARE.emp), er:prem(li.amount,RATE.LI,LI_SHARE.er), gov:prem(li.amount,RATE.LI,LI_SHARE.gov)};
-  r.rows.push(liRow);
-  if (withEI) r.rows.push({name:"就業保險（1%）", base:li.amount,
-    emp:prem(li.amount,RATE.EI,LI_SHARE.emp), er:prem(li.amount,RATE.EI,LI_SHARE.er), gov:prem(li.amount,RATE.EI,LI_SHARE.gov)});
-  var oaBp = Math.round((oaRatePct*100) + RATE.COMMUTE); // 萬分比
-  r.oaTotalPct = oaBp/100;
-  r.rows.push({name:"職災保險（"+(oaBp/100).toFixed(2)+"%）", base:oa.amount, emp:0, er:prem(oa.amount,oaBp,100), gov:0});
-  var nhiPer = Math.round(nhi.amount*RATE.NHI*NHI_SHARE.emp/1e6 + 1e-9);
-  r.nhiPerPerson = nhiPer;
-  r.rows.push({name:"健保（本人＋"+deps+"眷口）", base:nhi.amount,
-    emp:nhiPer*(1+deps),
-    er:Math.round(nhi.amount*RATE.NHI/1e4*NHI_SHARE.er/100*(1+NHI_AVG_DEP) + 1e-9),
-    gov:Math.round(nhi.amount*RATE.NHI/1e4*NHI_SHARE.gov/100*(1+NHI_AVG_DEP) + 1e-9)});
-  r.rows.push({name:"勞退雇主提繳（6%）", base:pen.amount, emp:0, er:Math.round(pen.amount*0.06), gov:0, pension:true});
-  if (selfPct>0) r.rows.push({name:"勞退自提（"+selfPct+"%）", base:pen.amount, emp:Math.round(pen.amount*selfPct/100), er:0, gov:0, pension:true});
-  r.rows.push({name:"積欠工資墊償基金（0.025%）", base:li.amount, emp:0, er:prem(li.amount,RATE.WAGE_FUND,100), gov:0});
-  var t = {emp:0, er:0, gov:0};
-  r.rows.forEach(function(x){ t.emp+=x.emp; t.er+=x.er; t.gov+=x.gov; });
-  r.total = t;
-  r.empInsurance = r.rows.filter(function(x){return !x.pension;}).reduce(function(a,x){return a+x.emp;},0);
-  r.empSelfPension = selfPct>0 ? Math.round(pen.amount*selfPct/100) : 0;
-  r.net = salary - r.empInsurance - r.empSelfPension;
-  r.belowMin = salary>0 && salary < MIN_WAGE;
-  return r;
-}
-
-/* ===== 介面 ===== */
 function fmt(n){ return Number(n).toLocaleString("zh-TW"); }
 function $(id){ return document.getElementById(id); }
+function currentYear(){
+  var el = $("rocYear");
+  return el ? Number(el.value) : LaborHealthCalc.defaultYear();
+}
+function unpublishedNote(year){
+  if (year.roc !== 116) return "";
+  return "注意：截至 2026-11-18，116 年「全民健康保險投保金額分級表、費率與平均眷口數」及「勞工退休金月提繳分級表」尚未見健保署、勞保局或行政院公報之新公告，這兩項暫以 115 年數字計算，不自行推估。勞保、職災級距與勞保費率（普通事故改以 12% 計收）則已改採 116 年 1 月 1 日生效的官方表。";
+}
 function render(){
-  var opt = {salary:$("salary").value, deps:$("deps").value, selfPct:$("selfPct").value,
+  var C = LaborHealthCalc;
+  var yearN = currentYear();
+  var year = C.getYear(yearN);
+  var opt = {year:yearN, salary:$("salary").value, deps:$("deps").value, selfPct:$("selfPct").value,
     oaRatePct:Number($("ind").value), withEI:$("emp").value==="1"};
-  var r = calcAll(opt);
+  var r = C.calcAll(opt);
   $("kEmp").textContent = fmt(r.empInsurance)+" 元";
   $("kEr").textContent = fmt(r.total.er)+" 元";
   $("kGov").textContent = fmt(r.total.gov)+" 元";
   $("kNet").textContent = fmt(r.net)+" 元";
-  $("levelText").textContent = "對應級距：勞保第 "+r.li.level+" 級 "+fmt(r.li.amount)+" 元｜職災第 "+r.oa.level+" 級 "+fmt(r.oa.amount)+" 元｜健保第 "+r.nhi.level+" 級 "+fmt(r.nhi.amount)+" 元｜勞退第 "+r.pen.level+" 級 "+fmt(r.pen.amount)+" 元"+(r.belowMin?"（月薪低於最低工資 29,500 元，全時勞工仍按最低級距投保）":"");
+  var note = r.belowMin ? "（月薪低於最低工資 "+fmt(year.minWage)+" 元，全時勞工仍按最低級距投保）" : "";
+  $("levelText").textContent = "對應級距：勞保第 "+r.li.level+" 級 "+fmt(r.li.amount)+" 元｜職災第 "+r.oa.level+" 級 "+fmt(r.oa.amount)+" 元｜健保第 "+r.nhi.level+" 級 "+fmt(r.nhi.amount)+" 元｜勞退第 "+r.pen.level+" 級 "+fmt(r.pen.amount)+" 元"+note;
   var tb = "";
   r.rows.forEach(function(x){ tb += "<tr><td>"+x.name+"</td><td>"+fmt(x.base)+"</td><td>"+fmt(x.emp)+"</td><td>"+fmt(x.er)+"</td><td>"+fmt(x.gov)+"</td></tr>"; });
   $("resTbl").tBodies[0].innerHTML = tb;
   $("resTbl").tFoot.innerHTML = "<tr><td>合計</td><td></td><td>"+fmt(r.total.emp)+"</td><td>"+fmt(r.total.er)+"</td><td>"+fmt(r.total.gov)+"</td></tr>";
   var rows = "";
-  LI_LEVELS.forEach(function(a,i){
-    var lo = i===0 ? null : LI_LEVELS[i-1]+1;
-    var range = i===0 ? fmt(a)+" 元以下" : (i===LI_LEVELS.length-1 ? fmt(lo)+" 元以上" : fmt(lo)+"～"+fmt(a)+" 元");
-    var emp = prem(a,RATE.LI,20)+prem(a,RATE.EI,20), er = prem(a,RATE.LI,70)+prem(a,RATE.EI,70);
+  year.liLevels.forEach(function(a,i){
+    var lo = i===0 ? null : year.liLevels[i-1]+1;
+    var range = i===0 ? fmt(a)+" 元以下" : (i===year.liLevels.length-1 ? fmt(lo)+" 元以上" : fmt(lo)+"～"+fmt(a)+" 元");
+    var emp = C.prem(a,year.rateLI,20)+C.prem(a,C.RATE_COMMON.EI,20), er = C.prem(a,year.rateLI,70)+C.prem(a,C.RATE_COMMON.EI,70);
     rows += "<tr"+(r.li.level===i+1?' class="on"':"")+"><td>第 "+(i+1)+" 級</td><td>"+range+"</td><td>"+fmt(a)+"</td><td>"+fmt(emp)+"</td><td>"+fmt(er)+"</td></tr>";
   });
-  $("liTbl").tBodies[0].innerHTML = rows;
+  if ($("liTbl")) $("liTbl").tBodies[0].innerHTML = rows;
+  if ($("lvTitle")) $("lvTitle").textContent = year.roc+"年勞保投保薪資分級表（勞保投保級距查詢）";
+  if ($("lvIntro")) {
+    $("lvIntro").textContent = year.roc===116
+      ? "一般全時受僱勞工的勞保（含就保）投保薪資共 10 級，第 1 級配合最低工資調整為 30,900 元、最高 45,800 元；月薪超過 43,900 元一律以 45,800 元投保。下表黃色列為您目前薪資對應的級距。員工自付與雇主負擔已按 116 年勞保普通事故 12%＋就保 1% 計算。"
+      : "一般全時受僱勞工的勞保（含就保）投保薪資共 11 級，最低為最低工資 29,500 元、最高 45,800 元；月薪超過 43,900 元一律以 45,800 元投保。下表黃色列為您目前薪資對應的級距。";
+  }
+  var mwBtn = $("minWageBtn");
+  if (mwBtn) {
+    mwBtn.setAttribute("data-s", String(year.minWage));
+    mwBtn.textContent = "最低工資 "+fmt(year.minWage);
+  }
+  if ($("dataStamp")) {
+    $("dataStamp").textContent = "資料版本：可切換 115／116 年官方級距與費率（目前顯示 "+year.effective+"）｜整理日期："+C.DATA_UPDATED+"｜來源：勞動部勞工保險局、衛福部中央健康保險署（詳見頁尾）";
+  }
+  var yn = $("yearNote");
+  if (yn) {
+    var msg = unpublishedNote(year);
+    yn.hidden = !msg;
+    yn.textContent = msg;
+  }
 }
 function init(){
+  var C = LaborHealthCalc;
   var sel = $("ind"), h = "";
-  OA_INDUSTRY.forEach(function(x){ h += '<option value="'+x[1]+'"'+(x[0].indexOf("42 ")===0?" selected":"")+">"+x[0]+"（"+(x[1]+0.07).toFixed(2)+"%）</option>"; });
+  C.OA_INDUSTRY.forEach(function(x){ h += '<option value="'+x[1]+'"'+(x[0].indexOf("42 ")===0?" selected":"")+">"+x[0]+"（"+(x[1]+0.07).toFixed(2)+"%）</option>"; });
   sel.innerHTML = h;
-  $("dataStamp").textContent = "資料版本："+EFFECTIVE+"之官方級距與費率｜整理日期："+DATA_UPDATED+"｜來源：勞動部勞工保險局、衛福部中央健康保險署（詳見頁尾）";
-  $("srcList").innerHTML = SOURCES.map(function(s){ return '<li>'+s[0]+'：<a href="'+s[1]+'" rel="noopener" target="_blank">'+s[1]+'</a></li>'; }).join("") + "<li>資料整理／查核日期："+DATA_UPDATED+"（如官方於年中公告調整，請以最新公告為準）</li>";
-  ["salary","deps","selfPct","ind","emp"].forEach(function(id){ $(id).addEventListener("input", render); $(id).addEventListener("change", render); });
-  $("calcBtn").addEventListener("click", render);
+  var ySel = $("rocYear");
+  var defY = C.defaultYear();
+  try {
+    var qs = new URLSearchParams(location.search);
+    if (qs.get("year")==="115" || qs.get("year")==="116") defY = Number(qs.get("year"));
+    if (qs.get("salary")) $("salary").value = qs.get("salary");
+    if (qs.get("deps")!=null && $("deps")) $("deps").value = qs.get("deps");
+    if (qs.get("selfPct")!=null && $("selfPct")) $("selfPct").value = qs.get("selfPct");
+    if (qs.get("emp")!=null && $("emp")) $("emp").value = qs.get("emp");
+  } catch (e) {}
+  if (ySel) ySel.value = String(defY);
+  if ($("srcList")) {
+    $("srcList").innerHTML = C.SOURCES.map(function(s){ return '<li>'+s[0]+'：<a href="'+s[1]+'" rel="noopener" target="_blank">'+s[1]+'</a></li>'; }).join("") + "<li>資料整理／查核日期："+C.DATA_UPDATED+"（如官方於年中公告調整，請以最新公告為準）</li>";
+  }
+  ["rocYear","salary","deps","selfPct","ind","emp"].forEach(function(id){
+    var el = $(id); if (!el) return;
+    el.addEventListener("input", render); el.addEventListener("change", render);
+  });
+  if ($("calcBtn")) $("calcBtn").addEventListener("click", render);
   Array.prototype.forEach.call(document.querySelectorAll("button[data-s]"), function(b){
     b.addEventListener("click", function(){ $("salary").value = b.getAttribute("data-s"); render(); });
   });
   render();
 }
 if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
+
 </script>
 <script src="/assets/calctw.js" defer></script>
 </body>
