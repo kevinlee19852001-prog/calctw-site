@@ -128,10 +128,12 @@ Object.keys(FEE116).forEach(function (k) {
   eq("ex 30900 LI emp/er/gov", [r.rows[0].emp, r.rows[0].er, r.rows[0].gov], [742, 2596, 371]);
   eq("ex 30900 EI emp", r.rows[1].emp, 62);
   eq("ex 30900 LI+EI emp", r.rows[0].emp + r.rows[1].emp, 804);
-  // NHI/pension still 115 tables: 30,900 falls in 30,301–31,800 → 31,800
+  // NHI still 115 table: 30,900 falls in 30,301–31,800 → 31,800
   eq("ex 30900 NHI stays on 115 table", r.nhi, { level: 3, amount: 31800 });
-  eq("ex 30900 pension stays on 115 table", r.pen, { level: 27, amount: 31800 });
-  ok("ex 30900 flags unpublished", r.unpublished.nhi && r.unpublished.pension);
+  // Official 116 pension table: 29,501–30,900 → 30,900; employer 6% = 1,854
+  eq("ex 30900 pension uses 116 table", r.pen, { level: 26, amount: 30900 });
+  eq("ex 30900 pension employer 6%", r.rows.find(x => x.name.indexOf("勞退雇主") === 0).er, 1854);
+  ok("ex 30900 flags only NHI unpublished", r.unpublished.nhi && !r.unpublished.pension);
 })();
 (function () {
   const r = calc.calcAll({ year: 116, salary: 36000, deps: 0, oaRatePct: 0.05, withEI: true });
@@ -147,6 +149,36 @@ Object.keys(FEE116).forEach(function (k) {
   eq("ex 45800 LI emp/er/gov", [r.rows[0].emp, r.rows[0].er, r.rows[0].gov], [1099, 3847, 550]);
   eq("ex 45800 EI emp", r.rows[1].emp, 92);
   eq("ex 45800 LI+EI emp", r.rows[0].emp + r.rows[1].emp, 1191);
+})();
+
+
+// Official 116 pension table from BLI PDF /Files/26719 and ODT /Files/26718
+// (勞動福3字第1150154418號令，116/1/1 生效). Only grade 26 amount changed vs 115.
+const PENSION116_OFFICIAL = [
+  { level: 25, lo: 28591, hi: 29500, amount: 29500 },
+  { level: 26, lo: 29501, hi: 30900, amount: 30900 },
+  { level: 27, lo: 30901, hi: 31800, amount: 31800 },
+  { level: 28, lo: 31801, hi: 33300, amount: 33300 }
+];
+eq("116 pension level amounts", calc.YEARS[116].pensionLevels, calc.PENSION_LEVELS_116);
+eq("116 pension has 62 grades", calc.YEARS[116].pensionLevels.length, 62);
+eq("115 pension still has 30300 at grade 26", calc.PENSION_LEVELS_115[25], 30300);
+eq("116 pension grade 26 is 30900", calc.PENSION_LEVELS_116[25], 30900);
+ok("116 pension otherwise matches 115", calc.PENSION_LEVELS_115.filter((x,i) => i !== 25).join(",") === calc.PENSION_LEVELS_116.filter((x,i) => i !== 25).join(","));
+checkTable("116 pension", PENSION116_OFFICIAL, s => calc.lookupLevel(calc.YEARS[116].pensionLevels, s));
+[
+  [29500, 25, 29500],
+  [29501, 26, 30900],
+  [30300, 26, 30900],
+  [30900, 26, 30900],
+  [30901, 27, 31800],
+  [31800, 27, 31800]
+].forEach(function (row) {
+  eq("116 pension salary " + row[0], calc.lookupLevel(calc.YEARS[116].pensionLevels, row[0]), { level: row[1], amount: row[2] });
+});
+(function () {
+  const r = calc.calcAll({ year: 116, salary: 30900, deps: 0, oaRatePct: 0.05, withEI: true });
+  eq("116 salary 30900 pension er 1854", r.rows.find(x => x.name.indexOf("勞退雇主") === 0).er, 1854);
 })();
 
 // 115 figures must stay unchanged
@@ -176,9 +208,11 @@ eq("defaultYear before 2027-01-01 is 115", calc.defaultYear("2026-11-18T08:00:00
 eq("defaultYear on 2026-12-31 is 115", calc.defaultYear("2026-12-31T23:59:59"), 115);
 eq("defaultYear on 2027-01-01 is 116", calc.defaultYear("2027-01-01T00:00:00"), 116);
 
-// 116 still reuses 115 NHI / pension tables (unpublished)
+// 116 still reuses 115 NHI table (unpublished); pension now uses official 116 table
 ok("116 NHI table is 115 table", calc.YEARS[116].nhiLevels === calc.NHI_LEVELS_115 || JSON.stringify(calc.YEARS[116].nhiLevels) === JSON.stringify(calc.NHI_LEVELS_115));
-ok("116 pension table is 115 table", calc.YEARS[116].pensionLevels === calc.PENSION_LEVELS_115 || JSON.stringify(calc.YEARS[116].pensionLevels) === JSON.stringify(calc.PENSION_LEVELS_115));
+ok("116 pension table is official 116 table", calc.YEARS[116].pensionLevels === calc.PENSION_LEVELS_116 || JSON.stringify(calc.YEARS[116].pensionLevels) === JSON.stringify(calc.PENSION_LEVELS_116));
+eq("116 pension unpublished flag is false", calc.YEARS[116].unpublished.pension, false);
+eq("116 NHI unpublished flag is true", calc.YEARS[116].unpublished.nhi, true);
 eq("NHI rate stays 5.17%", calc.RATE_COMMON.NHI, 517);
 eq("avg dependents stays 0.56", calc.NHI_AVG_DEP, 0.56);
 
@@ -188,6 +222,40 @@ eq("avg dependents stays 0.56", calc.NHI_AVG_DEP, 0.56);
   ok(rel + " includes calc.js", html.indexOf("/labor-health-insurance/calc.js") !== -1);
   ok(rel + " has year selector", html.indexOf('id="rocYear"') !== -1);
   ok(rel + " does not inline old 115-only LI_LEVELS", html.indexOf("var LI_LEVELS") === -1);
+});
+
+
+// unpublishedNote combinations (year 116 only; 115 and already-published tables stay silent)
+(function () {
+  const note = calc.unpublishedNote;
+  const nhiOnly = note({ roc: 116, unpublished: { nhi: true, pension: false } });
+  const pensionOnly = note({ roc: 116, unpublished: { nhi: false, pension: true } });
+  const both = note({ roc: 116, unpublished: { nhi: true, pension: true } });
+  const none = note({ roc: 116, unpublished: { nhi: false, pension: false } });
+  const current = note(calc.YEARS[116]);
+
+  ok("pension:false + nhi:true mentions NHI unpublished", nhiOnly.indexOf("全民健康保險投保金額分級表") !== -1 && nhiOnly.indexOf("尚未見健保署") !== -1);
+  ok("pension:false + nhi:true does not mention 勞退尚未公告", nhiOnly.indexOf("勞工退休金月提繳分級表") === -1 && nhiOnly.indexOf("勞退尚未") === -1);
+  ok("pension:false + nhi:true does not append 勞退已改採", nhiOnly.indexOf("勞退已改採") === -1);
+  eq("current 116 year object matches nhi-only note", current, nhiOnly);
+  eq("calling unpublishedNote(116) matches year object", note(116), nhiOnly);
+
+  ok("pension:true + nhi:false mentions pension unpublished only", pensionOnly.indexOf("勞工退休金月提繳分級表") !== -1 && pensionOnly.indexOf("全民健康保險") === -1);
+  ok("pension:true does not also say 勞退已改採", pensionOnly.indexOf("勞退已改採") === -1);
+
+  ok("both unpublished lists NHI then pension", both.indexOf("全民健康保險投保金額分級表") !== -1 && both.indexOf("勞工退休金月提繳分級表") !== -1 && both.indexOf("全民健康保險") < both.indexOf("勞工退休金"));
+  ok("both unpublished does not say 勞退已改採", both.indexOf("勞退已改採") === -1);
+
+  eq("both published: empty note", none, "");
+  eq("year 115: empty note", note(calc.YEARS[115]), "");
+  eq("year 115 via number: empty note", note(115), "");
+  eq("null year: empty note", note(null), "");
+})();
+
+["labor-health-insurance/index.html", "embed/labor-health-insurance/index.html"].forEach(function (rel) {
+  const html = fs.readFileSync(path.join(__dirname, "..", rel), "utf8");
+  ok(rel + " uses shared unpublishedNote", html.indexOf("LaborHealthCalc.unpublishedNote") !== -1);
+  ok(rel + " changelog has no internal 本機/尚未上正式站 wording", html.indexOf("本機") === -1 && html.indexOf("尚未上正式站") === -1);
 });
 
 if (failed) {

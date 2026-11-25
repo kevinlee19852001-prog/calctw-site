@@ -131,10 +131,7 @@ function currentYear(){
   var el = $("rocYear");
   return el ? Number(el.value) : LaborHealthCalc.defaultYear();
 }
-function unpublishedNote(year){
-  if (year.roc !== 116) return "";
-  return "注意：截至 2026-11-18，116 年「全民健康保險投保金額分級表、費率與平均眷口數」及「勞工退休金月提繳分級表」尚未見健保署、勞保局或行政院公報之新公告，這兩項暫以 115 年數字計算，不自行推估。勞保、職災級距與勞保費率（普通事故改以 12% 計收）則已改採 116 年 1 月 1 日生效的官方表。";
-}
+function unpublishedNote(year){ return LaborHealthCalc.unpublishedNote(year); }
 function render(){
   var C = LaborHealthCalc;
   var yearN = currentYear();

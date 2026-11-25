@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>蝦皮賣家實拿利潤計算器 2026｜成交手續費、金流 2.5%、免運專案 6% 一次算</title>
-<meta name="description" content="蝦皮賣家實拿利潤試算：輸入售價、成本、運費與分類費率，依 2026 年蝦皮成交手續費、金流與系統處理費 2.5%、免運及進階賣家專案方案一 6%；方案二訂單金額 ≤99 元收 6%、≥100 元每單 60 元（2026-07-01 起）、發票 2.5 元，算出平台費用、實拿利潤、利潤率與損益兩平售價。">
+<meta name="description" content="蝦皮賣家實拿利潤試算：可切換 2026/12/10 以前舊費率（檔期加收 2%、免運方案一 6%、方案二 60 元）與 2026/12/11 起新費率（檔期加收 4%、方案一 6.5%、方案二 65 元）。金流 2.5% 不變。12/11 起成交手續費請依官方細分類表自行填入。">
 <link rel="canonical" href="https://calctw.com/shopee-seller-profit/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="蝦皮賣家實拿利潤計算器｜2026 手續費一次算">
-<meta property="og:description" content="成交手續費＋金流 2.5%＋免運專案方案一 6%、方案二依訂單金額 ≤99 元收 6%／≥100 元收 60 元（2026-07-01 起），算出實拿、利潤率與損益兩平售價。">
+<meta property="og:description" content="可切換 12/10 前舊費率與 12/11 起新費率：檔期加收 2%→4%、免運方案一 6%→6.5%、方案二 60→65 元，算出實拿、利潤率與損益兩平售價。">
 <meta property="og:url" content="https://calctw.com/shopee-seller-profit/">
 <meta property="og:image" content="https://calctw.com/og/shopee-seller-profit.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,7 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="蝦皮賣家實拿利潤計算器｜2026 手續費一次算">
 <meta name="twitter:title" content="蝦皮賣家實拿利潤計算器｜2026 手續費一次算">
-<meta name="twitter:description" content="成交手續費＋金流 2.5%＋免運專案方案一 6%、方案二依訂單金額 ≤99 元收 6%／≥100 元收 60 元（2026-07-01 起），算出實拿、利潤率與損益兩平售價。">
+<meta name="twitter:description" content="可切換 12/10 前舊費率與 12/11 起新費率：檔期加收 2%→4%、免運方案一 6%→6.5%、方案二 60→65 元，算出實拿、利潤率與損益兩平售價。">
 <meta name="twitter:image" content="https://calctw.com/og/shopee-seller-profit.png">
 <meta name="theme-color" content="#0f766e">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8376962477938948" crossorigin="anonymous"></script>
@@ -98,20 +98,31 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
   <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
 </div>
 
-<h1>蝦皮賣家實拿利潤計算器（2026 費率）</h1>
-<p>輸入商品售價、成本、運費與手續費設定，依<strong>蝦皮購物 2026 年收費規定（含 7 月 1 日方案二調整）</strong>（成交手續費依分類費率、金流與系統處理費 2.5%、免運及進階賣家專案方案一 6%；方案二訂單金額 ≤99 元收 6%、≥100 元每單 60 元（2026-07-01 起）、發票服務費每張 2.5 元），算出每筆訂單的<strong>平台費用、實際撥款、實拿利潤與利潤率</strong>，並反推<strong>損益兩平售價</strong>與<strong>目標利潤率售價</strong>。</p>
+<h1>蝦皮賣家實拿利潤計算器（2026 費率，含 12/11 新舊費率）</h1>
+<p>輸入商品售價、成本、運費與手續費設定，可切換<strong>2026/12/10（含）以前舊費率</strong>與<strong>2026/12/11 00:00 起新費率</strong>，算出每筆訂單的<strong>平台費用、實際撥款、實拿利潤與利潤率</strong>，並反推<strong>損益兩平售價</strong>與<strong>目標利潤率售價</strong>。金流與系統處理費仍為 2.5%，發票服務費每張 2.5 元。</p>
 <p class="hint" id="dataStamp"></p>
-<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>適用範圍與來源限制：</strong>本工具依「非商城賣家」費用結構設計，商城賣家僅改費率不一定等同商城實際收費，結果僅供估算。費率與方案二規則依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。</p>
+<p id="ratePeriodBox" class="notice" style="background:#fff7ed;border-left:4px solid #ea580c;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>費率生效日期（請依訂單成立日選擇，不要混用）：</strong><br>
+・<strong>2026 年 12 月 10 日（含）以前</strong>成立的訂單：舊費率。促銷檔期加收 2%；免運方案一 6%；方案二訂單金額 ≤99 元收 6%、≥100 元每單 60 元。<br>
+・<strong>2026 年 12 月 11 日 00:00 起</strong>成立的訂單：新費率。促銷檔期加收 4%（一般賣家；商城為 5%；參加長期蝦幣回饋可免收）；免運方案一 6.5%；方案二訂單金額 ≤99 元收 6.5%、≥100 元每單 65 元。<br>
+金流與系統處理費仍為 2.5%。12/11 起成交手續費改依官方細分類費率表計算，本工具<strong>不自行編列細分類數字</strong>，請依下方官方 PDF 填入您的分類基本費率。</p>
+
+<p class="notice" style="background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 12px;border-radius:6px;font-size:.92rem"><strong>適用範圍：</strong>本工具依「非商城賣家」費用結構設計，商城賣家僅改費率不一定等同商城實際收費，結果僅供估算。請以賣家中心最新公告與對帳單為準。</p>
 <section class="card" aria-labelledby="inTitle">
 <h2 id="inTitle" style="margin-top:0">輸入商品與費用</h2>
 <div class="grid">
+  <div><label for="schedule">適用費率（依訂單成立日）</label>
+    <select id="schedule">
+      <option value="old">2026/12/10（含）以前：舊費率</option>
+      <option value="new">2026/12/11 起：新費率</option>
+    </select>
+    <div class="hint">今天未到 12/11 時預設舊費率，可手動切換比對新舊數字。</div></div>
   <div><label for="price">商品售價（元／件）</label><input id="price" type="number" inputmode="numeric" min="1" step="1" value="590"></div>
   <div><label for="qty">數量（件）</label><input id="qty" type="number" inputmode="numeric" min="1" step="1" value="1"></div>
   <div><label for="cost">商品成本（元／件）</label><input id="cost" type="number" inputmode="numeric" min="0" step="1" value="250"><div class="hint">進貨或製作成本</div></div>
-  <div><label for="cat">商品分類（一般賣家基本費率）</label><select id="cat"></select></div>
-  <div><label for="rate">成交手續費基本費率（%）</label><input id="rate" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="6"><div class="hint">選分類會自動帶入，也可自行修改</div></div>
+  <div><label for="cat">商品分類（12/10 前常用基本費率）</label><select id="cat"></select><div class="hint" id="catHint"></div></div>
+  <div><label for="rate">成交手續費基本費率（%）</label><input id="rate" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="6"><div class="hint" id="rateHint">選分類會自動帶入，也可自行修改</div></div>
   <div><label for="promo">是否為蝦皮促銷檔期</label><select id="promo"><option value="0" selected>否（非檔期）</option><option value="1">是（加收促銷檔期費率）</option></select></div>
-  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint">預設 2%（依賣家中心公告整理，原文待查證，可修改）</div></div>
+  <div><label for="promoAdd">促銷檔期加收（%）</label><input id="promoAdd" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2"><div class="hint" id="promoAddHint">切換上方適用費率後會帶入對應預設值，可修改。</div></div>
   <div><label for="plan">免運及進階賣家專案</label><select id="plan"><option value="p1" selected>方案一：商品金額 × 6%</option><option value="p2">方案二：訂單金額 ≤99 元收 6%、≥100 元每單 60 元</option><option value="none">未參加</option></select></div>
   <div><label for="payRate">金流與系統處理費（%）</label><input id="payRate" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="2.5"><div class="hint">信用卡分期另依銀行期數，可修改</div></div>
   <div><label for="shipBuyer">買家支付運費（元）</label><input id="shipBuyer" type="number" inputmode="numeric" min="0" step="1" value="60"><div class="hint">計入金流費基礎；運費本身由平台代收付物流</div></div>
@@ -136,7 +147,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 </div>
 <p id="sumText"></p>
 <div class="tbl"><table id="resTbl"><thead><tr><th>項目</th><th class="l">計算方式</th><th>金額（元）</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
-<p class="hint">※ 方案二自 2026-07-01 起：訂單金額（商品單價 × 數量，不含運費）≤99 元收 6%、≥100 元每單 60 元。本工具各項比例費用各自四捨五入到元後相加；發票服務費保留每張 2.5 元。依賣家中心公告整理，請以賣家中心最新公告為準。內容更新日期：2026-10-27；原費率整理日期：2026-10-26｜僅供試算，實際以蝦皮對帳單為準。</p>
+<p class="hint">※ 請先選「適用費率」。舊費率（12/10 前）：方案一 6%，方案二 ≤99 元 6%、≥100 元每單 60 元；12/11 起見上方新費率（方案一 6.5%，方案二 ≤99 元 6.5%、≥100 元每單 65 元）。訂單金額＝商品單價 × 數量，不含運費。各項比例費用各自四捨五入到元後相加；發票服務費每張 2.5 元。費率更新日期：2026-11-25。僅供試算，實際以對帳單為準。</p>
 </section>
 <aside class="b2b b2b-result" aria-label="客製計算機"><p>💼 想在自己的網站放一個專屬計算機？我們可以依您的價目表或計算規則，客製一個放在您網站上的試算工具。<a href="/contact/#custom">了解客製計算機 →</a> <a class="line-link" href="https://lin.ee/9klwToW" target="_blank" rel="noopener" style="color:#06C755;font-weight:700;font-size:.92em">LINE 洽詢</a></p></aside>
 <section aria-labelledby="relTitle"><h2 id="relTitle">相關計算機推薦</h2><ul class="rel"><li><a href="/labor-health-insurance/"><strong>勞健保自付額試算器</strong><span>聘請員工時的勞健保雇主負擔</span></a></li></ul></section>
@@ -156,7 +167,7 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <h2 id="howTitle">蝦皮賣家費用怎麼算（2026 年起）</h2>
 <div class="tbl"><table><thead><tr><th>費用</th><th class="l">計算方式</th><th class="l">查核狀態</th></tr></thead><tbody>
 <tr><td>成交手續費</td><td class="l">單件售出金額（上限 35,000 元）× 數量 × 分類基本費率；促銷檔期＋促銷檔期費率</td><td class="l">分類費率依賣家中心公告整理（非商城），原文待查證</td></tr>
-<tr><td>促銷檔期加收</td><td class="l">預設 2%</td><td class="l">依賣家中心公告整理，原文與各分類最新費率待查證，可自行修改</td></tr>
+<tr><td>促銷檔期加收</td><td class="l">12/10 前預設 2%；12/11 起一般賣家 4%、商城 5%（長期蝦幣回饋可免收）</td><td class="l">官方公告 28668、28804、14704；可自行修改</td></tr>
 <tr><td>金流與系統處理費</td><td class="l">（商品金額＋運費＋蝦皮提供折扣）× 2.5%</td><td class="l">依賣家中心公告整理；採用 2026-01-01 起的整理值，原文待查證</td></tr>
 <tr><td>免運及進階賣家專案</td><td class="l">方案一：商品成交金額 × 6%（運費不計）；方案二：訂單金額 ≤99 元收 6%、≥100 元每單 60 元，2026-07-01 起</td><td class="l">方案一：2026-01-01 起；方案二調整：2026-07-01 起</td></tr>
 <tr><td>代收轉付開立發票服務</td><td class="l">每張發票 2.5 元（每筆訂單一張）</td><td class="l">依賣家中心公告整理；採用 2026-01 起的整理值，原文待查證</td></tr>
@@ -188,14 +199,14 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <h3>方案二低客單價對照</h3><p><strong>示範假設：</strong>僅把上例方案改為方案二、單價分別改為 99 與 100 元，其餘輸入全部相同（成本仍為 250 元，故為虧損示範）。依本工具規則，商品金額不含運費。</p><ul><li>99 元：成交費＝round(99 × 6%)＝6；金流＝round[(99＋60) × 2.5%]＝4；方案二＝round(99 × 6%)＝6；其他＝round(99 × 0%)＝0；發票＝2.5（不取整）。費用＝6＋4＋6＋0＋2.5＝18.5，工具撥款＝99 − 18.5＝80.5，成本合計＝250＋0＋10＋0＝260，利潤＝80.5 − 260＝−179.5 元，利潤率＝−179.5 ÷ 99 × 100%＝−181.3%（小數一位）。</li><li>100 元：成交費＝round(100 × 6%)＝6；金流＝round[(100＋60) × 2.5%]＝4；方案二為固定 60 元（不另取整）；其他＝round(100 × 0%)＝0；發票＝2.5（不取整）。費用＝6＋4＋60＋0＋2.5＝72.5，工具撥款＝100 − 72.5＝27.5，成本仍為 260，利潤＝27.5 − 260＝−232.5 元，利潤率＝−232.5 ÷ 100 × 100%＝−232.5%。</li></ul>
 <p>適用於本工具的非商城費用模型。商城僅改費率仍會保留非商城單件金額上限，未必符合商城實際收費。常見錯誤：把費用合計最後才取整、把發票費先取成 3 元、把買家運費當利潤，或忽略方案二的門檻跳變。</p><p>「工具利潤」≠ 撥款金額 ≠ 稅後所得：工具先估商品金額扣平台費用的撥款，再扣輸入的成本；實際撥款還須核對退款、折扣與對帳差異，而工具未計所得稅及未輸入的支出，不是稅後所得。</p><p>來源沿用：<a href="https://seller.shopee.tw/edu/article/18733">賣家中心費率頁</a>、<a href="https://seller.shopee.tw/edu/article/26430">平台費率與方案公告</a>、<a href="https://seller.shopee.tw/edu/article/25681">非商城上限相關公告</a>。本次無法取得需 JavaScript 的官方原文，費率與方案二規則不標為已逐項查證的官方原文。</p>
 </section>
-<section aria-labelledby="changeTitle"><h2 id="changeTitle">更新紀錄</h2><p>2026-10-27：補上非商城適用範圍、費率來源限制、逐欄算例與方案二門檻對照；計算公式、預設值與輸出未變更。</p></section>
+<section aria-labelledby="changeTitle"><h2 id="changeTitle">更新紀錄</h2><p>2026-11-25：新增 12/10 前舊費率與 12/11 起新費率切換（檔期加收 2%→4%、方案一 6%→6.5%、方案二 60→65 元，≤99 元同步改 6.5%）。12/11 起成交手續費改依官方細分類表，請自行填入基本費率，本工具不自行編列細分類數字。</p><p>2026-10-27：補上非商城適用範圍、費率來源限制、逐欄算例與方案二門檻對照；計算公式、預設值與輸出未變更。</p></section>
 <section aria-labelledby="faqTitle">
 <h2 id="faqTitle">常見問題 FAQ</h2>
-<details open><summary>蝦皮賣家要付哪些費用？</summary><p>依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。</p></details>
+<details open><summary>蝦皮賣家要付哪些費用？</summary><p>依賣家幫助中心官方公告整理，請以賣家中心最新公告與對帳單為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（12/10 前：方案一 6%，方案二 ≤99 元 6%、≥100 元每單 60 元；12/11 起：方案一 6.5%，方案二 ≤99 元 6.5%、≥100 元每單 65 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。</p></details>
 <details><summary>成交手續費怎麼算？</summary><p>單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。</p></details>
 <details><summary>金流與系統處理費 2.5% 的計算基礎是什麼？</summary><p>自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。本工具算式示例：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。</p></details>
-<details><summary>免運及進階賣家專案方案一和方案二怎麼選？</summary><p>方案一依商品成交單價 × 數量收 6%（運費不計）。2026-07-01 起，方案二訂單金額 ≤99 元收 6%（四捨五入到元），≥100 元每單 60 元。本工具以商品單價 × 數量作為訂單金額，不含運費。訂單金額 ≤99 元時兩方案相同，選擇只影響 ≥100 元的訂單。≥100 元時，60 ÷ 6% ＝ 1,000，商品金額低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省，1,000 元時相同（四捨五入可能使鄰近金額也相同）；本工具可切換兩個方案直接比較。</p></details>
-<details><summary>促銷檔期費率是多少？</summary><p>促銷檔期的成交手續費為基本費率加上促銷檔期費率。本工具預設加收 2%，依賣家中心公告整理，原文與各分類最新費率尚待查證；請以賣家中心最新分類費率表為準，可自行修改。</p></details>
+<details><summary>免運及進階賣家專案方案一和方案二怎麼選？</summary><p>請先依訂單成立日選費率。12/10 以前：方案一收 6%；方案二 ≤99 元收 6%、≥100 元每單 60 元。12/11 起：方案一收 6.5%；方案二 ≤99 元收 6.5%、≥100 元每單 65 元（官方示例：1,000 元兩方案都是 65 元，99 元兩方案都是 6 元）。本工具以商品單價 × 數量作為訂單金額，不含運費。分界仍是 1,000 元：低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省。可切換兩個方案直接比較。</p></details>
+<details><summary>促銷檔期費率是多少？</summary><p>促銷檔期的成交手續費為基本費率加上促銷檔期費率。12/10 以前一般賣家預設加收 2%；12/11 起一般賣家加收 4%、商城加收 5%。只有參加「長期蝦幣回饋」才可免收這筆加收；短期方案 12/11 起不再免收。可在欄位自行修改。12/1 檔期仍用舊費率，12/11 當日檔期起用新費率。</p></details>
 <details><summary>損益兩平售價和建議售價怎麼算？</summary><p>本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。</p></details>
 <details><summary>為什麼和蝦皮對帳單有差異？</summary><p>對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。</p></details>
 <details><summary>商城賣家也能用嗎？</summary><p>本工具依「非商城賣家」費用結構設計，計算核心固定套用非商城單件金額上限 35,000 元。商城賣家僅改費率不一定等同商城實際收費，結果僅供估算；請核對賣家中心最新公告與對帳單。</p></details>
@@ -209,49 +220,110 @@ header.site{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}header.s
 <footer><nav class="footnav" aria-label="頁尾連結"><a href="/">首頁</a><a href="/labor-health-insurance/">勞健保試算</a><a href="/overtime-pay/">加班費計算</a><a href="/annual-leave/">特休計算</a><a href="/youth-mortgage/">新青安房貸</a><a href="/land-value-tax/">地價稅試算</a><a href="/shopee-seller-profit/">蝦皮賣家利潤</a><a href="/about/">關於我們</a><a href="/privacy/">隱私權政策</a><a href="/contact/">聯絡我們</a></nav><div>© 2026 CalcTW 台灣試算｜本頁計算全部在您的瀏覽器完成，不會上傳任何資料。</div></footer>
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "WebApplication", "name": "蝦皮賣家實拿利潤計算器", "url": "https://calctw.com/shopee-seller-profit/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "依 2026 年蝦皮台灣一般賣家收費規定，計算成交手續費、金流與系統處理費、免運及進階賣家專案費用、發票服務費，以及實拿利潤、利潤率與損益兩平售價。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-10-27"}
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "蝦皮賣家實拿利潤計算器", "url": "https://calctw.com/shopee-seller-profit/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "zh-Hant-TW", "description": "可切換 2026/12/10 以前舊費率與 2026/12/11 起新費率，計算成交手續費、金流與系統處理費、免運及進階賣家專案費用、發票服務費，以及實拿利潤、利潤率與損益兩平售價。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}, "dateModified": "2026-11-25"}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "蝦皮賣家要付哪些費用？", "acceptedAnswer": {"@type": "Answer", "text": "依賣家中心公告整理，官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（方案一 6%；方案二自 2026-07-01 起，訂單金額 ≤99 元收 6%、≥100 元每單 60 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。"}}, {"@type": "Question", "name": "成交手續費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。"}}, {"@type": "Question", "name": "金流與系統處理費 2.5% 的計算基礎是什麼？", "acceptedAnswer": {"@type": "Answer", "text": "自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。本工具算式示例：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。"}}, {"@type": "Question", "name": "免運及進階賣家專案方案一和方案二怎麼選？", "acceptedAnswer": {"@type": "Answer", "text": "方案一依商品成交單價 × 數量收 6%（運費不計）。2026-07-01 起，方案二訂單金額 ≤99 元收 6%（四捨五入到元），≥100 元每單 60 元。本工具以商品單價 × 數量作為訂單金額，不含運費。訂單金額 ≤99 元時兩方案相同，選擇只影響 ≥100 元的訂單。≥100 元時，60 ÷ 6% ＝ 1,000，商品金額低於 1,000 元通常方案一較省，高於 1,000 元通常方案二較省，1,000 元時相同（四捨五入可能使鄰近金額也相同）；本工具可切換兩個方案直接比較。"}}, {"@type": "Question", "name": "促銷檔期費率是多少？", "acceptedAnswer": {"@type": "Answer", "text": "促銷檔期的成交手續費為基本費率加上促銷檔期費率。本工具預設加收 2%，依賣家中心公告整理，原文與各分類最新費率尚待查證；請以賣家中心最新分類費率表為準，可自行修改。"}}, {"@type": "Question", "name": "損益兩平售價和建議售價怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。"}}, {"@type": "Question", "name": "為什麼和蝦皮對帳單有差異？", "acceptedAnswer": {"@type": "Answer", "text": "對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。"}}, {"@type": "Question", "name": "商城賣家也能用嗎？", "acceptedAnswer": {"@type": "Answer", "text": "本工具依「非商城賣家」費用結構設計，計算核心固定套用非商城單件金額上限 35,000 元。商城賣家僅改費率不一定等同商城實際收費，結果僅供估算；請核對賣家中心最新公告與對帳單。"}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "蝦皮賣家要付哪些費用？", "acceptedAnswer": {"@type": "Answer", "text": "依賣家幫助中心官方公告整理，請以賣家中心最新公告與對帳單為準。一般（非商城）賣家每筆訂單常見的費用有：成交手續費（依商品分類基本費率，促銷檔期另加促銷檔期費率）、金流與系統處理費（平台交易金額 × 2.5%）、有參加「免運及進階賣家專案」時的活動服務費（12/10 前：方案一 6%，方案二 ≤99 元 6%、≥100 元每單 60 元；12/11 起：方案一 6.5%，方案二 ≤99 元 6.5%、≥100 元每單 65 元），以及代收轉付開立發票服務費每張 2.5 元。參加蝦幣回饋等行銷活動、預購商品、非整合物流還有其他服務費。"}}, {"@type": "Question", "name": "成交手續費怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "單件商品售出金額 × 數量 × 該商品分類基本費率，元以下四捨五入；蝦皮促銷檔期改用「基本費率＋促銷檔期費率」。非商城賣場單件商品售出金額最高以 35,000 元為上限計算。運費不列入計算，但運費已內含於商品售價或免運時，仍以商品成交金額計算。"}}, {"@type": "Question", "name": "金流與系統處理費 2.5% 的計算基礎是什麼？", "acceptedAnswer": {"@type": "Answer", "text": "自 2026 年 1 月 1 日起為「平台交易金額 × 2.5%」。平台交易金額是商品實際成交金額（含運費），加上蝦皮提供的折扣（蝦皮優惠碼、蝦幣折抵、蝦皮補貼金），不含賣家自己提供的折扣。本工具算式示例：商品 400 元＋運費 60 元，金流與系統處理費 (400＋60) × 2.5% ＝ 11.5，四捨五入為 12 元。信用卡分期另依銀行與期數適用不同費率。"}}, {"@type": "Question", "name": "免運及進階賣家專案方案一和方案二怎麼選？", "acceptedAnswer": {"@type": "Answer", "text": "請先依訂單成立日選費率。12/10 以前：方案一收 6%；方案二 ≤99 元收 6%、≥100 元每單 60 元。12/11 起：方案一收 6.5%；方案二 ≤99 元收 6.5%、≥100 元每單 65 元。分界仍是 1,000 元。"}}, {"@type": "Question", "name": "促銷檔期費率是多少？", "acceptedAnswer": {"@type": "Answer", "text": "促銷檔期的成交手續費為基本費率加上促銷檔期費率。12/10 以前一般賣家預設加收 2%；12/11 起一般賣家加收 4%、商城加收 5%。只有參加長期蝦幣回饋才可免收。"}}, {"@type": "Question", "name": "損益兩平售價和建議售價怎麼算？", "acceptedAnswer": {"@type": "Answer", "text": "本工具在其他條件不變下，找出讓實拿利潤剛好不小於 0 的最低整數售價（損益兩平售價），以及讓利潤率達到您設定目標的最低整數售價。因為各項費用都是依售價比例收取並各自四捨五入，所以用逐一試算的方式求解，結果會與實際試算一致。"}}, {"@type": "Question", "name": "為什麼和蝦皮對帳單有差異？", "acceptedAnswer": {"@type": "Answer", "text": "對帳單可能包含本工具未列入的項目，例如蝦幣回饋活動服務費、預購訂單服務費、物流隱碼服務費、廣告費、退貨退款或蝦皮折扣造成的平台交易金額變動。每筆訂單的手續費是各單項費用分別四捨五入後相加，多件商品的訂單請以實際明細為準。"}}, {"@type": "Question", "name": "商城賣家也能用嗎？", "acceptedAnswer": {"@type": "Answer", "text": "本工具依「非商城賣家」費用結構設計，計算核心固定套用非商城單件金額上限 35,000 元。商城賣家僅改費率不一定等同商城實際收費，結果僅供估算；請核對賣家中心最新公告與對帳單。"}}]}
 </script>
 
 <script>
 
-/* ===== 蝦皮 2026 收費規則（費率更新日期：2026-10-26） ===== */
-var CHECKED = "2026-10-26";
+/* ===== 蝦皮收費規則（資料查核日期：2026-11-25） =====
+ * 舊費率：2026/12/10（含）以前成立的訂單
+ * 新費率：2026/12/11 00:00 起成立的訂單
+ * 來源見 SOURCES。12/11 起成交手續費改依官方細分類費率表，本工具不自行編列細分類數字。
+ */
+var CHECKED = "2026-11-25";
 var ITEM_CAP = 35000;   // 非商城單件售出金額上限（2025-08-25 起）
-var PLAN2_CAP = 60, PLAN2_LOW_RATE = 6, PLAN2_THRESHOLD = 99;
-var PLAN1_RATE = 6, INVOICE_FEE = 2.5;
+var PLAN2_THRESHOLD = 99;
+var INVOICE_FEE = 2.5;
+var SCHEDULES = {
+  old: {
+    id: "old",
+    label: "2026/12/10（含）以前：舊費率",
+    effective: "2026 年 12 月 10 日（含）以前成立的訂單",
+    promoAdd: 2,
+    plan1Rate: 6,
+    plan2Low: 6,
+    plan2Cap: 60
+  },
+  new: {
+    id: "new",
+    label: "2026/12/11 起：新費率",
+    effective: "2026 年 12 月 11 日 00:00 起成立的訂單",
+    promoAdd: 4,
+    plan1Rate: 6.5,
+    plan2Low: 6.5,
+    plan2Cap: 65
+  }
+};
 var PDF = {"fashion": "https://deo.shopeemobile.com/shopee/cms_cdn_bucket/4052817c285d4063ba8d214af2bde979_%E6%88%90%E4%BA%A4%E6%89%8B%E7%BA%8C%E8%B2%BB%20-%20%E6%99%82%E5%B0%9A%E9%85%8D%E4%BB%B6%EF%BD%9C%E7%94%B7%E7%94%9F%E5%8C%85%E5%8C%85%EF%BD%9C%E7%94%B7%E7%94%9F%E8%A1%A3%E8%91%97%EF%BD%9C%E7%94%B7%E9%9E%8B%EF%BD%9C%E6%89%8B%E9%8C%B6%EF%BD%9C%E5%A5%B3%E7%94%9F%E5%8C%85%E5%8C%85%E7%B2%BE%E5%93%81%EF%BD%9C%E5%A5%B3%E7%94%9F%E8%A1%A3%E8%91%97%EF%BD%9C%E5%A5%B3%E9%9E%8B.pdf", "beauty": "https://deo.shopeemobile.com/shopee/cms_cdn_bucket/078f25902c854d769489c25915682f9c_%E6%88%90%E4%BA%A4%E6%89%8B%E7%BA%8C%E8%B2%BB%20-%20%E5%AC%B0%E5%B9%BC%E5%85%92%E7%AB%A5%E8%A3%9D%E7%AB%A5%E9%9E%8B%EF%BD%9C%E7%BE%8E%E5%A6%9D%E4%BF%9D%E9%A4%8A%EF%BD%9C%E7%BE%8E%E9%A3%9F%E3%80%81%E4%BC%B4%E6%89%8B%E7%A6%AE%EF%BD%9C%E4%BF%9D%E5%81%A5%EF%BD%9C%E6%AF%8D%E5%AC%B0%E7%94%A8%E5%93%81%EF%BD%9C%E5%AF%B5%E7%89%A9.pdf", "tech": "https://deo.shopeemobile.com/shopee/cms_cdn_bucket/61a9a8b3e45c4e80b7800237a327b3bc_%E6%88%90%E4%BA%A4%E6%89%8B%E7%BA%8C%E8%B2%BB%20-%20%E5%BD%B1%E9%9F%B3%EF%BD%9C%E7%9B%B8%E6%A9%9F&%E7%A9%BA%E6%8B%8D%E6%A9%9F%EF%BD%9C%E9%9B%BB%E8%85%A6%E8%88%87%E5%91%A8%E9%82%8A%E9%85%8D%E4%BB%B6%EF%BD%9C%E9%9B%BB%E7%8E%A9%E9%81%8A%E6%88%B2%EF%BD%9C%E6%89%8B%E6%A9%9F%E5%B9%B3%E6%9D%BF%E8%88%87%E5%91%A8%E9%82%8A%EF%BD%9C%E5%AE%B6%E7%94%A8%E9%9B%BB%E5%99%A8.pdf", "home": "https://deo.shopeemobile.com/shopee/cms_cdn_bucket/cef3ac59a4894e2584d6d278ce285f7b_%E6%88%90%E4%BA%A4%E6%89%8B%E7%BA%8C%E8%B2%BB%20-%20%E6%B1%BD%E8%BB%8A%E9%A1%9E%EF%BD%9C%E6%9B%B8%E7%B1%8D%E5%8F%8A%E9%9B%9C%E8%AA%8C%E6%9C%9F%E5%88%8A%EF%BD%9C%E6%84%9B%E5%A5%BD%E8%88%87%E6%94%B6%E8%97%8F%E5%93%81%EF%BD%9C%E5%B1%85%E5%AE%B6%E7%94%9F%E6%B4%BB%EF%BD%9C%E6%A9%9F%E8%BB%8A%E9%A1%9E%EF%BD%9C%E6%88%B6%E5%A4%96%E8%88%87%E9%81%8B%E5%8B%95%E7%94%A8%E5%93%81%EF%BD%9C%E6%96%87%E5%85%B7%E3%80%81%E7%BE%8E%E8%A1%93%E7%94%A8%E5%85%B7%EF%BD%9C%E7%A5%A8%E5%88%B8%E3%80%81%E5%84%AA%E6%83%A0%E5%88%B8%E8%88%87%E6%9C%8D%E5%8B%99%EF%BD%9C%E6%97%85%E8%A1%8C%E7%9B%B8%E9%97%9C%E7%94%A8%E5%93%81%E8%A1%8C%E6%9D%8E%E7%AE%B1.pdf"};
+var PDF_NEW = {
+  fashion: "https://mms.file.susercontent.com/api/v4/11195002/mms/tw-11195002-bmlg2-mvgzj5jzf3t600?app_type=shopee",
+  beauty: "https://mms.file.susercontent.com/api/v4/11195002/mms/tw-11195002-bmlg7-mvgzhk72kqa0f0?app_type=shopee",
+  tech: "https://mms.file.susercontent.com/api/v4/11195002/mms/tw-11195002-bmlg0-mvgzde7uddl477?app_type=shopee",
+  home: "https://mms.file.susercontent.com/api/v4/11195002/mms/tw-11195002-bmlg2-mvhc1ywc0utf1d?app_type=shopee"
+};
+var PDF_NEW_LABELS = {
+  fashion: "官方細分類費率表 PDF（2026/12/11 起）｜時尚配件、男女衣著鞋包、戶外運動、旅行箱",
+  beauty: "官方細分類費率表 PDF（2026/12/11 起）｜嬰幼兒、美妝保養、美食伴手禮、保健、母嬰、寵物",
+  tech: "官方細分類費率表 PDF（2026/12/11 起）｜影音、相機、電腦、電玩、手機平板、家電",
+  home: "官方細分類費率表 PDF（2026/12/11 起）｜書籍、居家生活、文具、票券、汽機車百貨"
+};
 var CATS = [
   ["女生衣著（上衣、洋裝、裙裝）", 6.0, "fashion"], ["男生衣著（上衣、西裝）", 6.0, "fashion"],
   ["美妝保養（彩妝、肌膚保養、香水）", 6.0, "beauty"], ["美食、伴手禮（休閒零食、飲品、禮盒）", 5.5, "beauty"],
   ["寵物食品", 5.5, "beauty"], ["居家生活（收納）", 6.0, "home"],
   ["手機", 5.5, "tech"], ["手機周邊配件", 7.5, "tech"], ["耳機／耳麥／藍牙耳機", 5.5, "tech"], ["筆記型電腦", 5.0, "tech"],
-  ["自訂費率（其他非商城分類）", null, ""]
+  ["自訂費率（請依官方表自行填入）", null, ""]
 ];
 var SOURCES = [
-  ["蝦皮賣家幫助中心｜免運及進階賣家專案方案二調整（2026-07-01 起：訂單金額 ≤99 元收 6%；本頁依賣家中心公告整理）", "https://seller.shopee.tw/edu/article/18733"],
-  ["蝦皮賣家幫助中心｜【重要】平台費率更新暨免運物流方案升級（2026-01-01 起：金流 2.5%、方案一 6%、發票 2.5 元；方案二後續調整另見 2026-07-01 公告）", "https://seller.shopee.tw/edu/article/26430"],
+  ["蝦皮賣家幫助中心｜【重要公告】平台服務升級與費用調整（2026-11-12 公告，2026-12-11 起調整）", "https://seller.shopee.tw/edu/article/28668"],
+  ["蝦皮賣家幫助中心｜2026年12月成交手續費&金流與系統處理費（促銷檔期一般賣家 +4%、商城 +5%）", "https://seller.shopee.tw/edu/article/28804"],
+  ["蝦皮賣家幫助中心｜免運及進階賣家專案（2026-11-13 更新：12/11 起方案一 6.5%、方案二 ≤99 元 6.5%／≥100 元 65 元）", "https://seller.shopee.tw/edu/article/18733"],
+  ["蝦皮賣家幫助中心｜蝦幣回饋專案（確認 12/11 起一般賣家促銷檔期加收 4%、商城 5%；僅長期方案可免收）", "https://seller.shopee.tw/edu/article/14704"],
+  ["蝦皮賣家幫助中心｜免運及進階賣家專案方案二調整（2026-07-01 起舊制：≤99 元收 6%；≥100 元每單 60 元）", "https://seller.shopee.tw/edu/article/18733"],
+  ["蝦皮賣家幫助中心｜【重要】平台費率更新暨免運物流方案升級（2026-01-01 起：金流 2.5%、舊制方案一 6%、發票 2.5 元）", "https://seller.shopee.tw/edu/article/26430"],
   ["蝦皮賣家幫助中心｜信用卡金流與系統處理費", "https://seller.shopee.tw/edu/article/302"],
   ["蝦皮賣家幫助中心｜其他服務費（免運及進階賣家專案計算方式）", "https://seller.shopee.tw/edu/article/1022"],
   ["蝦皮賣家幫助中心｜非商城賣場成交手續費單件上限 35,000 元（含檔期費率範例）", "https://seller.shopee.tw/edu/article/25681"],
-  ["官方分類費率表 PDF｜時尚配件、男女衣著、鞋包", PDF.fashion],
-  ["官方分類費率表 PDF｜嬰幼兒、美妝保養、美食伴手禮、保健、母嬰、寵物", PDF.beauty],
-  ["官方分類費率表 PDF｜影音、相機、電腦、電玩、手機平板、家電", PDF.tech],
-  ["官方分類費率表 PDF｜書籍、居家生活、戶外運動、文具等", PDF.home]
+  ["官方分類費率表 PDF（12/10 以前）｜時尚配件、男女衣著、鞋包", PDF.fashion],
+  ["官方分類費率表 PDF（12/10 以前）｜嬰幼兒、美妝保養、美食伴手禮、保健、母嬰、寵物", PDF.beauty],
+  ["官方分類費率表 PDF（12/10 以前）｜影音、相機、電腦、電玩、手機平板、家電", PDF.tech],
+  ["官方分類費率表 PDF（12/10 以前）｜書籍、居家生活、戶外運動、文具等", PDF.home],
+  [PDF_NEW_LABELS.fashion, PDF_NEW.fashion],
+  [PDF_NEW_LABELS.beauty, PDF_NEW.beauty],
+  [PDF_NEW_LABELS.tech, PDF_NEW.tech],
+  [PDF_NEW_LABELS.home, PDF_NEW.home]
 ];
+
+function defaultScheduleId(now){
+  var d = now ? new Date(now) : new Date();
+  if (isNaN(d.getTime())) d = new Date();
+  var y = d.getFullYear(), m = d.getMonth() + 1, day = d.getDate();
+  return (y > 2026 || (y === 2026 && (m > 12 || (m === 12 && day >= 11)))) ? "new" : "old";
+}
+function scheduleOf(o){
+  o = o || {};
+  var id = o.schedule || defaultScheduleId();
+  return SCHEDULES[id] || SCHEDULES.old;
+}
 
 /* ===== 計算核心 ===== */
 function r0(x){ return Math.round(x + 1e-9); }   // 元以下四捨五入
 function calcShopee(o){
   var price = +o.price || 0, qty = Math.max(1, Math.round(+o.qty || 1)), base = price * qty;
-  var txnRate = (+o.rate || 0) + (o.promo ? (+o.promoAdd || 0) : 0);
-  var r = {base:base, items:[]};
+  var sch = scheduleOf(o);
+  var promoAdd = o.promoAdd != null ? +o.promoAdd : sch.promoAdd;
+  var txnRate = (+o.rate || 0) + (o.promo ? promoAdd : 0);
+  var plan1 = o.plan1Rate != null ? +o.plan1Rate : sch.plan1Rate;
+  var plan2Cap = o.plan2Cap != null ? +o.plan2Cap : sch.plan2Cap;
+  var plan2Low = o.plan2Low != null ? +o.plan2Low : sch.plan2Low;
+  var r = {base:base, items:[], schedule: sch.id, plan1Rate: plan1, plan2Cap: plan2Cap, plan2Low: plan2Low};
   r.txn = r0(Math.min(price, ITEM_CAP) * qty * txnRate / 100);
   r.pay = r0((base + (+o.shipBuyer || 0)) * (+o.payRate || 0) / 100);
-  // 方案二的「訂單金額」採 base（商品單價 × 數量），不含運費；2026-07-01 起適用。
-  r.prog = o.plan === "p1" ? r0(base * PLAN1_RATE / 100) : (o.plan === "p2" ? (base <= PLAN2_THRESHOLD ? r0(base * PLAN2_LOW_RATE / 100) : PLAN2_CAP) : 0);
+  // 方案二的「訂單金額」採 base（商品單價 × 數量），不含運費。
+  r.prog = o.plan === "p1" ? r0(base * plan1 / 100) : (o.plan === "p2" ? (base <= PLAN2_THRESHOLD ? r0(base * plan2Low / 100) : plan2Cap) : 0);
   r.other = r0(base * (+o.other || 0) / 100);
   r.inv = o.invoice ? INVOICE_FEE : 0;
   r.fees = r.txn + r.pay + r.prog + r.other + r.inv;
@@ -269,18 +341,27 @@ function solvePrice(o, test){  // 最低整數售價使 test(r) 成立（費用�
   return lo;
 }
 function selfTests(){
-  var t = [], z = {qty:1, rate:5.5, promo:false, promoAdd:2, plan:"none", payRate:2.5, shipBuyer:0, invoice:false, other:0};
+  var t = [], z = {qty:1, rate:5.5, promo:false, promoAdd:2, plan:"none", payRate:2.5, shipBuyer:0, invoice:false, other:0, schedule:"old"};
   t.push({name:"金流與系統處理費：商品 400＋運費 60，(400+60)×2.5%＝11.5", expected:12, got:calcShopee(Object.assign({}, z, {price:400, shipBuyer:60})).pay});
   t.push({name:"金流與系統處理費：商品 21,915＋運費 60", expected:549, got:calcShopee(Object.assign({}, z, {price:21915, shipBuyer:60})).pay});
   t.push({name:"成交手續費（非檔期 5.5%）：商品 400 元", expected:22, got:calcShopee(Object.assign({}, z, {price:400})).txn});
   t.push({name:"成交手續費單件上限：商品 40,000 元 → 35,000 × 5.5%", expected:1925, got:calcShopee(Object.assign({}, z, {price:40000})).txn});
-  t.push({name:"成交手續費（檔期 7.5%）：商品 400 元", expected:30, got:calcShopee(Object.assign({}, z, {price:400, promo:true})).txn});
-  t.push({name:"成交手續費（檔期 7.5%）：商品 B 兩件 40,000 元", expected:5250, got:calcShopee(Object.assign({}, z, {price:40000, qty:2, promo:true})).txn});
-  t.push({name:"免運及進階賣家專案方案一：商品 500＋運費 60，依 500 × 6%", expected:30, got:calcShopee(Object.assign({}, z, {price:500, shipBuyer:60, plan:"p1"})).prog});
+  t.push({name:"成交手續費（舊制檔期 7.5%）：商品 400 元", expected:30, got:calcShopee(Object.assign({}, z, {price:400, promo:true, promoAdd:2, schedule:"old"})).txn});
+  t.push({name:"成交手續費（舊制檔期 7.5%）：商品 B 兩件 40,000 元", expected:5250, got:calcShopee(Object.assign({}, z, {price:40000, qty:2, promo:true, promoAdd:2, schedule:"old"})).txn});
+  t.push({name:"舊制方案一：商品 500＋運費 60，依 500 × 6%", expected:30, got:calcShopee(Object.assign({}, z, {price:500, shipBuyer:60, plan:"p1", schedule:"old"})).prog});
   [[25,2], [99,6], [100,60], [1000,60]].forEach(function(x){
-    t.push({name:"免運及進階賣家專案方案二：訂單金額 " + x[0] + " 元", expected:x[1], got:calcShopee(Object.assign({}, z, {price:x[0], qty:1, plan:"p2"})).prog});
+    t.push({name:"舊制方案二：訂單金額 " + x[0] + " 元", expected:x[1], got:calcShopee(Object.assign({}, z, {price:x[0], qty:1, plan:"p2", schedule:"old"})).prog});
   });
-  t.push({name:"免運及進階賣家專案方案一：商品 1,000 元 × 6%", expected:60, got:calcShopee(Object.assign({}, z, {price:1000, qty:1, plan:"p1"})).prog});
+  t.push({name:"舊制方案一：商品 1,000 元 × 6%", expected:60, got:calcShopee(Object.assign({}, z, {price:1000, qty:1, plan:"p1", schedule:"old"})).prog});
+  t.push({name:"新制成交手續費（檔期 5.5%+4%）：商品 400 元", expected:38, got:calcShopee(Object.assign({}, z, {price:400, promo:true, promoAdd:4, schedule:"new"})).txn});
+  t.push({name:"新制方案一：商品 500 × 6.5%＝32.5", expected:33, got:calcShopee(Object.assign({}, z, {price:500, plan:"p1", schedule:"new"})).prog});
+  t.push({name:"新制方案一：商品 1,000 × 6.5%", expected:65, got:calcShopee(Object.assign({}, z, {price:1000, plan:"p1", schedule:"new"})).prog});
+  t.push({name:"新制方案二：訂單金額 99 元 × 6.5%＝6.435→6（官方示例）", expected:6, got:calcShopee(Object.assign({}, z, {price:99, plan:"p2", schedule:"new"})).prog});
+  t.push({name:"新制方案二：訂單金額 100 元每單 65 元", expected:65, got:calcShopee(Object.assign({}, z, {price:100, plan:"p2", schedule:"new"})).prog});
+  t.push({name:"新制方案二：訂單金額 1,000 元每單 65 元", expected:65, got:calcShopee(Object.assign({}, z, {price:1000, plan:"p2", schedule:"new"})).prog});
+  t.push({name:"新制方案一：官方示例 1,000 × 6.5%＝65", expected:65, got:calcShopee(Object.assign({}, z, {price:1000, plan:"p1", schedule:"new"})).prog});
+  t.push({name:"預設費率在 2026-12-10 為舊制", expected:"old", got:defaultScheduleId("2026-12-10T23:59:59+08:00")});
+  t.push({name:"預設費率在 2026-12-11 為新制", expected:"new", got:defaultScheduleId("2026-12-11T00:00:00+08:00")});
   t.forEach(function(x){ x.pass = String(x.expected) === String(x.got); });
   return t;
 }
@@ -290,15 +371,52 @@ function $(id){ return document.getElementById(id); }
 function fmt(n){ return Math.round(n).toLocaleString("zh-TW"); }
 function fmtF(n){ return (Math.round(n * 10) / 10).toLocaleString("zh-TW", {maximumFractionDigits:1}); }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function currentSchedule(){
+  var el = $("schedule");
+  return scheduleOf({schedule: el ? el.value : defaultScheduleId()});
+}
+function planLabel(sch, id){
+  if (id === "p1") return "方案一：商品金額 × " + sch.plan1Rate + "%";
+  if (id === "p2") return "方案二：訂單金額 ≤99 元收 " + sch.plan2Low + "%、≥100 元每單 " + sch.plan2Cap + " 元";
+  return "未參加";
+}
+function applySchedule(opts){
+  opts = opts || {};
+  var sch = currentSchedule();
+  var plan = $("plan");
+  if (plan){
+    var keep = plan.value;
+    plan.innerHTML = '<option value="p1">'+planLabel(sch,"p1")+'</option><option value="p2">'+planLabel(sch,"p2")+'</option><option value="none">未參加</option>';
+    plan.value = keep || "p1";
+  }
+  if ($("promoAddHint")) $("promoAddHint").textContent = "此套費率預設 " + sch.promoAdd + "%（一般賣家；商城新制為 5%，可修改）。長期蝦幣回饋可免收。";
+  if ($("promoAdd") && !opts.keepPromoAdd) $("promoAdd").value = sch.promoAdd;
+  if ($("rateHint")){
+    $("rateHint").textContent = sch.id === "new"
+      ? "12/11 起請依官方細分類費率表自行填入，本工具不自行編列細分類數字。"
+      : "選下方 12/10 以前的分類會自動帶入，也可自行修改。";
+  }
+  if ($("catHint")){
+    $("catHint").textContent = sch.id === "new"
+      ? "12/11 起改依細分類計費，下列分類費率僅供對照舊制，請改填官方 PDF 中的細分類費率。"
+      : "下列為 12/10 以前一般賣家常用分類基本費率。";
+  }
+  var customIdx = CATS.length - 1;
+  if (sch.id === "new" && $("cat") && !opts.keepCat) {
+    $("cat").value = String(customIdx);
+  }
+}
 function opts(){
+  var sch = currentSchedule();
   return {price:+$("price").value, qty:+$("qty").value, cost:+$("cost").value, rate:+$("rate").value, promo:$("promo").value === "1",
     promoAdd:+$("promoAdd").value, plan:$("plan").value, payRate:+$("payRate").value, shipBuyer:+$("shipBuyer").value,
-    shipSeller:+$("shipSeller").value, pack:+$("pack").value, invoice:$("invoice").value === "1", other:+$("other").value, ad:+$("ad").value};
+    shipSeller:+$("shipSeller").value, pack:+$("pack").value, invoice:$("invoice").value === "1", other:+$("other").value, ad:+$("ad").value,
+    schedule: sch.id, plan1Rate: sch.plan1Rate, plan2Cap: sch.plan2Cap, plan2Low: sch.plan2Low};
 }
 function render(){
   var o = opts(), e = "";
   if (!(o.price >= 1)) e = "請輸入商品售價。"; else if (!(o.qty >= 1)) e = "數量至少 1 件。";
-  $("err").textContent = e; if (e) return;
+  if ($("err")) $("err").textContent = e; if (e) return;
   var r = calcShopee(o), tgt = (+$("target").value || 0) / 100;
   var be = solvePrice(o, function(x){ return x.profit >= 0; });
   var tp = solvePrice(o, function(x){ return x.base > 0 && x.profit / x.base >= tgt; });
@@ -306,13 +424,16 @@ function render(){
   $("kMargin").textContent = (r.margin * 100).toFixed(1) + "%";
   $("kFees").textContent = fmtF(r.fees) + " 元";
   $("kBE").textContent = be === null ? "無法達成" : fmt(be / o.qty) + " 元";
-  $("sumText").textContent = "每筆訂單商品金額 " + fmt(r.base) + " 元，蝦皮費用合計 " + fmtF(r.fees) + " 元（占 " + (r.base ? (r.fees / r.base * 100).toFixed(1) : "0") + "%），實際撥款 " + fmtF(r.payout) + " 元，扣除成本後實拿 " + fmtF(r.profit) + " 元。" +
+  var sch = currentSchedule();
+  $("sumText").textContent = "適用「" + sch.effective + "」。每筆訂單商品金額 " + fmt(r.base) + " 元，蝦皮費用合計 " + fmtF(r.fees) + " 元（占 " + (r.base ? (r.fees / r.base * 100).toFixed(1) : "0") + "%），實際撥款 " + fmtF(r.payout) + " 元，扣除成本後實拿 " + fmtF(r.profit) + " 元。" +
     (tp === null ? "" : "要達到 " + (tgt * 100) + "% 利潤率，每件售價至少約 " + fmt(Math.ceil(tp / o.qty)) + " 元。");
+  var planText = o.plan === "p1" ? (fmt(r.base) + " × " + r.plan1Rate + "%")
+    : (o.plan === "p2" ? (r.base <= PLAN2_THRESHOLD ? ("訂單金額 ≤99：" + fmt(r.base) + " × " + r.plan2Low + "%") : ("每單 " + r.plan2Cap + " 元")) : "未參加");
   var rows = [
     ["商品金額", fmt(o.price) + " × " + o.qty + " 件", r.base],
     ["成交手續費", "min(售價, 35,000) × 數量 × " + fmtF(r.txnRate) + "%" + (o.promo ? "（含促銷檔期加收）" : ""), -r.txn],
     ["金流與系統處理費", "(" + fmt(r.base) + " + 運費 " + fmt(o.shipBuyer) + ") × " + o.payRate + "%", -r.pay],
-    ["免運及進階賣家專案", o.plan === "p1" ? fmt(r.base) + " × 6%" : (o.plan === "p2" ? (r.base <= PLAN2_THRESHOLD ? "訂單金額 ≤99：" + fmt(r.base) + " × 6%" : "每單 60 元") : "未參加"), -r.prog],
+    ["免運及進階賣家專案", planText, -r.prog],
     ["其他活動服務費", fmt(r.base) + " × " + o.other + "%", -r.other],
     ["發票服務費", o.invoice ? "每張 2.5 元" : "未使用", -r.inv],
     ["＝ 蝦皮撥款", "", r.payout],
@@ -323,16 +444,26 @@ function render(){
   $("resTbl").tFoot.innerHTML = "<tr><td>實拿利潤</td><td class=\"l\">利潤率 " + (r.margin * 100).toFixed(1) + "%</td><td>" + fmtF(r.profit) + "</td></tr>";
 }
 function init(){
-  $("dataStamp").textContent = "內容更新日期：2026-10-27；原費率整理日期：" + CHECKED + "｜依賣家中心公告整理；官方頁面需由瀏覽器載入賣家中心頁面後才顯示，本站無法取得原文，請以賣家中心最新公告為準｜僅供試算";
-  $("cat").innerHTML = CATS.map(function(c, i){ return '<option value="' + i + '"' + (i === 0 ? " selected" : "") + ">" + c[0] + (c[1] === null ? "" : "（" + c[1].toFixed(1) + "%）") + "</option>"; }).join("");
-  $("catTbl").tBodies[0].innerHTML = CATS.filter(function(c){ return c[1] !== null; }).map(function(c){ return "<tr><td>" + c[0] + "</td><td>" + c[1].toFixed(1) + '%</td><td class="l"><a href="' + PDF[c[2]] + '" rel="noopener" target="_blank">官方分類費率表 PDF</a></td></tr>'; }).join("");
-  $("srcList").innerHTML = SOURCES.map(function(s){ return "<li>" + s[0] + '：<a href="' + s[1] + '" rel="noopener" target="_blank">' + (s[1].length > 80 ? s[1].slice(0, 60) + "…" : s[1]) + "</a></li>"; }).join("") + "<li>費率更新日期：" + CHECKED + "（台北時間）。促銷檔期加收 2% 為本工具預設值，依賣家中心公告整理，官方原文與各類別費率待查證，請以賣家中心最新分類費率表為準。</li>";
-  $("cat").addEventListener("change", function(){ var c = CATS[+$("cat").value]; if (c[1] !== null) $("rate").value = c[1]; render(); });
-  ["price","qty","cost","rate","promo","promoAdd","plan","payRate","shipBuyer","shipSeller","pack","invoice","other","ad","target"].forEach(function(id){ $(id).addEventListener("input", render); $(id).addEventListener("change", render); });
-  $("calcBtn").addEventListener("click", render);
+  if ($("schedule") && !$("schedule").value) $("schedule").value = defaultScheduleId();
+  if ($("dataStamp")) $("dataStamp").textContent = "內容更新日期：2026-11-25；費率查核日期：" + CHECKED + "｜舊費率適用至 2026/12/10（含），新費率自 2026/12/11 00:00 起｜僅供試算，請以賣家中心最新公告與對帳單為準。";
+  if ($("cat")) $("cat").innerHTML = CATS.map(function(c, i){ return '<option value="' + i + '"' + (i === 0 ? " selected" : "") + ">" + c[0] + (c[1] === null ? "" : "（12/10前 " + c[1].toFixed(1) + "%）") + "</option>"; }).join("");
+  if ($("catTbl")) {
+    var oldRows = CATS.filter(function(c){ return c[1] !== null; }).map(function(c){ return "<tr><td>" + c[0] + "</td><td>" + c[1].toFixed(1) + '%（僅 12/10 前）</td><td class="l"><a href="' + PDF[c[2]] + '" rel="noopener" target="_blank">12/10 前官方分類費率表 PDF</a></td></tr>'; }).join("");
+    var newRows = Object.keys(PDF_NEW).map(function(k){ return "<tr><td colspan=\"2\">" + PDF_NEW_LABELS[k] + '</td><td class="l"><a href="' + PDF_NEW[k] + '" rel="noopener" target="_blank">2026/12/11 起官方細分類費率表 PDF</a></td></tr>'; }).join("");
+    $("catTbl").tBodies[0].innerHTML = oldRows + newRows;
+  }
+  if ($("srcList")) $("srcList").innerHTML = SOURCES.map(function(s){ return "<li>" + s[0] + '：<a href="' + s[1] + '" rel="noopener" target="_blank">' + (s[1].length > 80 ? s[1].slice(0, 60) + "…" : s[1]) + "</a></li>"; }).join("") + "<li>費率查核日期：" + CHECKED + "（台北時間）。成交手續費 12/11 起請依官方細分類 PDF 填入，本工具不自行編造細分類數字。</li>";
+  applySchedule({keepPromoAdd:false});
+  if ($("cat")) $("cat").addEventListener("change", function(){ var c = CATS[+$("cat").value]; if (c[1] !== null) $("rate").value = c[1]; render(); });
+  if ($("schedule")) $("schedule").addEventListener("change", function(){ applySchedule(); render(); });
+  ["price","qty","cost","rate","promo","promoAdd","plan","payRate","shipBuyer","shipSeller","pack","invoice","other","ad","target"].forEach(function(id){ if ($(id)) { $(id).addEventListener("input", render); $(id).addEventListener("change", render); } });
+  if ($("calcBtn")) $("calcBtn").addEventListener("click", render);
   var t = selfTests(); window.CALC_SELFTEST_RESULTS = t;
-  $("ckTbl").tBodies[0].innerHTML = t.map(function(x){ return '<tr><td class="l">' + esc(x.name) + "</td><td>" + x.expected + "</td><td>" + x.got + '</td><td class="' + (x.pass ? "ok" : "ng") + '">' + (x.pass ? "✔ 相符" : "✘ 不符") + "</td></tr>"; }).join("");
-  render();
+  if ($("ckTbl")) $("ckTbl").tBodies[0].innerHTML = t.map(function(x){ return '<tr><td class="l">' + esc(x.name) + "</td><td>" + x.expected + "</td><td>" + x.got + '</td><td class="' + (x.pass ? "ok" : "ng") + '">' + (x.pass ? "✔ 相符" : "✘ 不符") + "</td></tr>"; }).join("");
+  if ($("kProfit")) render();
+}
+if (typeof module === "object" && module.exports) {
+  module.exports = {calcShopee:calcShopee, selfTests:selfTests, defaultScheduleId:defaultScheduleId, SCHEDULES:SCHEDULES, scheduleOf:scheduleOf, r0:r0};
 }
 if (typeof document !== "undefined") { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init(); }
 
